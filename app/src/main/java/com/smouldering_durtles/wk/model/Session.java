@@ -735,16 +735,20 @@ s     *
         if (verdict.isOk()) {
             currentQuestion.markCorrect();
             LOGGER.info("Marked correct: %s finished=%s", currentQuestion, currentQuestion.isFinished());
-            if (currentQuestion.getItem().isFinished()) {
+            boolean itemJustFinished = currentQuestion.getItem().isFinished();
+            if (itemJustFinished) {
                 FloatingUiState.toastOldSrsStage = currentQuestion.getItem().getSrsStage();
                 FloatingUiState.toastNewSrsStage = currentQuestion.getItem().getNewSrsStage();
                 FloatingUiState.showSrsStageChangedToast = true;
-
+                // Increment daily review counter if this is a review session and the item just finished
+                if (type == com.smouldering_durtles.wk.enums.SessionType.REVIEW) {
+                    com.smouldering_durtles.wk.GlobalSettings.DailyReviewCounter.increment();
+                }
+                // Mark the item so we only increment once per item
+                currentQuestion.getItem().setState(com.smouldering_durtles.wk.enums.SessionItemState.REPORTED);
             }
-
             answered = true;
             correct = true;
-
             FloatingUiState.lastVerdict = verdict;
             List<String> alternatives = null;
             if (currentQuestion.getType().isMeaning() && subject.getMeanings().size() > 1) {

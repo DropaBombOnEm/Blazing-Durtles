@@ -20,6 +20,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.os.VibrationEffect;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.SpannableString;
@@ -286,8 +287,11 @@ public final class UnansweredSessionFragment extends AbstractSessionFragment {
                         // Fallback for older API versions using Vibrator
                         Vibrator vibrator = (Vibrator) requireContext().getSystemService(Context.VIBRATOR_SERVICE);
                         if (vibrator != null && vibrator.hasVibrator()) {
-                            // Vibrate for 200 milliseconds for a slightly longer feedback on failure
-                            vibrator.vibrate(300);
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                            } else {
+                                vibrator.vibrate(200);
+                            }
                         }
                     }
                 }
@@ -479,8 +483,11 @@ public final class UnansweredSessionFragment extends AbstractSessionFragment {
                             // Fallback for older API versions using Vibrator
                             Vibrator vibrator = (Vibrator) requireContext().getSystemService(Context.VIBRATOR_SERVICE);
                             if (vibrator != null && vibrator.hasVibrator()) {
-                                // Vibrate for 200 milliseconds for a slightly longer feedback on failure
-                                vibrator.vibrate(200);
+                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                                    vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                                } else {
+                                    vibrator.vibrate(200);
+                                }
                             }
                         }
                     }

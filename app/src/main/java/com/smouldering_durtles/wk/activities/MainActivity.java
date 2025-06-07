@@ -20,6 +20,7 @@ import static com.smouldering_durtles.wk.util.ObjectSupport.runAsync;
 import static com.smouldering_durtles.wk.util.ObjectSupport.safe;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.smouldering_durtles.wk.GlobalSettings;
 import com.smouldering_durtles.wk.R;
@@ -96,6 +97,7 @@ public final class MainActivity extends AbstractActivity {
         final ViewProxy startLessonsButton = new ViewProxy(this, R.id.startLessonsButton);
         final ViewProxy startReviewsButton = new ViewProxy(this, R.id.startReviewsButton);
         final ViewProxy resumeButton = new ViewProxy(this, R.id.resumeButton);
+        final ViewProxy reviewCounterText = new ViewProxy(this, R.id.reviewCounterText);
 
         retryApiErrorButton1.setOnClickListener(v -> retryApiError());
         retryApiErrorButton2.setOnClickListener(v -> retryApiError());
@@ -190,6 +192,10 @@ public final class MainActivity extends AbstractActivity {
         if (timeLineBarChart != null) {
             timeLineBarChart.setLifecycleOwner(this);
         }
+
+        int reviewCount = GlobalSettings.DailyReviewCounter.getCount();
+        reviewCounterText.setText("Reviews Completed Today: " + reviewCount);
+        reviewCounterText.setVisibility(View.VISIBLE);
     }
 
     @Override
@@ -209,6 +215,12 @@ public final class MainActivity extends AbstractActivity {
             LiveJlptProgress.getInstance().forceUpdate();
             LiveAlertContext.getInstance().forceUpdate();
         });
+
+        // Update the review counter display every time the activity resumes
+        final ViewProxy reviewCounterText = new ViewProxy(this, R.id.reviewCounterText);
+        int reviewCount = GlobalSettings.DailyReviewCounter.getCount();
+        reviewCounterText.setText("Reviews Completed Today: " + reviewCount);
+        reviewCounterText.setVisibility(android.view.View.VISIBLE);
 
         keyboardHelpView.setVisibility(!GlobalSettings.Tutorials.getKeyboardHelpDismissed());
 

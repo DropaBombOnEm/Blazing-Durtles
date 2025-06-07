@@ -20,6 +20,7 @@ import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.os.VibrationEffect;
 import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
@@ -142,6 +143,7 @@ public final class AnsweredSessionFragment extends AbstractSessionFragment imple
 
         if (session.isCorrect()) {
             questionEdit.setBackgroundColor(ThemeUtil.getColor(R.attr.correctColorBackground));
+            // Removed: daily review counter increment (now handled in Session.java)
         }
         else {
             questionEdit.setBackgroundColor(ThemeUtil.getColor(R.attr.incorrectColorBackground));
@@ -153,8 +155,11 @@ public final class AnsweredSessionFragment extends AbstractSessionFragment imple
                     // Fallback for older API versions using Vibrator
                     Vibrator vibrator = (Vibrator) requireContext().getSystemService(Context.VIBRATOR_SERVICE);
                     if (vibrator != null && vibrator.hasVibrator()) {
-                        // Vibrate for 200 milliseconds for a slightly longer feedback on failure
-                        vibrator.vibrate(300);
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                            vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
+                        } else {
+                            vibrator.vibrate(200);
+                        }
                     }
                 }
             }

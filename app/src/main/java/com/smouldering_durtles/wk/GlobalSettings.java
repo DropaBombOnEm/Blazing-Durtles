@@ -3527,4 +3527,72 @@ public final class GlobalSettings {
             editor.apply();
         }
     }
+
+    /**
+     * Local daily review completion counter utilities.
+     */
+    public static final class DailyReviewCounter {
+        private static final String PREF_KEY_DATE = "daily_review_counter_date";
+        private static final String PREF_KEY_COUNT = "daily_review_counter_count";
+
+        /**
+         * Get today's date as a string (yyyy-MM-dd).
+         */
+        private static String getTodayString() {
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.ROOT);
+            return sdf.format(new java.util.Date());
+        }
+
+        /**
+         * Get the current daily review count. Resets if the date has changed.
+         */
+        public static int getCount() {
+            SharedPreferences prefs = prefs();
+            String today = getTodayString();
+            String storedDate = prefs.getString(PREF_KEY_DATE, "");
+            if (!today.equals(storedDate)) {
+                // Reset for new day
+                setCount(0);
+                setDate(today);
+                return 0;
+            }
+            return prefs.getInt(PREF_KEY_COUNT, 0);
+        }
+
+        /**
+         * Increment the daily review count by 1. Resets if the date has changed.
+         */
+        public static void increment() {
+            SharedPreferences prefs = prefs();
+            String today = getTodayString();
+            String storedDate = prefs.getString(PREF_KEY_DATE, "");
+            SharedPreferences.Editor editor = prefs.edit();
+            if (!today.equals(storedDate)) {
+                editor.putString(PREF_KEY_DATE, today);
+                editor.putInt(PREF_KEY_COUNT, 1);
+            } else {
+                int count = prefs.getInt(PREF_KEY_COUNT, 0) + 1;
+                editor.putInt(PREF_KEY_COUNT, count);
+            }
+            editor.apply();
+        }
+
+        /**
+         * Set the daily review count (for internal use).
+         */
+        private static void setCount(int count) {
+            SharedPreferences.Editor editor = prefs().edit();
+            editor.putInt(PREF_KEY_COUNT, count);
+            editor.apply();
+        }
+
+        /**
+         * Set the stored date (for internal use).
+         */
+        private static void setDate(String date) {
+            SharedPreferences.Editor editor = prefs().edit();
+            editor.putString(PREF_KEY_DATE, date);
+            editor.apply();
+        }
+    }
 }

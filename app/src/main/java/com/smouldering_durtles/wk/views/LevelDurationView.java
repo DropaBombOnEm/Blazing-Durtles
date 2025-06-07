@@ -80,7 +80,16 @@ public final class LevelDurationView extends AppCompatTextView {
 
         setVisibility(VISIBLE);
 
-        setText(String.format(Locale.ROOT, "You are level %d. Your time on this level is %.1f days.",
-                levelDuration.getLevel(), levelDuration.getDaysAtCurrentLevel()));
+        double days = levelDuration.getDaysAtCurrentLevel();
+        String displayText;
+        if (Math.abs(days - 1.0) < 0.0001) {
+            displayText = "1 Day";
+        } else if (days >= 1) {
+            displayText = String.format(Locale.ROOT, "%d Days", (int)Math.floor(days));
+        } else {
+            displayText = "Less Than 24 Hours";
+        }
+        setText(String.format(Locale.ROOT, "Current Level: %d | Time on Level: %s",
+                levelDuration.getLevel(), displayText));
     }
 }
