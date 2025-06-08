@@ -23,7 +23,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="?attr/colorBackground"
-    tools:context="com.smouldering_durtles.wk.activities.SelfStudyStartActivity">
+    tools:context="com.blazing_durtles.wk.activities.SelfStudyStartActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -112,7 +112,7 @@
 
             </LinearLayout>
 
-            <com.smouldering_durtles.wk.views.DividerView
+            <com.blazing_durtles.wk.views.DividerView
                 android:id="@+id/presetDivider"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
@@ -126,7 +126,7 @@
                 android:layout_marginTop="8dp"
                 style="@style/WK.TextView.Large"/>
 
-            <com.smouldering_durtles.wk.views.AdvancedSearchFormView
+            <com.blazing_durtles.wk.views.AdvancedSearchFormView
                 android:id="@+id/searchForm"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

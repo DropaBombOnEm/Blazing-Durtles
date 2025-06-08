@@ -28,7 +28,7 @@
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <com.smouldering_durtles.wk.views.SubjectInfoButtonView
+        <com.blazing_durtles.wk.views.SubjectInfoButtonView
             android:id="@+id/questionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -186,7 +186,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/closeToastText" />
 
-        <com.smouldering_durtles.wk.views.StarRatingView
+        <com.blazing_durtles.wk.views.StarRatingView
             android:id="@+id/starRating"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

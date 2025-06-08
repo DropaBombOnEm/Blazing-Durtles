@@ -20,7 +20,7 @@
     tools:ignore="TooManyViews">
 
     <!-- Headline -->
-    <com.smouldering_durtles.wk.views.SubjectInfoHeadlineView
+    <com.blazing_durtles.wk.views.SubjectInfoHeadlineView
         android:id="@+id/headline"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -53,14 +53,14 @@
         android:visibility="gone"
         style="@style/WK.TextView.Normal"/>
 
-    <com.smouldering_durtles.wk.views.StarRatingView
+    <com.blazing_durtles.wk.views.StarRatingView
         android:id="@+id/starRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="4dp"/>
 
-    <com.smouldering_durtles.wk.views.DividerView
+    <com.blazing_durtles.wk.views.DividerView
         android:id="@+id/componentsDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -76,14 +76,14 @@
         android:visibility="gone"
         style="@style/WK.TextView.Normal.Bold"/>
 
-    <com.smouldering_durtles.wk.views.SubjectGridView
+    <com.blazing_durtles.wk.views.SubjectGridView
         android:id="@+id/componentsTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:visibility="gone"/>
 
-    <com.smouldering_durtles.wk.views.DividerView
+    <com.blazing_durtles.wk.views.DividerView
         android:id="@+id/meaningDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -163,7 +163,7 @@
 
     </LinearLayout>
 
-    <com.smouldering_durtles.wk.views.DividerView
+    <com.blazing_durtles.wk.views.DividerView
         android:id="@+id/readingDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -197,7 +197,7 @@
         android:visibility="gone"
         style="@style/WK.TextView.Normal"/>
 
-    <com.smouldering_durtles.wk.views.DividerView
+    <com.blazing_durtles.wk.views.DividerView
         android:id="@+id/partsOfSpeechDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -213,14 +213,14 @@
         android:visibility="gone"
         style="@style/WK.TextView.Normal"/>
 
-    <com.smouldering_durtles.wk.views.DividerView
+    <com.blazing_durtles.wk.views.DividerView
         android:id="@+id/strokeOrderDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
         android:layout_marginTop="4dp"
         android:visibility="gone"/>
 
-    <com.smouldering_durtles.wk.views.StrokeDiagramView
+    <com.blazing_durtles.wk.views.StrokeDiagramView
         android:id="@+id/strokeOrderDiagram"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -228,7 +228,7 @@
         android:layout_marginTop="4dp"
         android:visibility="gone"/>
 
-    <com.smouldering_durtles.wk.views.DividerView
+    <com.blazing_durtles.wk.views.DividerView
         android:id="@+id/contextSentencesDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -286,7 +286,7 @@
     <TextView android:id="@+id/contextSentenceEnglish9" android:layout_width="wrap_content" android:layout_height="wrap_content"
         android:layout_marginTop="4dp" style="@style/WK.TextView.Normal" android:textIsSelectable="true" android:visibility="gone"/>
 
-    <com.smouldering_durtles.wk.views.DividerView
+    <com.blazing_durtles.wk.views.DividerView
         android:id="@+id/visuallySimilarsDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -303,14 +303,14 @@
         android:visibility="gone"
         style="@style/WK.TextView.Normal.Bold"/>
 
-    <com.smouldering_durtles.wk.views.SubjectGridView
+    <com.blazing_durtles.wk.views.SubjectGridView
         android:id="@+id/visuallySimilarsTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:visibility="gone"/>
 
-    <com.smouldering_durtles.wk.views.DividerView
+    <com.blazing_durtles.wk.views.DividerView
         android:id="@+id/amalgamationsDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"
@@ -327,14 +327,14 @@
         android:visibility="gone"
         style="@style/WK.TextView.Normal.Bold"/>
 
-    <com.smouldering_durtles.wk.views.SubjectGridView
+    <com.blazing_durtles.wk.views.SubjectGridView
         android:id="@+id/amalgamationsTable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
         android:visibility="gone"/>
 
-    <com.smouldering_durtles.wk.views.DividerView
+    <com.blazing_durtles.wk.views.DividerView
         android:id="@+id/detailsDivider"
         android:layout_width="match_parent"
         android:layout_height="1dp"

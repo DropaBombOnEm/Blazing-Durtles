@@ -15,16 +15,16 @@
   ~ limitations under the License.
   -->
 
-<com.smouldering_durtles.wk.views.SwipingScrollView
+<com.blazing_durtles.wk.views.SwipingScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.smouldering_durtles.wk.views.SubjectInfoView
+    <com.blazing_durtles.wk.views.SubjectInfoView
         android:id="@+id/subjectInfo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="8dp"/>
 
-</com.smouldering_durtles.wk.views.SwipingScrollView>
+</com.blazing_durtles.wk.views.SwipingScrollView>

@@ -499,7 +499,7 @@
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded" />
 
-                <com.smouldering_durtles.wk.views.SelfishColorPicker
+                <com.blazing_durtles.wk.views.SelfishColorPicker
                     android:id="@+id/colorPicker"
                     android:layout_width="match_parent"
                     android:layout_height="300dp"

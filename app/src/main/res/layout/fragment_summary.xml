@@ -15,7 +15,7 @@
   ~ limitations under the License.
   -->
 
-<com.smouldering_durtles.wk.views.SwipingScrollView
+<com.blazing_durtles.wk.views.SwipingScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -500,7 +500,7 @@
 
         </LinearLayout>
 
-        <com.smouldering_durtles.wk.views.SubjectGridView
+        <com.blazing_durtles.wk.views.SubjectGridView
             android:id="@+id/incorrectTable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -546,7 +546,7 @@
 
         </LinearLayout>
 
-        <com.smouldering_durtles.wk.views.SubjectGridView
+        <com.blazing_durtles.wk.views.SubjectGridView
             android:id="@+id/correctTable"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -558,4 +558,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</com.smouldering_durtles.wk.views.SwipingScrollView>
+</com.blazing_durtles.wk.views.SwipingScrollView>

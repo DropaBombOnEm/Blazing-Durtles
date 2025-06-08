@@ -66,7 +66,7 @@
         app:barrierDirection="start"
         app:constraint_referenced_ids="waitTime,stageLetter"/>
 
-    <com.smouldering_durtles.wk.views.SubjectInfoButtonView
+    <com.blazing_durtles.wk.views.SubjectInfoButtonView
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

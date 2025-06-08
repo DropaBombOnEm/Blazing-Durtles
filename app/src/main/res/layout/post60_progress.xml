@@ -26,7 +26,7 @@
         android:text="Post-60 progression"
         style="@style/WK.TextView.Normal.Bold"/>
 
-    <com.smouldering_durtles.wk.views.Post60ProgressBarView
+    <com.blazing_durtles.wk.views.Post60ProgressBarView
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>

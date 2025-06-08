@@ -1,8 +1,8 @@
 <resources>
-    <string name="about_label">About Smouldering Durtles</string>
-    <string name="label">Smouldering Durtles</string>
-    <string name="labelDebug">Smouldering Durtles - Debug</string>
-    <string name="uri_scheme">smouldering-durtles</string>
-    <string name="subject_info_uri">smouldering-durtles://subject-info</string>
-    <string name="applabel">Smouldering Durtles</string>
+    <string name="about_label">About Blazing Durtles</string>
+    <string name="label">Blazing Durtles</string>
+    <string name="labelDebug">Blazing Durtles - Debug</string>
+    <string name="uri_scheme">blazing-durtles</string>
+    <string name="subject_info_uri">blazing-durtles://subject-info</string>
+    <string name="applabel">Blazing Durtles</string>
 </resources>

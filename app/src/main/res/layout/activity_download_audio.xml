@@ -23,7 +23,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="?attr/colorBackground"
-    tools:context="com.smouldering_durtles.wk.activities.DownloadAudioActivity">
+    tools:context="com.blazing_durtles.wk.activities.DownloadAudioActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"

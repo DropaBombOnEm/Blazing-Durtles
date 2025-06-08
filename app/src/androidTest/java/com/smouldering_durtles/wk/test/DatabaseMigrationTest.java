@@ -14,28 +14,28 @@
  * limitations under the License.
  */
 
-package com.smouldering_durtles.wk.test;
+package com.blazing_durtles.wk.test;
 
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_48_49;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_49_50;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_50_51;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_51_52;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_52_53;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_53_54;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_54_55;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_55_56;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_56_57;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_57_58;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_58_59;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_59_60;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_60_61;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_61_62;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_62_63;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_63_64;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_64_65;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_65_66;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_66_67;
-import static com.smouldering_durtles.wk.db.AppDatabase.MIGRATION_67_68;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_48_49;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_49_50;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_50_51;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_51_52;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_52_53;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_53_54;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_54_55;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_55_56;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_56_57;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_57_58;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_58_59;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_59_60;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_60_61;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_61_62;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_62_63;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_63_64;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_64_65;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_65_66;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_66_67;
+import static com.blazing_durtles.wk.db.AppDatabase.MIGRATION_67_68;
 import static org.junit.Assert.assertEquals;
 
 import androidx.room.Room;
@@ -45,7 +45,7 @@ import androidx.test.core.app.ApplicationProvider;
 import androidx.test.filters.SmallTest;
 import androidx.test.platform.app.InstrumentationRegistry;
 
-import com.smouldering_durtles.wk.db.AppDatabase;
+import com.blazing_durtles.wk.db.AppDatabase;
 
 import org.junit.Rule;
 import org.junit.Test;

@@ -23,7 +23,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="?attr/colorBackground"
-    tools:context="com.smouldering_durtles.wk.activities.BurnActivity">
+    tools:context="com.blazing_durtles.wk.activities.BurnActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -108,7 +108,7 @@
 
             </LinearLayout>
 
-            <com.smouldering_durtles.wk.views.DividerView
+            <com.blazing_durtles.wk.views.DividerView
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
                 android:layout_marginTop="4dp"/>
@@ -121,7 +121,7 @@
                 android:textIsSelectable="true"
                 style="@style/WK.TextView.Large.Bold"/>
 
-            <com.smouldering_durtles.wk.views.SubjectGridView
+            <com.blazing_durtles.wk.views.SubjectGridView
                 android:id="@+id/subjects"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

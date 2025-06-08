@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.smouldering_durtles.wk.views.SubjectInfoButtonView
+                <com.blazing_durtles.wk.views.SubjectInfoButtonView
                     android:id="@+id/questionText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -175,7 +175,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/closeToastText" />
 
-                <com.smouldering_durtles.wk.views.StarRatingView
+                <com.blazing_durtles.wk.views.StarRatingView
                     android:id="@+id/starRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -234,7 +234,7 @@
                 android:focusable="false"
                 android:visibility="gone"/>
 
-            <com.smouldering_durtles.wk.views.SubjectInfoView
+            <com.blazing_durtles.wk.views.SubjectInfoView
                 android:id="@+id/subjectInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

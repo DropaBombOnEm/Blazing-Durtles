@@ -23,12 +23,12 @@
         app:key="api_settings"
         app:title="API and audio download settings">
 
-        <com.smouldering_durtles.wk.components.InfoPreference
+        <com.blazing_durtles.wk.components.InfoPreference
             app:title="Caution"
             app:key="api_key_help"
             app:isPreferenceVisible="false"/>
 
-        <com.smouldering_durtles.wk.components.EncryptedEditTextPreference
+        <com.blazing_durtles.wk.components.EncryptedEditTextPreference
             app:key="api_key"
             app:title="V2 API token"
             app:singleLineTitle="false"
@@ -71,7 +71,7 @@
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
-        <com.smouldering_durtles.wk.components.EncryptedEditTextPreference
+        <com.blazing_durtles.wk.components.EncryptedEditTextPreference
             app:key="web_password"
             app:title="Web site password"
             app:singleLineTitle="false"
@@ -238,7 +238,7 @@
             android:summary="This can help if many new items were added to previous levels and you now have all those levels on your dashboard."
             app:defaultValue="false"/>
 
-        <com.smouldering_durtles.wk.components.EditLimitedIntPreference
+        <com.blazing_durtles.wk.components.EditLimitedIntPreference
             app:key="previous_level_progression_limit_amount"
             app:title="Number of previous levels to show progression bars for"
             app:singleLineTitle="false"
@@ -795,31 +795,31 @@
             app:defaultValue="RECOMMENDATION"
             app:useSimpleSummaryProvider="true"/>
 
-        <com.smouldering_durtles.wk.components.TaggedUrlPreference
+        <com.blazing_durtles.wk.components.TaggedUrlPreference
             app:title="Search engine 1"
             app:singleLineTitle="false"
             app:key="search_engine_1"
             android:defaultValue="https://ja.wiktionary.org/w/index.php?search=%s"
             app:defaultTag="Wiktionary"/>
 
-        <com.smouldering_durtles.wk.components.TaggedUrlPreference
+        <com.blazing_durtles.wk.components.TaggedUrlPreference
             app:title="Search engine 2"
             app:singleLineTitle="false"
             app:key="search_engine_2"
             android:defaultValue="https://jisho.org/search/%s"
             app:defaultTag="Jisho"/>
 
-        <com.smouldering_durtles.wk.components.TaggedUrlPreference
+        <com.blazing_durtles.wk.components.TaggedUrlPreference
             app:title="Search engine 3"
             app:singleLineTitle="false"
             app:key="search_engine_3"/>
 
-        <com.smouldering_durtles.wk.components.TaggedUrlPreference
+        <com.blazing_durtles.wk.components.TaggedUrlPreference
             app:title="Search engine 4"
             app:singleLineTitle="false"
             app:key="search_engine_4"/>
 
-        <com.smouldering_durtles.wk.components.TaggedUrlPreference
+        <com.blazing_durtles.wk.components.TaggedUrlPreference
             app:title="Search engine 5"
             app:singleLineTitle="false"
             app:key="search_engine_5"/>
@@ -850,7 +850,7 @@
         app:title="Experimental (temporary) settings"
         app:isPreferenceVisible="false">
 
-        <com.smouldering_durtles.wk.components.InfoPreference
+        <com.blazing_durtles.wk.components.InfoPreference
             app:title="Caution"
             app:key="experimental_status"/>
 
@@ -954,19 +954,19 @@
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
-            <com.smouldering_durtles.wk.components.InfoPreference
+            <com.blazing_durtles.wk.components.InfoPreference
                 app:title="" app:key="lesson_subject_selection"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Current-level items" app:singleLineTitle="false" app:key="lesson_subjects_current"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Earlier-level items" app:singleLineTitle="false" app:key="lesson_subjects_earlier"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Radicals" app:singleLineTitle="false" app:key="lesson_subjects_radical"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Kanji" app:singleLineTitle="false" app:key="lesson_subjects_kanji"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Vocabulary" app:singleLineTitle="false" app:key="lesson_subjects_vocabulary"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Kana Vocabulary" app:singleLineTitle="false" app:key="lesson_subjects_kana_vocabulary"/>
 
         </PreferenceScreen>
@@ -1056,19 +1056,19 @@
                 app:defaultValue="false"
                 app:summary="Works best with Anki mode. Random inflections will be added to adjectives and verbs. Note that answers and audio will use only dictionary forms."/>
 
-            <com.smouldering_durtles.wk.components.InfoPreference
+            <com.blazing_durtles.wk.components.InfoPreference
                 app:title="" app:key="review_subject_selection"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Current-level items" app:singleLineTitle="false" app:key="review_subjects_current"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Earlier-level items" app:singleLineTitle="false" app:key="review_subjects_earlier"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Radicals" app:singleLineTitle="false" app:key="review_subjects_radical"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Kanji" app:singleLineTitle="false" app:key="review_subjects_kanji"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Vocabulary" app:singleLineTitle="false" app:key="review_subjects_vocabulary"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Kana Vocabulary" app:singleLineTitle="false" app:key="review_subjects_kana_vocabulary"/>
 
         </PreferenceScreen>
@@ -1158,19 +1158,19 @@
                 app:defaultValue="false"
                 app:summary="Works best with Anki mode. Random inflections will be added to adjectives and verbs. Note that answers and audio will use only dictionary forms."/>
 
-            <com.smouldering_durtles.wk.components.InfoPreference
+            <com.blazing_durtles.wk.components.InfoPreference
                 app:title="" app:key="self_study_subject_selection"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Current-level items" app:singleLineTitle="false" app:key="self_study_subjects_current"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Earlier-level items" app:singleLineTitle="false" app:key="self_study_subjects_earlier"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Radicals" app:singleLineTitle="false" app:key="self_study_subjects_radical"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Kanji" app:singleLineTitle="false" app:key="self_study_subjects_kanji"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Vocabulary" app:singleLineTitle="false" app:key="self_study_subjects_vocabulary"/>
-            <com.smouldering_durtles.wk.components.NumberRangePreference
+            <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Kana Vocabulary" app:singleLineTitle="false" app:key="self_study_subjects_kana_vocabulary"/>
 
         </PreferenceScreen>

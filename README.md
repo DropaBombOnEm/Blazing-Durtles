@@ -9,12 +9,12 @@ Use Android Studio or the Gradle command line to build it.
 
 [<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
      alt="Get it on F-Droid"
-     height="80">](https://f-droid.org/packages/com.smouldering_durtles.wk/)
+     height="80">](https://f-droid.org/packages/com.blazing_durtles.wk/)
 [<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png"
      alt="Get it on Google Play"
-     height="80">](https://play.google.com/store/apps/details?id=com.smouldering_durtles.wk)
+     height="80">](https://play.google.com/store/apps/details?id=com.blazing_durtles.wk)
 
-Or download the latest APK from the [Releases Section](https://github.com/jerryhcooke/smouldering_durtles/releases/latest).
+Or download the latest APK from the [Releases Section](https://github.com/jerryhcooke/blazing_durtles/releases/latest).
 
 ## Preparing to build the code
 
@@ -22,8 +22,8 @@ Before you can build this code, you will have to replace the existing two files 
 information for the app with your own versions. This is because the open source license covering this app's 
 code does not cover the name I gave the app, and it also doesn't cover my name. See the file LICENSE.md for details.
 
-- Remove any existing Indentification.java file from app/src/main/java/com.smouldering_durtles.wk
-- Copy the file app/Identification.java.sample.txt to app/src/main/java/com.smouldering_durtles.wk
+- Remove any existing Indentification.java file from app/src/main/java/com.blazing_durtles.wk
+- Copy the file app/Identification.java.sample.txt to app/src/main/java/com.blazing_durtles.wk
 - Name the copy Identification.java
 - Edit the file to supply your own identification for the app
 - Remove any existing strings.xml file from app/src/res/values

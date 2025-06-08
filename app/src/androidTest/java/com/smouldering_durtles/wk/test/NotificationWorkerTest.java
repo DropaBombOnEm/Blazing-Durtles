@@ -1,8 +1,8 @@
-package com.smouldering_durtles.wk.test;
+package com.blazing_durtles.wk.test;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import com.smouldering_durtles.wk.services.NotificationWorker;
+import com.blazing_durtles.wk.services.NotificationWorker;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

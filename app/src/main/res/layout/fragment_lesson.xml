@@ -63,18 +63,18 @@
 
     </LinearLayout>
 
-    <com.smouldering_durtles.wk.views.SwipingScrollView
+    <com.blazing_durtles.wk.views.SwipingScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
-        <com.smouldering_durtles.wk.views.SubjectInfoView
+        <com.blazing_durtles.wk.views.SubjectInfoView
             android:id="@+id/subjectInfo"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"/>
 
-    </com.smouldering_durtles.wk.views.SwipingScrollView>
+    </com.blazing_durtles.wk.views.SwipingScrollView>
 
 </LinearLayout>

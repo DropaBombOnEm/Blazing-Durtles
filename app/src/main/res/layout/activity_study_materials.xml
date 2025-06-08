@@ -23,7 +23,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="?attr/colorBackground"
-    tools:context="com.smouldering_durtles.wk.activities.StudyMaterialsActivity">
+    tools:context="com.blazing_durtles.wk.activities.StudyMaterialsActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -108,25 +108,25 @@
                 android:layout_marginTop="4dp"
                 style="@style/WK.TextView.Normal"/>
 
-            <com.smouldering_durtles.wk.views.SynonymRowView android:id="@+id/synonym0"
+            <com.blazing_durtles.wk.views.SynonymRowView android:id="@+id/synonym0"
                 android:layout_width="match_parent" android:layout_height="wrap_content" app:index="0"/>
-            <com.smouldering_durtles.wk.views.SynonymRowView android:id="@+id/synonym1"
+            <com.blazing_durtles.wk.views.SynonymRowView android:id="@+id/synonym1"
                 android:layout_width="match_parent" android:layout_height="wrap_content" app:index="1"/>
-            <com.smouldering_durtles.wk.views.SynonymRowView android:id="@+id/synonym2"
+            <com.blazing_durtles.wk.views.SynonymRowView android:id="@+id/synonym2"
                 android:layout_width="match_parent" android:layout_height="wrap_content" app:index="2"/>
-            <com.smouldering_durtles.wk.views.SynonymRowView android:id="@+id/synonym3"
+            <com.blazing_durtles.wk.views.SynonymRowView android:id="@+id/synonym3"
                 android:layout_width="match_parent" android:layout_height="wrap_content" app:index="3"/>
-            <com.smouldering_durtles.wk.views.SynonymRowView android:id="@+id/synonym4"
+            <com.blazing_durtles.wk.views.SynonymRowView android:id="@+id/synonym4"
                 android:layout_width="match_parent" android:layout_height="wrap_content" app:index="4"/>
-            <com.smouldering_durtles.wk.views.SynonymRowView android:id="@+id/synonym5"
+            <com.blazing_durtles.wk.views.SynonymRowView android:id="@+id/synonym5"
                 android:layout_width="match_parent" android:layout_height="wrap_content" app:index="5"/>
-            <com.smouldering_durtles.wk.views.SynonymRowView android:id="@+id/synonym6"
+            <com.blazing_durtles.wk.views.SynonymRowView android:id="@+id/synonym6"
                 android:layout_width="match_parent" android:layout_height="wrap_content" app:index="6"/>
-            <com.smouldering_durtles.wk.views.SynonymRowView android:id="@+id/synonym7"
+            <com.blazing_durtles.wk.views.SynonymRowView android:id="@+id/synonym7"
                 android:layout_width="match_parent" android:layout_height="wrap_content" app:index="7"/>
-            <com.smouldering_durtles.wk.views.SynonymRowView android:id="@+id/synonym8"
+            <com.blazing_durtles.wk.views.SynonymRowView android:id="@+id/synonym8"
                 android:layout_width="match_parent" android:layout_height="wrap_content" app:index="8"/>
-            <com.smouldering_durtles.wk.views.SynonymRowView android:id="@+id/synonym9"
+            <com.blazing_durtles.wk.views.SynonymRowView android:id="@+id/synonym9"
                 android:layout_width="match_parent" android:layout_height="wrap_content" app:index="9"/>
 
             <Button

@@ -22,7 +22,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-    <com.smouldering_durtles.wk.views.SwipingScrollView
+    <com.blazing_durtles.wk.views.SwipingScrollView
         android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.smouldering_durtles.wk.views.SubjectInfoButtonView
+                <com.blazing_durtles.wk.views.SubjectInfoButtonView
                     android:id="@+id/questionText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -200,7 +200,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"/>
 
-                <com.smouldering_durtles.wk.views.StarRatingView
+                <com.blazing_durtles.wk.views.StarRatingView
                     android:id="@+id/starRating"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -260,7 +260,7 @@
                 android:layout_weight="0"
                 style="@style/WK.TextView.CustomToast"/>
 
-            <com.smouldering_durtles.wk.views.SubjectInfoView
+            <com.blazing_durtles.wk.views.SubjectInfoView
                 android:id="@+id/subjectInfo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -269,7 +269,7 @@
 
         </LinearLayout>
 
-    </com.smouldering_durtles.wk.views.SwipingScrollView>
+    </com.blazing_durtles.wk.views.SwipingScrollView>
 
     <Button
         android:id="@+id/nextButton2"

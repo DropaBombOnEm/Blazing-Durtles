@@ -22,7 +22,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="?attr/colorBackground"
-    tools:context="com.smouldering_durtles.wk.activities.MainActivity">
+    tools:context="com.blazing_durtles.wk.activities.MainActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -168,7 +168,7 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.smouldering_durtles.wk.views.FirstTimeSetupView
+    <com.blazing_durtles.wk.views.FirstTimeSetupView
         android:id="@+id/firstTimeSetupView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
             android:orientation="vertical"
             android:padding="8dp">
 
-            <com.smouldering_durtles.wk.views.LevelDurationView
+            <com.blazing_durtles.wk.views.LevelDurationView
                 android:id="@+id/levelDurationView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -209,13 +209,13 @@
                 android:visibility="visible"
                 android:textColor="?attr/colorPrimary" />
 
-            <com.smouldering_durtles.wk.views.AvailableSessionsView
+            <com.blazing_durtles.wk.views.AvailableSessionsView
                 android:id="@+id/availableSessionsView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp" />
 
-            <com.smouldering_durtles.wk.views.UpcomingReviewsView
+            <com.blazing_durtles.wk.views.UpcomingReviewsView
                 android:id="@+id/upcomingReviewsView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -224,20 +224,20 @@
                 android:gravity="end"
                 android:paddingRight="40dp" />
 
-            <com.smouldering_durtles.wk.views.SyncProgressView
+            <com.blazing_durtles.wk.views.SyncProgressView
                 android:id="@+id/syncProgressView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:gravity="center_horizontal"/>
 
-            <com.smouldering_durtles.wk.views.SessionButtonsView
+            <com.blazing_durtles.wk.views.SessionButtonsView
                 android:id="@+id/sessionButtonsView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp" />
 
-            <com.smouldering_durtles.wk.views.LessonReviewBreakdownView
+            <com.blazing_durtles.wk.views.LessonReviewBreakdownView
                 android:id="@+id/lessonReviewBreakdownView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -245,56 +245,56 @@
                 android:padding="4dp"
                 android:visibility="gone" />
 
-            <com.smouldering_durtles.wk.views.TimeLineBarChart
+            <com.blazing_durtles.wk.views.TimeLineBarChart
                 android:id="@+id/timeLineBarChart"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
                 android:layout_marginTop="8dp" />
 
-            <com.smouldering_durtles.wk.views.SrsBreakDownView
+            <com.blazing_durtles.wk.views.SrsBreakDownView
                 android:id="@+id/srsBreakDownView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp" />
 
-            <com.smouldering_durtles.wk.views.LevelProgressView
+            <com.blazing_durtles.wk.views.LevelProgressView
                 android:id="@+id/levelProgressView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp" />
 
-            <com.smouldering_durtles.wk.views.Post60ProgressView
+            <com.blazing_durtles.wk.views.Post60ProgressView
                 android:id="@+id/post60ProgressView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:visibility="gone" />
 
-            <com.smouldering_durtles.wk.views.JoyoProgressView
+            <com.blazing_durtles.wk.views.JoyoProgressView
                 android:id="@+id/joyoProgressView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp" />
 
-            <com.smouldering_durtles.wk.views.JlptProgressView
+            <com.blazing_durtles.wk.views.JlptProgressView
                 android:id="@+id/jlptProgressView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp" />
 
-            <com.smouldering_durtles.wk.views.LiveRecentUnlocksSubjectTableView
+            <com.blazing_durtles.wk.views.LiveRecentUnlocksSubjectTableView
                 android:id="@+id/recentUnlocksView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp" />
 
-            <com.smouldering_durtles.wk.views.LiveCriticalConditionSubjectTableView
+            <com.blazing_durtles.wk.views.LiveCriticalConditionSubjectTableView
                 android:id="@+id/criticalConditionView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp" />
 
-            <com.smouldering_durtles.wk.views.LiveBurnedItemsSubjectTableView
+            <com.blazing_durtles.wk.views.LiveBurnedItemsSubjectTableView
                 android:id="@+id/burnedItemsView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

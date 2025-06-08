@@ -18,7 +18,7 @@
 @LocalVariablesAreNonnullByDefault
 @MethodsAreNonnullByDefault
 @ParametersAreNonnullByDefault
-package com.smouldering_durtles.wk.test;
+package com.blazing_durtles.wk.test;
 
 import javax.annotation.FieldsAreNonnullByDefault;
 import javax.annotation.LocalVariablesAreNonnullByDefault;
