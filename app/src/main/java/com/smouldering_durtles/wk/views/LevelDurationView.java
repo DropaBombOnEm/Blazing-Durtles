@@ -42,6 +42,7 @@ public final class LevelDurationView extends AppCompatTextView {
      */
     public LevelDurationView(final Context context) {
         super(context, null, R.attr.WK_TextView_Normal);
+        setTypeface(getTypeface(), android.graphics.Typeface.BOLD);
     }
 
     /**
@@ -52,6 +53,7 @@ public final class LevelDurationView extends AppCompatTextView {
      */
     public LevelDurationView(final Context context, final AttributeSet attrs) {
         super(context, attrs, R.attr.WK_TextView_Normal);
+        setTypeface(getTypeface(), android.graphics.Typeface.BOLD);
     }
 
     /**

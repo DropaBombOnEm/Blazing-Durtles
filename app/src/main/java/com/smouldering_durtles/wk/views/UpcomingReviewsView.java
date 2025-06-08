@@ -90,9 +90,6 @@ public final class UpcomingReviewsView extends AppCompatTextView {
             return;
         }
 
-        @SuppressWarnings("StringConcatenationMissingWhitespace")
-        final String timeLineSizeDesc = timeLine.getSize() <= 48 ? timeLine.getSize() + "h" : (timeLine.getSize() / 24) + "d";
-
         final boolean hasAvailableReviews = timeLine.hasAvailableReviews();
         final boolean hasUpcomingReviews = timeLine.hasUpcomingReviews();
         final boolean hasLongTermUpcomingReviews = timeLine.hasLongTermUpcomingReviews();
@@ -100,34 +97,42 @@ public final class UpcomingReviewsView extends AppCompatTextView {
 
         if (hasAvailableReviews) {
             if (hasUpcomingReviews) {
-                text = String.format(Locale.ROOT, "%d reviews available now, %d in next %s",
-                        timeLine.getNumAvailableReviews(), timeLine.getNumUpcomingReviews(), timeLineSizeDesc);
+                if (timeLine.getSize() <= 48) {
+                    text = String.format(Locale.ROOT, "+%d Over the Next %dhrs",
+                        timeLine.getNumUpcomingReviews(), timeLine.getSize());
+                } else {
+                    text = String.format(Locale.ROOT, "+%d in the Next %d Days",
+                        timeLine.getNumUpcomingReviews(), timeLine.getSize() / 24);
+                }
             }
             else {
                 if (hasLongTermUpcomingReviews) {
                     final long waitTime = timeLine.getLongTermUpcomingReviewDate() - System.currentTimeMillis();
                     final float waitTimeDays = (waitTime * 1.0f) / DAY;
-                    text = String.format(Locale.ROOT, "%d reviews available now, %d in %1.1f days",
-                            timeLine.getNumAvailableReviews(), timeLine.getNumLongTermUpcomingReviews(), waitTimeDays);
+                    text = String.format(Locale.ROOT, "+%d in the Next %1.1f Days",
+                        timeLine.getNumLongTermUpcomingReviews(), waitTimeDays);
                 }
                 else {
-                    text = String.format(Locale.ROOT, "%d reviews available now", timeLine.getNumAvailableReviews());
+                    text = null;
                 }
             }
         }
         else {
             if (hasUpcomingReviews) {
-                final long waitTime = timeLine.getUpcomingReviewDate() - System.currentTimeMillis();
-                text = String.format(Locale.ROOT, "%d reviews %s, %d upcoming in next %s",
-                        timeLine.getNumSingleSlotUpcomingReviews(), getWaitTimeAsInformalString(waitTime), timeLine.getNumUpcomingReviews(),
-                        timeLineSizeDesc);
+                if (timeLine.getSize() <= 48) {
+                    text = String.format(Locale.ROOT, "+%d Over the Next %dhrs",
+                        timeLine.getNumUpcomingReviews(), timeLine.getSize());
+                } else {
+                    text = String.format(Locale.ROOT, "+%d in the Next %d Days",
+                        timeLine.getNumUpcomingReviews(), timeLine.getSize() / 24);
+                }
             }
             else {
                 if (hasLongTermUpcomingReviews) {
                     final long waitTime = timeLine.getLongTermUpcomingReviewDate() - System.currentTimeMillis();
                     final float waitTimeDays = (waitTime * 1.0f) / DAY;
-                    text = String.format(Locale.ROOT, "%d reviews available in %1.1f days",
-                            timeLine.getNumLongTermUpcomingReviews(), waitTimeDays);
+                    text = String.format(Locale.ROOT, "+%d in the Next %1.1f Days",
+                        timeLine.getNumLongTermUpcomingReviews(), waitTimeDays);
                 }
                 else {
                     text = null;

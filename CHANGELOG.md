@@ -1,3 +1,7 @@
+## Personal changelog
+
+- Added (local) review tracker to home page to show how many reviews were done throughout the current day. "Reviews Completed Today: X"
+- Changed format to LVL & ToL. "Current Level: X | Time on Level: X Days" (Removed decimals from ToL.)
 
 ## Smouldering Durtles changelog
 
