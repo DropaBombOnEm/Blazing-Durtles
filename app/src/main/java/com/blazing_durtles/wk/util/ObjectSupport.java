@@ -19,6 +19,7 @@ package com.blazing_durtles.wk.util;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 
+import androidx.core.content.ContextCompat;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleOwner;
 
@@ -493,12 +494,7 @@ public final class ObjectSupport {
         }
         final Map<String, Object> result = new HashMap<>();
         for (final String key: bundle.keySet()) {
-            Object value;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
-                value = bundle.get(key);
-            } else {
-                value = bundle.getString(key);
-            }
+            Object value = bundle.getString(key);
             result.put(key, value);
         }
         return result;

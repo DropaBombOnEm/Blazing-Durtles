@@ -28,7 +28,7 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="18"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18"/>
-    <uses-sdk tools:overrideLibrary="androidx.security" android:minSdkVersion="21" android:targetSdkVersion="35" />
+    <uses-sdk tools:overrideLibrary="androidx.security" android:minSdkVersion="31" android:targetSdkVersion="35" />
 
     <application
         android:allowBackup="true"
@@ -38,6 +38,7 @@
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:supportsRtl="false"
         android:name=".WkApplication"
+        android:windowLayoutInDisplayCutoutMode="never"
         tools:ignore="AllowBackup">
 
         <activity android:name=".activities.MainActivity"

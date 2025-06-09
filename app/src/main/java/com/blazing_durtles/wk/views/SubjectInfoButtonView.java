@@ -20,6 +20,7 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.ColorFilter;
@@ -31,6 +32,7 @@ import android.graphics.Rect;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.ActionMode;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -71,11 +73,7 @@ public final class SubjectInfoButtonView extends View {
     private @Nullable ColorFilter shadowColorFilter = null;
     private Drawable background;
     {
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            background = getResources().getDrawable(R.drawable.small_rounded_corners, getContext().getTheme());
-        } else {
-            background = getResources().getDrawable(R.drawable.small_rounded_corners);
-        }
+        background = ContextCompat.getDrawable(getContext(), R.drawable.small_rounded_corners);
     }
     private @Nullable Drawable image = null;
     private int sizeSp = -1;
@@ -135,7 +133,7 @@ public final class SubjectInfoButtonView extends View {
             displayHeight = getContext().getResources().getDisplayMetrics().heightPixels;
             topMargin = dp2px(28);
             bottomMargin = dp2px(24);
-            absoluteMinTextHeight = sp2px(14);
+            absoluteMinTextHeight = (int) spToPx(14);
 
             setLongClickable(true);
             setOnLongClickListener(v -> safe(false, () -> {
@@ -281,7 +279,7 @@ public final class SubjectInfoButtonView extends View {
         }
 
         if (sizeSp >= 0) {
-            textHeight = sp2px(sizeSp);
+            textHeight = (int) spToPx(sizeSp);
             viewHeight = textHeight;
             if (image == null) {
                 paint.setTextSize(textHeight);
@@ -511,13 +509,13 @@ public final class SubjectInfoButtonView extends View {
         return (int) (dp * getResources().getDisplayMetrics().density);
     }
 
-    private int sp2px(final int sp) {
-        float scaledDensity;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
-            scaledDensity = getResources().getDisplayMetrics().density;
-        } else {
-            scaledDensity = getResources().getDisplayMetrics().scaledDensity;
-        }
-        return (int) (sp * scaledDensity);
+    private float getFontScale() {
+        Resources resources = getResources();
+        return resources.getConfiguration().fontScale;
+    }
+
+    private float spToPx(float sp) {
+        Resources resources = getResources();
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, resources.getDisplayMetrics());
     }
 }

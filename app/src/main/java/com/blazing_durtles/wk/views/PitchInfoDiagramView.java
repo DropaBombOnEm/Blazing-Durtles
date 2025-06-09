@@ -17,11 +17,13 @@
 package com.blazing_durtles.wk.views;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
+import android.util.TypedValue;
 import android.view.View;
 
 import com.blazing_durtles.wk.Constants;
@@ -116,7 +118,7 @@ public final class PitchInfoDiagramView extends View {
         }
         dirty = false;
 
-        paint.setTextSize(sp2px(textSize));
+        paint.setTextSize(spToPx(textSize));
         paint.setTypeface(Typeface.DEFAULT);
         ViewUtil.setJapaneseLocale(paint);
 
@@ -287,13 +289,13 @@ public final class PitchInfoDiagramView extends View {
         return (int) (dp * getResources().getDisplayMetrics().density);
     }
 
-    private int sp2px(final int sp) {
-        float scaledDensity;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
-            scaledDensity = getResources().getDisplayMetrics().density;
-        } else {
-            scaledDensity = getResources().getDisplayMetrics().scaledDensity;
-        }
-        return (int) (sp * scaledDensity);
+    private float getFontScale() {
+        Resources resources = getResources();
+        return resources.getConfiguration().fontScale;
+    }
+
+    private float spToPx(float sp) {
+        Resources resources = getResources();
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, resources.getDisplayMetrics());
     }
 }

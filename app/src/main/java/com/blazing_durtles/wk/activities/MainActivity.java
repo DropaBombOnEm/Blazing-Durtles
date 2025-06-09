@@ -24,6 +24,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import androidx.core.content.ContextCompat;
+
 import com.blazing_durtles.wk.GlobalSettings;
 import com.blazing_durtles.wk.R;
 import com.blazing_durtles.wk.api.ApiState;
@@ -87,14 +89,18 @@ public final class MainActivity extends AbstractActivity {
 
     @Override
     protected void onCreateLocal(final @Nullable Bundle savedInstanceState) {
-        // Always show the notification bar
-        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        // Avoid displaying under the cutout
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-            getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
-            WindowManager.LayoutParams lp = getWindow().getAttributes();
-            lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER;
-            getWindow().setAttributes(lp);
+        // Modern immersive/fullscreen handling (API 30+)
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            getWindow().getInsetsController().show(android.view.WindowInsets.Type.statusBars());
+            getWindow().setDecorFitsSystemWindows(true);
+        } else {
+            // Avoid displaying under the cutout
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+                WindowManager.LayoutParams lp = getWindow().getAttributes();
+                lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER;
+                getWindow().setAttributes(lp);
+            }
         }
 
         apiErrorView.setDelegate(this, R.id.apiErrorView);

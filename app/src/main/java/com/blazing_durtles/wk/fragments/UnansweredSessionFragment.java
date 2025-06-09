@@ -19,8 +19,9 @@ package com.blazing_durtles.wk.fragments;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.os.VibratorManager;
 import android.text.Editable;
 import android.text.InputType;
 import android.text.SpannableString;
@@ -281,17 +282,7 @@ public final class UnansweredSessionFragment extends AbstractSessionFragment {
                 showSoftInput(questionEdit);
                 if (enable_haptic_feedback_failure()) {
                     Log.d("HapticFeedback", "Vibing");
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                        requireView().performHapticFeedback(HapticFeedbackConstants.REJECT); // Assuming REJECT is the desired feedback for a failure
-                    } else {
-                        // Fallback for older API versions using Vibrator
-                        Vibrator vibrator = (Vibrator) requireContext().getSystemService(Context.VIBRATOR_SERVICE);
-                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                            vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                        } else {
-                            vibrator.vibrate(200);
-                        }
-                    }
+                    requireView().performHapticFeedback(HapticFeedbackConstants.REJECT); // Assuming REJECT is the desired feedback for a failure
                 }
             }
         }));
@@ -454,17 +445,7 @@ public final class UnansweredSessionFragment extends AbstractSessionFragment {
                 final AnswerVerdict verdict = session.submit(match);
 
                 if (verdict.isOk() && enable_haptic_feedback_success()) {
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                        requireView().performHapticFeedback(HapticFeedbackConstants.CONFIRM);
-                    } else {
-                        // Fallback for older API versions using Vibrator
-                        Vibrator vibrator = (Vibrator) requireContext().getSystemService(Context.VIBRATOR_SERVICE);
-                        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                            vibrator.vibrate(VibrationEffect.createOneShot(100, VibrationEffect.DEFAULT_AMPLITUDE));
-                        } else {
-                            vibrator.vibrate(100);
-                        }
-                    }
+                    requireView().performHapticFeedback(HapticFeedbackConstants.CONFIRM);
                 }
 
                 if (verdict.isRetry()) {
@@ -476,17 +457,7 @@ public final class UnansweredSessionFragment extends AbstractSessionFragment {
                     questionEdit.setTag(true);
                     if (enable_haptic_feedback_failure()) {
                         Log.d("HapticFeedback", "Vibing");
-                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                            requireView().performHapticFeedback(HapticFeedbackConstants.REJECT); // Assuming REJECT is the desired feedback for a failure
-                        } else {
-                            // Fallback for older API versions using Vibrator
-                            Vibrator vibrator = (Vibrator) requireContext().getSystemService(Context.VIBRATOR_SERVICE);
-                            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                                vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                            } else {
-                                vibrator.vibrate(200);
-                            }
-                        }
+                        requireView().performHapticFeedback(HapticFeedbackConstants.REJECT); // Assuming REJECT is the desired feedback for a failure
                     }
                 }
             }
@@ -504,5 +475,11 @@ public final class UnansweredSessionFragment extends AbstractSessionFragment {
                 safe(false, () -> handleEditorAction(actionId, event));
 
         questionEdit.setOnEditorActionListener(onEditorActionListener);
+    }
+
+    private void vibrateDevice(long milliseconds) {
+        VibratorManager vibratorManager = (VibratorManager) requireContext().getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
+        Vibrator vibrator = vibratorManager.getDefaultVibrator();
+        vibrator.vibrate(VibrationEffect.createOneShot(milliseconds, VibrationEffect.DEFAULT_AMPLITUDE));
     }
 }

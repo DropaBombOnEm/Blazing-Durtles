@@ -19,8 +19,9 @@ package com.blazing_durtles.wk.fragments;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Vibrator;
 import android.os.VibrationEffect;
+import android.os.Vibrator;
+import android.os.VibratorManager;
 import android.util.Log;
 import android.view.HapticFeedbackConstants;
 import android.view.View;
@@ -150,15 +151,9 @@ public final class AnsweredSessionFragment extends AbstractSessionFragment imple
             if (enable_haptic_feedback_failure()) {
                 Log.d("HapticFeedback", "Vibing");
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-                    requireView().performHapticFeedback(HapticFeedbackConstants.REJECT); // Assuming REJECT is the desired feedback for a failure
+                    requireView().performHapticFeedback(HapticFeedbackConstants.REJECT);
                 } else {
-                    // Fallback for older API versions using Vibrator
-                    Vibrator vibrator = (Vibrator) requireContext().getSystemService(Context.VIBRATOR_SERVICE);
-                    if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-                        vibrator.vibrate(VibrationEffect.createOneShot(200, VibrationEffect.DEFAULT_AMPLITUDE));
-                    } else {
-                        vibrator.vibrate(200);
-                    }
+                    vibrateDevice(200);
                 }
             }
         }
@@ -304,5 +299,12 @@ public final class AnsweredSessionFragment extends AbstractSessionFragment imple
     @Override
     public void onSwipeRight(SwipingScrollView view) {
         this.advanceNext(view);
+    }
+
+    // Replace deprecated VIBRATOR_SERVICE and vibrate(long) usages
+    private void vibrateDevice(long milliseconds) {
+        VibratorManager vibratorManager = (VibratorManager) requireContext().getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
+        Vibrator vibrator = vibratorManager.getDefaultVibrator();
+        vibrator.vibrate(VibrationEffect.createOneShot(milliseconds, VibrationEffect.DEFAULT_AMPLITUDE));
     }
 }

@@ -23,6 +23,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="?attr/colorBackground"
+    android:fitsSystemWindows="true"
     tools:context="com.blazing_durtles.wk.activities.BurnActivity">
 
     <androidx.appcompat.widget.Toolbar

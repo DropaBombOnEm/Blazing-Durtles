@@ -17,8 +17,10 @@
 package com.blazing_durtles.wk.views;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
+import android.util.TypedValue;
 import android.widget.Button;
 import android.widget.LinearLayout;
 
@@ -177,7 +179,7 @@ public final class SubjectInfoHeadlineView extends ConstraintLayout {
 
             final SubjectInfoButtonView testView = new SubjectInfoButtonView(getContext());
             testView.setSubject(subject);
-            testView.setMaxSize(maxWidthPx, sp2px(maxFontSize));
+            testView.setMaxSize(maxWidthPx, (int) spToPx(maxFontSize));
             final int textWidthPx = testView.getCalculatedWidth();
 
             removeAllViews();
@@ -196,7 +198,7 @@ public final class SubjectInfoHeadlineView extends ConstraintLayout {
             buttonsColumn.setDelegate(this, R.id.buttonsColumn);
 
             button.setSubject(subject);
-            button.setMaxSize(maxWidthPx, sp2px(maxFontSize));
+            button.setMaxSize(maxWidthPx, (int) spToPx(maxFontSize));
             button.setVisibility(true);
         }
 
@@ -310,13 +312,13 @@ public final class SubjectInfoHeadlineView extends ConstraintLayout {
         return (int) (dp * getResources().getDisplayMetrics().density);
     }
 
-    private int sp2px(final int sp) {
-        float scaledDensity;
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
-            scaledDensity = getResources().getDisplayMetrics().density;
-        } else {
-            scaledDensity = getResources().getDisplayMetrics().scaledDensity;
-        }
-        return (int) (sp * scaledDensity);
+    private float getFontScale() {
+        Resources resources = getResources();
+        return resources.getConfiguration().fontScale;
+    }
+
+    private float spToPx(float sp) {
+        Resources resources = getResources();
+        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, sp, resources.getDisplayMetrics());
     }
 }
