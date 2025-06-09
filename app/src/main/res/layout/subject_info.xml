@@ -240,7 +240,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Context sentences:"
+        android:text="Context Sentences:"
         android:textIsSelectable="true"
         android:visibility="gone"
         style="@style/WK.TextView.Normal.Bold"/>
@@ -298,7 +298,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Visually similar:"
+        android:text="Visually Similar:"
         android:textIsSelectable="true"
         android:visibility="gone"
         style="@style/WK.TextView.Normal.Bold"/>
@@ -322,7 +322,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Used in:"
+        android:text="Used In:"
         android:textIsSelectable="true"
         android:visibility="gone"
         style="@style/WK.TextView.Normal.Bold"/>
@@ -429,7 +429,7 @@
             android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp">
             <TextView android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp"
                 android:layout_gravity="end" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Next review:" style="@style/WK.TextView.Normal.Bold" android:textIsSelectable="true"/>
+                android:text="Next Review:" style="@style/WK.TextView.Normal.Bold" android:textIsSelectable="true"/>
             <TextView android:id="@+id/tableAvailableAt"
                 android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp" android:layout_weight="1"
                 android:layout_gravity="start" android:layout_width="0dp" android:layout_height="wrap_content"
@@ -440,7 +440,7 @@
             android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp">
             <TextView android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp"
                 android:layout_gravity="end" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Overall correct:" style="@style/WK.TextView.Normal.Bold" android:textIsSelectable="true"/>
+                android:text="Overall Correct:" style="@style/WK.TextView.Normal.Bold" android:textIsSelectable="true"/>
             <TextView android:id="@+id/tablePercentageCorrect"
                 android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp" android:layout_weight="1"
                 android:layout_gravity="start" android:layout_width="0dp" android:layout_height="wrap_content"
@@ -451,7 +451,7 @@
             android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp">
             <TextView android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp"
                 android:layout_gravity="end" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Meaning correct:" style="@style/WK.TextView.Normal.Bold" android:textIsSelectable="true"/>
+                android:text="Meaning Correct:" style="@style/WK.TextView.Normal.Bold" android:textIsSelectable="true"/>
             <TextView android:id="@+id/tableMeaningCorrect"
                 android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp" android:layout_weight="1"
                 android:layout_gravity="start" android:layout_width="0dp" android:layout_height="wrap_content"
@@ -462,7 +462,7 @@
             android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp">
             <TextView android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp"
                 android:layout_gravity="end" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Reading correct:" style="@style/WK.TextView.Normal.Bold" android:textIsSelectable="true"/>
+                android:text="Reading Correct:" style="@style/WK.TextView.Normal.Bold" android:textIsSelectable="true"/>
             <TextView android:id="@+id/tableReadingCorrect"
                 android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp" android:layout_weight="1"
                 android:layout_gravity="start" android:layout_width="0dp" android:layout_height="wrap_content"
@@ -484,7 +484,7 @@
             android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp">
             <TextView android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp"
                 android:layout_gravity="end" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="JLPT level:" style="@style/WK.TextView.Normal.Bold" android:textIsSelectable="true"/>
+                android:text="Jlpt Level:" style="@style/WK.TextView.Normal.Bold" android:textIsSelectable="true"/>
             <TextView android:id="@+id/tableJlptLevel"
                 android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp" android:layout_weight="1"
                 android:layout_gravity="start" android:layout_width="0dp" android:layout_height="wrap_content"
@@ -495,7 +495,7 @@
             android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp">
             <TextView android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp"
                 android:layout_gravity="end" android:layout_width="wrap_content" android:layout_height="wrap_content"
-                android:text="Jōyō kanji grade:" style="@style/WK.TextView.Normal.Bold" android:textIsSelectable="true"/>
+                android:text="Jōyō Kanji Grade:" style="@style/WK.TextView.Normal.Bold" android:textIsSelectable="true"/>
             <TextView android:id="@+id/tableJoyoGrade"
                 android:layout_marginTop="2dp" android:layout_marginStart="2dp" android:layout_marginLeft="2dp" android:layout_weight="1"
                 android:layout_gravity="start" android:layout_width="0dp" android:layout_height="wrap_content"

@@ -512,7 +512,7 @@ public final class SummarySessionFragment extends AbstractSessionFragment implem
                 subjects.size(), subjects.size() == 1 ? "" : "s", newNumStars, newNumStars == 1 ? "" : "s");
 
         new AlertDialog.Builder(requireContext())
-                .setTitle("Set star ratings?")
+                .setTitle("Set Star Ratings?")
                 .setMessage(message)
                 .setNegativeButton("No", (dialog, which) -> {})
                 .setPositiveButton("Yes", (dialog, which) -> safe(() -> runAsync(getActivity(), () -> {
@@ -535,7 +535,7 @@ public final class SummarySessionFragment extends AbstractSessionFragment implem
                 subjects.size(), subjects.size() == 1 ? "" : "s", newNumStars, newNumStars == 1 ? "" : "s");
 
         new AlertDialog.Builder(requireContext())
-                .setTitle("Set star ratings?")
+                .setTitle("Set Star Ratings?")
                 .setMessage(message)
                 .setNegativeButton("No", (dialog, which) -> {})
                 .setPositiveButton("Yes", (dialog, which) -> safe(() -> runAsync(getActivity(), () -> {

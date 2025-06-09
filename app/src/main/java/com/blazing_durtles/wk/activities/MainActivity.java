@@ -19,8 +19,10 @@ package com.blazing_durtles.wk.activities;
 import static com.blazing_durtles.wk.util.ObjectSupport.runAsync;
 import static com.blazing_durtles.wk.util.ObjectSupport.safe;
 
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
+import android.view.WindowManager;
 
 import com.blazing_durtles.wk.GlobalSettings;
 import com.blazing_durtles.wk.R;
@@ -85,6 +87,16 @@ public final class MainActivity extends AbstractActivity {
 
     @Override
     protected void onCreateLocal(final @Nullable Bundle savedInstanceState) {
+        // Always show the notification bar
+        getWindow().clearFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        // Avoid displaying under the cutout
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+            getWindow().setLayout(WindowManager.LayoutParams.MATCH_PARENT, WindowManager.LayoutParams.MATCH_PARENT);
+            WindowManager.LayoutParams lp = getWindow().getAttributes();
+            lp.layoutInDisplayCutoutMode = WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER;
+            getWindow().setAttributes(lp);
+        }
+
         apiErrorView.setDelegate(this, R.id.apiErrorView);
         apiKeyRejectedView.setDelegate(this, R.id.apiKeyRejectedView);
         keyboardHelpView.setDelegate(this, R.id.keyboardHelpView);

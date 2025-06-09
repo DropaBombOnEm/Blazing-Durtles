@@ -288,6 +288,12 @@ public final class PitchInfoDiagramView extends View {
     }
 
     private int sp2px(final int sp) {
-        return (int) (sp * getResources().getDisplayMetrics().scaledDensity);
+        float scaledDensity;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            scaledDensity = getResources().getDisplayMetrics().density;
+        } else {
+            scaledDensity = getResources().getDisplayMetrics().scaledDensity;
+        }
+        return (int) (sp * scaledDensity);
     }
 }

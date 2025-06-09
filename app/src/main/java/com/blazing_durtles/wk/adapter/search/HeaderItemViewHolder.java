@@ -107,19 +107,19 @@ public abstract class HeaderItemViewHolder extends ResultItemViewHolder implemen
 
         final Collection<String> parts = new ArrayList<>();
         if (locked > 0) {
-            parts.add(String.format(Locale.ROOT, "%d locked", locked));
+            parts.add(String.format(Locale.ROOT, "%d Locked", locked));
         }
         if (initial > 0) {
-            parts.add(String.format(Locale.ROOT, "%d not started", initial));
+            parts.add(String.format(Locale.ROOT, "%d Not Started", initial));
         }
         if (prePassed > 0) {
-            parts.add(String.format(Locale.ROOT, "%d in progress", prePassed));
+            parts.add(String.format(Locale.ROOT, "%d In Progress", prePassed));
         }
         if (passed > 0) {
-            parts.add(String.format(Locale.ROOT, "%d passed", passed));
+            parts.add(String.format(Locale.ROOT, "%d Passed", passed));
         }
         if (burned > 0) {
-            parts.add(String.format(Locale.ROOT, "%d burned", burned));
+            parts.add(String.format(Locale.ROOT, "%d Burned", burned));
         }
         details.setText(join(", ", "", "", parts));
     }

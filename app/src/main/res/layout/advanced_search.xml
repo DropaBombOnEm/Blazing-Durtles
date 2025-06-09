@@ -50,7 +50,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
-            android:text="Level range:"
+            android:text="Level Range:"
             style="@style/WK.TextView.Normal"/>
 
         <LinearLayout
@@ -104,7 +104,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
-            android:text="Frequency range:"
+            android:text="Frequency Range:"
             style="@style/WK.TextView.Normal"/>
 
         <LinearLayout
@@ -158,7 +158,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
-            android:text="Only leeches:"
+            android:text="Only Leeches:"
             style="@style/WK.TextView.Normal"/>
 
         <androidx.appcompat.widget.SwitchCompat
@@ -181,7 +181,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
-            android:text="Next review in less than:"
+            android:text="Next Review in Less Than:"
             style="@style/WK.TextView.Normal"/>
 
         <LinearLayout
@@ -205,7 +205,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
-                android:text="hours"
+                android:text="Hours"
                 android:labelFor="@id/reviewLessHours"
                 style="@style/WK.TextView.Normal"/>
 
@@ -224,7 +224,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
-            android:text="Next review in more than:"
+            android:text="Next Review in More Than:"
             style="@style/WK.TextView.Normal"/>
 
         <LinearLayout
@@ -248,7 +248,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
-                android:text="hours"
+                android:text="Hours"
                 android:labelFor="@id/reviewMoreHours"
                 style="@style/WK.TextView.Normal"/>
 
@@ -267,7 +267,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
-            android:text="Incorrect answer less than:"
+            android:text="Incorrect Answer Less Than:"
             style="@style/WK.TextView.Normal"/>
 
         <LinearLayout
@@ -291,7 +291,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
-                android:text="hours ago"
+                android:text="Hours Ago"
                 android:labelFor="@id/reviewLessHours"
                 style="@style/WK.TextView.Normal"/>
 
@@ -310,7 +310,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
-            android:text="Burned less than:"
+            android:text="Burned Less Than:"
             style="@style/WK.TextView.Normal"/>
 
         <LinearLayout
@@ -334,7 +334,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
-                android:text="days ago"
+                android:text="Days Ago"
                 android:labelFor="@id/reviewLessHours"
                 style="@style/WK.TextView.Normal"/>
 
@@ -353,7 +353,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
-            android:text="Burned more than:"
+            android:text="Burned More Than:"
             style="@style/WK.TextView.Normal"/>
 
         <LinearLayout
@@ -377,7 +377,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="start|center_vertical"
-                android:text="days ago"
+                android:text="Days Ago"
                 android:labelFor="@id/reviewLessHours"
                 style="@style/WK.TextView.Normal"/>
 
@@ -396,7 +396,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
-            android:text="Sort order:"
+            android:text="Sort Order:"
             style="@style/WK.TextView.Normal"/>
 
         <Spinner
@@ -421,7 +421,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
-            android:text="Star rating:"
+            android:text="Star Rating:"
             style="@style/WK.TextView.Normal"/>
 
     </TableRow>
@@ -486,7 +486,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
-            android:text="SRS stages:"
+            android:text="SRS Stages:"
             style="@style/WK.TextView.Normal"/>
 
     </TableRow>
@@ -663,7 +663,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
-            android:text="Subject types:"
+            android:text="Subject Types:"
             style="@style/WK.TextView.Normal"/>
 
     </TableRow>
@@ -712,7 +712,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
-            android:text="JLPT levels:"
+            android:text="JLPT Levels:"
             style="@style/WK.TextView.Normal"/>
 
     </TableRow>
@@ -777,7 +777,7 @@
             android:gravity="start|center_vertical"
             android:layout_marginRight="4dp"
             android:layout_marginEnd="4dp"
-            android:text="Jōyō kanji grades:"
+            android:text="Jōyō Kanji Grades:"
             style="@style/WK.TextView.Normal"/>
 
     </TableRow>
@@ -841,7 +841,7 @@
     <TableRow android:layout_width="wrap_content" android:layout_height="wrap_content">
         <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
             android:layout_gravity="end|bottom" android:gravity="end|bottom"
-            android:layout_marginRight="4dp" android:layout_marginEnd="4dp" android:text="Middle school:" style="@style/WK.TextView.Normal"/>
+            android:layout_marginRight="4dp" android:layout_marginEnd="4dp" android:text="Middle School:" style="@style/WK.TextView.Normal"/>
         <androidx.appcompat.widget.SwitchCompat android:id="@+id/joyoGrade7" android:layout_width="wrap_content" android:layout_height="wrap_content"
             style="@style/WK.Switch.Normal" android:layout_gravity="start|bottom"/>
     </TableRow>

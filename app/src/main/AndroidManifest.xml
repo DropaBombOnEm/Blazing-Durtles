@@ -28,7 +28,7 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="18"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18"/>
-    <uses-sdk tools:overrideLibrary="androidx.security"/>
+    <uses-sdk tools:overrideLibrary="androidx.security" android:minSdkVersion="21" android:targetSdkVersion="35" />
 
     <application
         android:allowBackup="true"
@@ -58,7 +58,7 @@
         </activity>
         <activity
             android:name=".activities.NoApiKeyHelpActivity"
-            android:label="Enter V2 API token"
+            android:label="Enter V2 API Token"
             android:parentActivityName=".activities.MainActivity"/>
         <activity
             android:name=".activities.TestActivity"
@@ -72,36 +72,36 @@
         </activity>
         <activity
             android:name=".activities.ThemeCustomizationActivity"
-            android:label="Theme customization"
+            android:label="Theme Customization"
             android:parentActivityName=".activities.MainActivity">
             <meta-data android:name="android.app.default_searchable" android:value=".activities.BrowseActivity"/>
         </activity>
         <activity
             android:name=".activities.SupportActivity"
-            android:label="Support / feedback"
+            android:label="Support / Feedback"
             android:parentActivityName=".activities.MainActivity">
             <meta-data android:name="android.app.default_searchable" android:value=".activities.BrowseActivity"/>
         </activity>
         <activity
             android:name=".activities.DigraphHelpActivity"
-            android:label="Dighraph help"
+            android:label="Digraph Help"
             android:parentActivityName=".activities.MainActivity">
             <meta-data android:name="android.app.default_searchable" android:value=".activities.BrowseActivity"/>
         </activity>
         <activity
             android:name=".activities.KeyboardHelpActivity"
-            android:label="Keyboard help"
+            android:label="Keyboard Help"
             android:parentActivityName=".activities.MainActivity">
             <meta-data android:name="android.app.default_searchable" android:value=".activities.BrowseActivity"/>
         </activity>
         <activity android:name=".activities.DownloadAudioActivity"
-            android:label="Download audio"
+            android:label="Download Audio"
             android:parentActivityName=".activities.MainActivity">
             <meta-data android:name="android.app.default_searchable" android:value=".activities.BrowseActivity"/>
         </activity>
         <activity android:name=".activities.BackupActivity" />
         <activity android:name=".activities.BrowseActivity"
-            android:label="Browse / search"
+            android:label="Browse / Search"
             android:windowSoftInputMode="adjustResize"
             android:parentActivityName=".activities.MainActivity"
             android:exported="true">
@@ -124,37 +124,37 @@
             <meta-data android:name="android.app.default_searchable" android:value=".activities.BrowseActivity"/>
         </activity>
         <activity android:name=".activities.StudyMaterialsActivity"
-            android:label="My notes"
+            android:label="My Notes"
             android:parentActivityName=".activities.MainActivity">
             <meta-data android:name="android.app.default_searchable" android:value=".activities.BrowseActivity"/>
         </activity>
         <activity android:name=".activities.SelfStudyStartActivity"
-            android:label="Self-study quiz"
+            android:label="Self-Study Quiz"
             android:parentActivityName=".activities.MainActivity">
             <meta-data android:name="android.app.default_searchable" android:value=".activities.BrowseActivity"/>
         </activity>
         <activity android:name=".activities.FontSelectionActivity"
-            android:label="Font selection"
+            android:label="Font Selection"
             android:parentActivityName=".activities.MainActivity">
             <meta-data android:name="android.app.default_searchable" android:value=".activities.BrowseActivity"/>
         </activity>
         <activity android:name=".activities.FontImportActivity"
-            android:label="Font import"
+            android:label="Font Import"
             android:parentActivityName=".activities.MainActivity">
             <meta-data android:name="android.app.default_searchable" android:value=".activities.BrowseActivity"/>
         </activity>
         <activity android:name=".activities.DataImportExportActivity"
-            android:label="Data import/export"
+            android:label="Data Import / Export"
             android:parentActivityName=".activities.MainActivity">
             <meta-data android:name="android.app.default_searchable" android:value=".activities.BrowseActivity"/>
         </activity>
         <activity android:name=".activities.ResurrectActivity"
-            android:label="Resurrect subjects"
+            android:label="Resurrect Subjects"
             android:parentActivityName=".activities.MainActivity">
             <meta-data android:name="android.app.default_searchable" android:value=".activities.BrowseActivity"/>
         </activity>
         <activity android:name=".activities.BurnActivity"
-            android:label="Burn subjects"
+            android:label="Burn Subjects"
             android:parentActivityName=".activities.MainActivity">
             <meta-data android:name="android.app.default_searchable" android:value=".activities.BrowseActivity"/>
         </activity>

@@ -204,7 +204,14 @@ public final class SubjectInfoHeadlineView extends ConstraintLayout {
         title.setText(subject.getSimpleInfoTitle());
 
         // Meaning text
-        meaning.setText(subject.getMeaningRichText(""));
+        CharSequence meaningText = subject.getMeaningRichText("");
+        if (subject.getType().isVocabulary()) {
+            // Use true English title case for vocabulary meaning
+            if (meaningText != null && meaningText.length() > 0) {
+                meaningText = com.blazing_durtles.wk.util.TextUtil.toTitleCase(meaningText.toString());
+            }
+        }
+        meaning.setText(meaningText);
         meaning.setVisibility(showMeaningAnswers && subject.hasMeanings());
 
         // Reading text
@@ -304,6 +311,12 @@ public final class SubjectInfoHeadlineView extends ConstraintLayout {
     }
 
     private int sp2px(final int sp) {
-        return (int) (sp * getResources().getDisplayMetrics().scaledDensity);
+        float scaledDensity;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            scaledDensity = getResources().getDisplayMetrics().density;
+        } else {
+            scaledDensity = getResources().getDisplayMetrics().scaledDensity;
+        }
+        return (int) (sp * scaledDensity);
     }
 }

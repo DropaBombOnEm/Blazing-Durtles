@@ -21,7 +21,7 @@
 
     <PreferenceScreen
         app:key="api_settings"
-        app:title="API and audio download settings">
+        app:title="API and Audio Download Settings">
 
         <com.blazing_durtles.wk.components.InfoPreference
             app:title="Caution"
@@ -30,13 +30,13 @@
 
         <com.blazing_durtles.wk.components.EncryptedEditTextPreference
             app:key="api_key"
-            app:title="V2 API token"
+            app:title="V2 API Token"
             app:singleLineTitle="false"
             app:useSimpleSummaryProvider="true"/>
 
         <ListPreference
             app:key="network_rule"
-            app:title="Network access rule"
+            app:title="Sync and Download Policy"
             app:singleLineTitle="false"
             app:entries="@array/networkRules"
             app:entryValues="@array/networkRuleValues"
@@ -45,7 +45,7 @@
 
         <ListPreference
             app:key="audio_location"
-            app:title="Audio files location"
+            app:title="Audio Files Location"
             app:singleLineTitle="false"
             app:defaultValue="Internal"
             app:useSimpleSummaryProvider="true"
@@ -53,27 +53,27 @@
 
         <SwitchPreferenceCompat
             app:key="auto_download_audio"
-            app:title="Auto-download audio for upcoming reviews"
+            app:title="Auto-Download Audio for Upcoming Reviews"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
             app:key="enable_background_sync"
-            app:title="Allow background sync"
+            app:title="Allow Background Sync"
             app:singleLineTitle="false"
             app:defaultValue="false"
-            app:summary="Caution - this may drain your battery faster than normal"/>
+            app:summary="Caution: Allows the app to sync even when it isn't open, which may increase battery usage."/>
 
         <SwitchPreferenceCompat
             app:key="sync_on_open"
-            app:title="Sync when the app is opened"
-            android:summary="Triggers sync if the app has been closed for at least 3 min"
+            app:title="Sync When App Is Reopened"
+            android:summary="Triggers a sync when the app is reopened after being closed for 3+ minutes."
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <com.blazing_durtles.wk.components.EncryptedEditTextPreference
             app:key="web_password"
-            app:title="Web site password"
+            app:title="Website Password"
             app:singleLineTitle="false"
             app:summary="This is only needed for resurrect functionality. Leave blank if you don't need it."/>
 
@@ -81,7 +81,7 @@
 
     <PreferenceScreen
         app:key="display_settings"
-        app:title="Display settings">
+        app:title="Display Settings">
 
         <ListPreference
             app:key="theme"
@@ -100,19 +100,19 @@
             app:defaultValue="DARK"/>
 
         <Preference
-            app:title="Theme Customisation"
+            app:title="Theme Customization"
             app:key="theme_customization"
-            app:summary="Customise colors in the current theme"/>
+            app:summary="Customize the colors used in your current theme"/>
 
         <SwitchPreferenceCompat
             app:key="center_caret"
-            app:title="Center caret in quiz answer box"
+            app:title="Center Caret in Quiz Answer Box"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SeekBarPreference
             app:key="anki_buttons_height"
-            app:title="Vertical size of the Anki mode buttons"
+            app:title="Vertical Size of the Anki Mode Buttons"
             app:singleLineTitle="false"
             app:defaultValue="50"
             app:min="10"
@@ -123,7 +123,7 @@
 
         <SeekBarPreference
             app:key="quiz_question_view_height"
-            app:title="Fix height of main quiz question view"
+            app:title="Fix Height of Main Quiz Question View"
             app:singleLineTitle="false"
             app:defaultValue="0"
             app:min="0"
@@ -131,23 +131,23 @@
             app:seekBarIncrement="1"
             app:showSeekBarValue="true"
             app:adjustable="true"
-            app:summary="Set to 0 to not force a fixed size"/>
+            app:summary="Set to 0 for automatic sizing."/>
 
         <SwitchPreferenceCompat
             app:key="swap_anki_buttons"
-            app:title="Swap the correct/incorrect Anki mode buttons"
+            app:title="Swap the Correct/Incorrect Anki Mode Buttons"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="slide_animations"
-            app:title="Use slide animations to transition between quiz questions"
+            app:title="Use Slide Animations to Transition Between Quiz Questions"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
             app:key="stretch_quiz_question_view"
-            app:title="Stretch the question view to fill the screen when keyboard input is active"
+            app:title="Stretch the Question View to Fill the Screen When Keyboard Input Is Active"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
@@ -155,23 +155,23 @@
 
     <PreferenceScreen
         app:key="dashboard_settings"
-        app:title="Dashboard settings">
+        app:title="Dashboard Settings">
 
         <SwitchPreferenceCompat
             app:key="show_lesson_review_breakdown"
-            app:title="Show lesson/review breakdown"
+            app:title="Show Lesson/Review Breakdown"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="show_timeline"
-            app:title="Show 24h review timeline"
+            app:title="Show 24h Review Timeline"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
         <ListPreference
             app:key="timeline_chart_style"
-            app:title="Timeline chart style"
+            app:title="Timeline Chart Style"
             app:singleLineTitle="false"
             app:entries="@array/timeLineChartStyles"
             app:entryValues="@array/timeLineChartStyleValues"
@@ -180,14 +180,14 @@
 
         <SwitchPreferenceCompat
             app:key="show_waterfall_line"
-            app:title="Show timeline waterfall line"
+            app:title="Show Timeline Waterfall Line"
             app:singleLineTitle="false"
-            android:summary="Show cumulative amount of reviews over time in the timeline chart"
+            android:summary="Display the cumulative number of reviews over time in the timeline chart."
             app:defaultValue="false"/>
 
         <ListPreference
             app:key="timeline_chart_grid_style"
-            app:title="Timeline chart Y-axis grid style"
+            app:title="Timeline Chart Y-Axis Grid Style"
             app:singleLineTitle="false"
             app:entries="@array/timeLineChartGridStyles"
             app:entryValues="@array/timeLineChartGridStyleValues"
@@ -196,7 +196,7 @@
 
         <ListPreference
             app:key="timeline_chart_size"
-            app:title="Timeline chart size"
+            app:title="Timeline Chart Size"
             app:singleLineTitle="false"
             app:entries="@array/timeLineChartSizes"
             app:entryValues="@array/timeLineChartSizeValues"
@@ -205,7 +205,7 @@
 
         <ListPreference
             app:key="timeline_chart_size_shown"
-            app:title="Part of timeline chart shown at once"
+            app:title="Part of Timeline Chart Shown at Once"
             app:singleLineTitle="false"
             app:entries="@array/timeLineChartSizes"
             app:entryValues="@array/timeLineChartSizeValues"
@@ -214,33 +214,33 @@
 
         <SwitchPreferenceCompat
             app:key="show_srs_breakdown"
-            app:title="Show SRS breakdown"
+            app:title="Show SRS Breakdown"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
             app:key="show_level_progression"
-            app:title="Show level progression bars"
+            app:title="Show Level Progression Bars"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
             app:key="show_over_level_progression"
-            app:title="Show level progression bars for levels higher than your own"
+            app:title="Show Level Progression Bars for Levels Higher Than Your Own"
             app:singleLineTitle="false"
             android:summary="This can happen if you unlocked subjects in the past that have since been moved above your level."
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="previous_level_progression_limit"
-            app:title="Limit progression bars for the completed levels to only the most recent levels"
+            app:title="Limit Progression Bars for the Completed Levels to Only the Most Recent Levels"
             app:singleLineTitle="false"
-            android:summary="This can help if many new items were added to previous levels and you now have all those levels on your dashboard."
+            android:summary="This can help if many new items were added to previous levels, crowding your dashboard."
             app:defaultValue="false"/>
 
         <com.blazing_durtles.wk.components.EditLimitedIntPreference
             app:key="previous_level_progression_limit_amount"
-            app:title="Number of previous levels to show progression bars for"
+            app:title="Number of Previous Levels to Show Progression Bars For"
             app:singleLineTitle="false"
             android:inputType="number"
             android:dependency="previous_level_progression_limit"
@@ -250,51 +250,51 @@
 
         <SwitchPreferenceCompat
             app:key="show_post60_progression"
-            app:title="Show post-60 progression bar"
+            app:title="Show Post-60 Progression Bar"
             app:singleLineTitle="false"
-            android:summary="Can be used at any level, but intended for level 60! Does NOT include a legend, so only enable this if you're cool with that."
+            android:summary="Intended for level 60. No legend is shown."
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="show_post60_subsections"
-            app:title="Show subsections in post-60 progression bar"
+            app:title="Show Subsections in Post-60 Progression Bar"
             app:singleLineTitle="false"
-            android:summary="Show separate bar segments for the different Apprentice and Guru levels"
+            android:summary="Show separate segments for each Apprentice and Guru level."
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="show_post60_reverse"
-            app:title="Reverse post-60 progression bar"
+            app:title="Reverse Post-60 Progression Bar"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="show_joyo_progress"
-            app:title="Show Jōyō progress"
+            app:title="Show Jōyō Progress"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="show_jlpt_progress"
-            app:title="Show JLPT progress"
+            app:title="Show JLPT Progress"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="show_recent_unlocks"
-            app:title="Show recently unlocked items"
+            app:title="Show Recently Unlocked Items"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
             app:key="show_critical_condition"
-            app:title="Show critical condition items"
+            app:title="Show Critical Condition Items"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
             app:key="show_burned_items"
-            app:title="Show recently burned items"
+            app:title="Show Recently Burned Items"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
@@ -302,43 +302,43 @@
 
     <PreferenceScreen
         app:key="subject_info_settings"
-        app:title="Subject Info settings"
+        app:title="Subject Info Settings"
         app:summary="Settings related to the presentation of the subject info dump in various places">
 
         <SwitchPreferenceCompat
             app:key="hide_lesson_readings"
-            app:title="Hide readings in lessons until tapped"
+            app:title="Hide Readings in Lessons Until Tapped"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="hide_sentence_translations"
-            app:title="Hide context sentence translations until tapped"
+            app:title="Hide Context Sentence Translations Until Tapped"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
             app:key="show_pitch_info"
-            app:title="Show pitch information on vocabulary"
+            app:title="Show Pitch Information on Vocabulary"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="swap_similar_amalgamations"
-            app:title="Swap 'visually similar' and 'used in' in subject info dump"
+            app:title="Swap 'Visually Similar' and 'Used In' in Subject Info Dump"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="highlight_subject_tags"
-            app:title="Highlight subject tags in mnemonic texts with colours"
+            app:title="Highlight Subject Tags in Mnemonic Texts with Colours"
             app:singleLineTitle="false"
             app:defaultValue="true"
-            android:summary="This replaces tags such as &lt;kanji&gt; with appropriate colouring instead of just making the text bold"/>
+            android:summary="Replaces tags like &lt;kanji&gt; with color highlights instead of just bold text."/>
 
         <SwitchPreferenceCompat
             app:key="not_always_hide_wk_mnemonic"
-            app:title="Always hide WaniKani's own mnemonics"
+            app:title="Always Hide WaniKani's Own Mnemonics"
             app:singleLineTitle="false"
             app:defaultValue="true"
             android:persistent="false"
@@ -346,33 +346,33 @@
 
         <SwitchPreferenceCompat
             app:key="always_hide_wk_mnemonic"
-            app:title="Always hide WaniKani's own mnemonics"
+            app:title="Always Hide WaniKani's Own Mnemonics"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="hide_meaning_mnemonic"
-            app:title="Hide WaniKani's meaning mnemonic if a user note is present"
+            app:title="Hide WaniKani's Meaning Mnemonic if a User Note Is Present"
             app:singleLineTitle="false"
             app:defaultValue="false"
             android:dependency="not_always_hide_wk_mnemonic"/>
 
         <SwitchPreferenceCompat
             app:key="hide_reading_mnemonic"
-            app:title="Hide WaniKani's reading mnemonic if a user note is present"
+            app:title="Hide WaniKani's Reading Mnemonic if a User Note Is Present"
             app:singleLineTitle="false"
             app:defaultValue="false"
             android:dependency="not_always_hide_wk_mnemonic"/>
 
         <SwitchPreferenceCompat
             app:key="show_legacy"
-            app:title="Show old names and mnemonics for radicals from before the December 2018 content update"
+            app:title="Show Old Names and Mnemonics for Radicals from Before the December 2018 Content Update"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <ListPreference
             app:key="meaning_info_dump"
-            app:title="Show info dump after a correct meaning answer"
+            app:title="Show Info Dump After a Correct Meaning Answer"
             app:singleLineTitle="false"
             app:entries="@array/subjectInfoDumps"
             app:entryValues="@array/subjectInfoDumpValues"
@@ -381,7 +381,7 @@
 
         <ListPreference
             app:key="reading_info_dump"
-            app:title="Show info dump after a correct reading answer"
+            app:title="Show Info Dump After a Correct Reading Answer"
             app:singleLineTitle="false"
             app:entries="@array/subjectInfoDumps"
             app:entryValues="@array/subjectInfoDumpValues"
@@ -390,7 +390,7 @@
 
         <ListPreference
             app:key="meaning_info_dump_incorrect"
-            app:title="Show info dump after an incorrect meaning answer"
+            app:title="Show Info Dump After an Incorrect Meaning Answer"
             app:singleLineTitle="false"
             app:entries="@array/subjectInfoDumps"
             app:entryValues="@array/subjectInfoDumpValues"
@@ -399,7 +399,7 @@
 
         <ListPreference
             app:key="reading_info_dump_incorrect"
-            app:title="Show info dump after an incorrect reading answer"
+            app:title="Show Info Dump After an Incorrect Reading Answer"
             app:singleLineTitle="false"
             app:entries="@array/subjectInfoDumps"
             app:entryValues="@array/subjectInfoDumpValues"
@@ -408,20 +408,20 @@
 
         <SwitchPreferenceCompat
             app:key="show_stroke_order"
-            app:title="Show stroke order diagrams on radicals and kanji"
+            app:title="Show Stroke Order Diagrams on Radicals and Kanji"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="stroke_order_animated"
-            app:title="Animate the stroke order diagrams"
+            app:title="Animate the Stroke Order Diagrams"
             app:singleLineTitle="false"
             app:defaultValue="true"
-            app:summary="Tap the diagram to toggle animation"/>
+            app:summary="Tap the diagram to play or pause the animation."/>
 
         <SeekBarPreference
             app:key="stroke_order_size"
-            app:title="Size of the stroke order diagrams"
+            app:title="Size of the Stroke Order Diagrams"
             app:singleLineTitle="false"
             app:defaultValue="250"
             app:min="20"
@@ -434,38 +434,38 @@
 
     <PreferenceScreen
         app:key="audio_settings"
-        app:title="Audio settings">
+        app:title="Audio Settings">
 
         <SwitchPreferenceCompat
             app:key="autoplay_lesson_presentation"
-            app:title="Autoplay audio during lesson presentation"
+            app:title="Autoplay Audio During Lesson Presentation"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
             app:key="autoplay_lessons"
-            app:title="Autoplay audio during lessons"
+            app:title="Autoplay Audio During Lessons"
             app:singleLineTitle="false"
             app:defaultValue="true"
-            app:summary="When answering a question correctly in a lesson session"/>
+            app:summary="Plays the reading audio when you answer correctly during lessons."/>
 
         <SwitchPreferenceCompat
             app:key="autoplay_reviews"
-            app:title="Autoplay audio during reviews"
+            app:title="Autoplay Audio During Reviews"
             app:singleLineTitle="false"
             app:defaultValue="true"
-            app:summary="When answering a question correctly in a review/self-study session"/>
+            app:summary="Plays the reading audio when you answer correctly during reviews or self-study."/>
 
         <SwitchPreferenceCompat
             app:key="autoplay_anki_reveal"
-            app:title="Autoplay audio when revealing in Anki mode"
+            app:title="Autoplay Audio When Revealing in Anki Mode"
             app:singleLineTitle="false"
             app:defaultValue="true"
-            app:summary="When clicking the 'Show answer' button in Anki mode"/>
+            app:summary="Plays the reading audio when you tap 'Show answer' in Anki mode."/>
 
         <ListPreference
             app:key="voice_preference"
-            app:title="Voice preference"
+            app:title="Voice Preference"
             app:singleLineTitle="false"
             app:entries="@array/voicePreferences"
             app:entryValues="@array/voicePreferenceValues"
@@ -474,96 +474,96 @@
 
         <SwitchPreferenceCompat
             app:key="use_audio_focus"
-            app:title="Request audio focus when playing vocab audio"
+            app:title="Request Audio Focus When Playing Vocab Audio"
             app:singleLineTitle="false"
             app:defaultValue="true"
-            app:summary="Asks other player apps to pause or lower their volume when playing vocab audio"/>
+            app:summary="Pauses or lowers the volume of other apps when playing vocabulary audio."/>
 
     </PreferenceScreen>
 
     <PreferenceScreen
         app:key="review_settings"
-        app:title="Lesson/review settings">
+        app:title="Lessons and Reviews Settings">
 
         <EditTextPreference
             app:key="max_lesson_session_size"
-            app:title="Max. # of lessons per session"
+            app:title="Max. # of Lessons per Session"
             app:singleLineTitle="false"
             app:defaultValue="5"
             app:useSimpleSummaryProvider="true"/>
 
         <EditTextPreference
             app:key="max_review_session_size"
-            app:title="Max. # of reviews per session"
+            app:title="Max. # of Reviews per Session"
             app:singleLineTitle="false"
             app:defaultValue="100"
             app:useSimpleSummaryProvider="true"/>
 
         <EditTextPreference
             app:key="max_self_study_session_size"
-            app:title="Max. # of self-study items per session"
+            app:title="Max. # of Self-Study Items per Session"
             app:singleLineTitle="false"
             app:defaultValue="100"
             app:useSimpleSummaryProvider="true"/>
 
         <SwitchPreferenceCompat
             app:key="delay_result_upload"
-            app:title="Delay processing quiz results"
+            app:title="Delay Processing Quiz Results"
             app:summary="Doesn't process results until the session is finished. Allows unlimited undo during sessions."
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="enable_lightning_mode"
-            app:title="Enable lightning mode"
-            app:summary="Auto-advance to next question on a correct answer"
+            app:title="Enable Lightning Mode"
+            app:summary="Auto-Advance to Next Question on a Correct Answer"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
             app:key="show_answer_toast"
-            app:title="Enable a check mark / X animation for a correct / incorrect answer"
+            app:title="Enable a Check Mark / X Animation for a Correct / Incorrect Answer"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
             app:key="enable_srs_indicator"
-            app:title="Enable SRS indicator"
-            app:summary="Show current SRS stage during reviews"
+            app:title="Enable SRS Indicator"
+            app:summary="Show Current SRS Stage During Reviews"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="enable_srs_toast"
-            app:title="Enable SRS up/downgrade toast"
-            app:summary="Show a brief notification when an item goes up or down in SRS stage during reviews"
+            app:title="Enable SRS Up/Downgrade Toast"
+            app:summary="Show a Brief Notification When an Item Goes Up or Down in SRS Stage During Reviews"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
             app:key="enable_alternatives_toast"
-            app:title="Enable alternative readings/meanings toast"
-            app:summary="Show a toast with alternative readings or meanings upon correct answer"
+            app:title="Enable Alternative Readings/Meanings Toast"
+            app:summary="Show a notification with alternative readings or meanings after a correct answer."
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="enable_haptic_feedback_success"
-            app:title="Enable haptic feedback on correct answer"
-            app:summary="The device will give a short buzz to indicate a correct answer "
+            app:title="Enable Haptic Feedback on Correct Answer"
+            app:summary="The device will give a short buzz for a correct answer."
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="enable_haptic_feedback_failure"
-            app:title="Enable haptic feedback on incorrect answer"
-            app:summary="The device will give a long buzz to indicate an incorrect answer"
+            app:title="Enable Haptic Feedback on Incorrect Answer"
+            app:summary="The device will give a long buzz for an incorrect answer"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <ListPreference
             app:key="close_enough_action"
-            app:title="Action for &quot;close enough&quot; answer"
+            app:title="Action for &quot;Close Enough&quot; Answer"
             app:singleLineTitle="false"
             app:entries="@array/closeEnoughActions"
             app:entryValues="@array/closeEnoughActionValues"
@@ -574,77 +574,77 @@
 
     <PreferenceScreen
         app:key="keyboard_settings"
-        app:title="Keyboard input settings">
+        app:title="Keyboard Input Settings">
 
         <Preference
-            app:title="Tap here to read some hints for keyboard settings"
+            app:title="Tap Here to Read Some Hints for Keyboard Settings"
             app:key="keyboard_help"
             app:summary=""/>
 
         <SwitchPreferenceCompat
             app:key="enable_auto_correct_meaning"
-            app:title="Allow keyboard auto-correct for meanings"
+            app:title="Allow Keyboard Auto-Correct for Meanings"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="enable_auto_correct_reading"
-            app:title="Allow keyboard auto-correct for readings"
+            app:title="Allow Keyboard Auto-Correct for Readings"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="force_ascii_meaning"
-            app:title="Force ASCII keyboard for meanings"
+            app:title="Force ASCII Keyboard for Meanings"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
         <SwitchPreferenceCompat
             app:key="force_ascii_reading"
-            app:title="Force ASCII keyboard for readings"
+            app:title="Force ASCII Keyboard for Readings"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="force_visible_password_meaning"
-            app:title="Force 'visible password' setting for meanings"
+            app:title="Force 'Visible Password' Setting for Meanings"
             app:singleLineTitle="false"
             app:defaultValue="false"
             app:summary="This may be necessary to prevent auto-suggest on some keyboards"/>
 
         <SwitchPreferenceCompat
             app:key="force_visible_password_reading"
-            app:title="Force 'visible password' setting for readings"
+            app:title="Force 'Visible Password' Setting for Readings"
             app:singleLineTitle="false"
             app:defaultValue="false"
             app:summary="This may be necessary to prevent auto-suggest on some keyboards"/>
 
         <SwitchPreferenceCompat
             app:key="ime_hint_meaning"
-            app:title="Set keyboard language hint to English for meanings"
+            app:title="Set Keyboard Language Hint to English for Meanings"
             app:singleLineTitle="false"
             app:defaultValue="false"
             app:isPreferenceVisible="false"
-            app:summary="Enable this to suggest a keyboard language for meaning questions"/>
+            app:summary="Suggests a keyboard language for meaning questions."/>
 
         <SwitchPreferenceCompat
             app:key="ime_hint_reading"
-            app:title="Set keyboard language hint to Japanese for readings"
+            app:title="Set Keyboard Language Hint to Japanese for Readings"
             app:singleLineTitle="false"
             app:defaultValue="false"
             app:isPreferenceVisible="false"
-            app:summary="Enable this to suggest a keyboard language for reading questions"/>
+            app:summary="Suggests a keyboard language for reading questions."/>
 
         <SwitchPreferenceCompat
             app:key="enable_no_learning"
-            app:title="Enable 'no personalized learning' option"
+            app:title="Enable 'No Personalized Learning' Option"
             app:singleLineTitle="false"
             app:defaultValue="true"
-            app:summary="Disable this to get rid of the annoying incognito icon in Swiftkey"/>
+            app:summary="Disable to remove the incognito icon in SwiftKey."/>
 
         <EditTextPreference
             app:key="next_button_delay"
-            app:title="Delay in seconds to disable the next/submit button after typing an incorrect answer"
+            app:title="Delay in Seconds to Disable the Next/Submit Button After Typing an Incorrect Answer"
             app:singleLineTitle="false"
             app:defaultValue="0"
             app:useSimpleSummaryProvider="true"/>
@@ -653,19 +653,19 @@
 
     <PreferenceScreen
         app:key="font_settings"
-        app:title="Font settings">
+        app:title="Font Settings">
 
         <Preference
-            app:title="Select fonts for quiz questions"
+            app:title="Select Fonts for Quiz Questions"
             app:key="font_selection"/>
 
         <Preference
-            app:title="Import fonts for quiz questions"
+            app:title="Import Fonts for Quiz Questions"
             app:key="font_import"/>
 
         <SeekBarPreference
             app:key="max_font_size_lesson"
-            app:title="Max font size of subject title in lesson presentation"
+            app:title="Max Font Size of Subject Title in Lesson Presentation"
             app:singleLineTitle="false"
             app:defaultValue="128"
             app:min="0"
@@ -677,7 +677,7 @@
 
         <SeekBarPreference
             app:key="max_font_size_quiz"
-            app:title="Max font size of subject title on the quiz screen"
+            app:title="Max Font Size of Subject Title on the Quiz Screen"
             app:singleLineTitle="false"
             app:defaultValue="28"
             app:min="0"
@@ -689,7 +689,7 @@
 
         <SeekBarPreference
             app:key="max_font_size_browse"
-            app:title="Max font size of subject title on the browse screen"
+            app:title="Max Font Size of Subject Title on the Browse Screen"
             app:singleLineTitle="false"
             app:defaultValue="64"
             app:min="0"
@@ -701,7 +701,7 @@
 
         <SeekBarPreference
             app:key="max_font_size_quiz_text"
-            app:title="Max font size of main quiz question text"
+            app:title="Max Font Size of Main Quiz Question Text"
             app:singleLineTitle="false"
             app:defaultValue="100"
             app:min="0"
@@ -713,7 +713,7 @@
 
         <SeekBarPreference
             app:key="font_size_question_edit"
-            app:title="Font size of answer input text box"
+            app:title="Font Size of Answer Input Text Box"
             app:singleLineTitle="false"
             app:defaultValue="14"
             app:min="10"
@@ -724,7 +724,7 @@
 
         <SeekBarPreference
             app:key="font_size_subject_info"
-            app:title="Font size of subject info dump"
+            app:title="Font Size of Subject Info Dump"
             app:singleLineTitle="false"
             app:defaultValue="14"
             app:min="10"
@@ -735,7 +735,7 @@
 
         <SeekBarPreference
             app:key="font_size_live_subject_table"
-            app:title="Font size of dashboard subject tables"
+            app:title="Font Size of Dashboard Subject Tables"
             app:singleLineTitle="false"
             app:defaultValue="14"
             app:min="10"
@@ -743,11 +743,11 @@
             app:seekBarIncrement="1"
             app:showSeekBarValue="true"
             app:adjustable="true"
-            app:summary="Critical condition items, recent unlocks, and recently burned"/>
+            app:summary="Affects critical condition items, recent unlocks, and recently burned lists."/>
 
         <SeekBarPreference
             app:key="font_size_anki_answer"
-            app:title="Font size of Anki mode answers"
+            app:title="Font Size of Anki Mode Answers"
             app:singleLineTitle="false"
             app:defaultValue="18"
             app:min="10"
@@ -760,17 +760,17 @@
 
     <PreferenceScreen
         app:key="other_settings"
-        app:title="Other settings">
+        app:title="Other Settings">
 
         <SwitchPreferenceCompat
             app:key="enable_notifications"
-            app:title="Enable notifications for new reviews"
+            app:title="Enable Notifications for New Reviews"
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
         <ListPreference
             app:key="notification_update_frequency"
-            app:title="Notification update frequency"
+            app:title="Notification Update Frequency"
             app:singleLineTitle="false"
             app:entries="@array/notificationUpdateFrequencies"
             app:entryValues="@array/notificationUpdateFrequencyValues"
@@ -779,7 +779,7 @@
 
         <ListPreference
             app:key="notification_priority"
-            app:title="Notification priority"
+            app:title="Notification Priority"
             app:singleLineTitle="false"
             app:entries="@array/notificationPriorities"
             app:entryValues="@array/notificationPriorityValues"
@@ -788,7 +788,7 @@
 
         <ListPreference
             app:key="notification_category"
-            app:title="Notification category"
+            app:title="Notification Category"
             app:singleLineTitle="false"
             app:entries="@array/notificationCategories"
             app:entryValues="@array/notificationCategoryValues"
@@ -796,50 +796,50 @@
             app:useSimpleSummaryProvider="true"/>
 
         <com.blazing_durtles.wk.components.TaggedUrlPreference
-            app:title="Search engine 1"
+            app:title="Search Engine 1"
             app:singleLineTitle="false"
             app:key="search_engine_1"
             android:defaultValue="https://ja.wiktionary.org/w/index.php?search=%s"
             app:defaultTag="Wiktionary"/>
 
         <com.blazing_durtles.wk.components.TaggedUrlPreference
-            app:title="Search engine 2"
+            app:title="Search Engine 2"
             app:singleLineTitle="false"
             app:key="search_engine_2"
             android:defaultValue="https://jisho.org/search/%s"
             app:defaultTag="Jisho"/>
 
         <com.blazing_durtles.wk.components.TaggedUrlPreference
-            app:title="Search engine 3"
+            app:title="Search Engine 3"
             app:singleLineTitle="false"
             app:key="search_engine_3"/>
 
         <com.blazing_durtles.wk.components.TaggedUrlPreference
-            app:title="Search engine 4"
+            app:title="Search Engine 4"
             app:singleLineTitle="false"
             app:key="search_engine_4"/>
 
         <com.blazing_durtles.wk.components.TaggedUrlPreference
-            app:title="Search engine 5"
+            app:title="Search Engine 5"
             app:singleLineTitle="false"
             app:key="search_engine_5"/>
 
         <SwitchPreferenceCompat
             app:key="enable_star_ratings"
-            app:title="Enable star ratings for subjects"
+            app:title="Enable Star Ratings for Subjects"
             app:singleLineTitle="false"
             app:defaultValue="false"
-            app:summary="If enabled you can give star ratings to subjects and use those ratings as search filters"/>
+            app:summary="Lets you rate subjects with stars and filter searches by rating."/>
 
         <SwitchPreferenceCompat
             app:key="show_onyomi_in_katakana"
-            app:title="Show on'yomi readings in Katakana"
+            app:title="Show On'yomi Readings in Katakana"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="require_onyomi_in_katakana"
-            app:title="Require on'yomi answers in Katakana"
+            app:title="Require On'yomi Answers in Katakana"
             app:singleLineTitle="false"
             app:defaultValue="false"/>
 
@@ -847,7 +847,7 @@
 
     <PreferenceScreen
         app:key="experimental_settings"
-        app:title="Experimental (temporary) settings"
+        app:title="Experimental (Temporary) Settings"
         app:isPreferenceVisible="false">
 
         <com.blazing_durtles.wk.components.InfoPreference
@@ -856,7 +856,7 @@
 
         <ListPreference
             app:key="exp_subject_card_layout_search"
-            app:title="Subject card layout in search results"
+            app:title="Subject Card Layout in Search Results"
             app:singleLineTitle="false"
             app:entries="@array/subjectCardLayouts"
             app:entryValues="@array/subjectCardLayoutValues"
@@ -865,7 +865,7 @@
 
         <ListPreference
             app:key="exp_subject_card_layout_grid"
-            app:title="Subject card layout in other places"
+            app:title="Subject Card Layout in Other Places"
             app:singleLineTitle="false"
             app:entries="@array/subjectCardLayouts"
             app:entryValues="@array/subjectCardLayoutValues"
@@ -874,18 +874,18 @@
 
     </PreferenceScreen>
 
-    <PreferenceCategory app:key="advanced" app:title="Advanced settings">
+    <PreferenceCategory app:key="advanced" app:title="Advanced Settings">
 
         <SwitchPreferenceCompat
             app:key="enable_advanced"
-            app:title="Enable advanced settings"
+            app:title="Enable Advanced Settings"
             app:singleLineTitle="false"
             app:summary="Only for experienced users!"
             app:defaultValue="false"/>
 
         <PreferenceScreen
             app:key="advanced_lesson_settings"
-            app:title="Lesson advanced settings">
+            app:title="Advanced - Lesson Settings">
 
             <ListPreference
                 app:key="lesson_order"
@@ -898,7 +898,7 @@
 
             <SwitchPreferenceCompat
                 app:key="lesson_order_reversed"
-                app:title="Reverse order"
+                app:title="Reverse Order"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
@@ -914,42 +914,42 @@
 
             <SwitchPreferenceCompat
                 app:key="lesson_shuffle_after_selection"
-                app:title="Shuffle after selecting items"
+                app:title="Shuffle After Selecting Items"
                 app:singleLineTitle="false"
                 app:defaultValue="false"
                 app:summary="Items are selected for the session according to ordering settings, but after that they are shuffled randomly."/>
 
             <SwitchPreferenceCompat
                 app:key="lesson_back_to_back"
-                app:title="Reading/meaning back-to-back"
+                app:title="Reading/Meaning Back-to-Back"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="lesson_reading_first"
-                app:title="Reading before meaning"
+                app:title="Reading Before Meaning"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="lesson_meaning_first"
-                app:title="Meaning before reading"
+                app:title="Meaning Before Reading"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="anki_mode_lesson_meaning"
-                app:title="Anki mode for meanings"
+                app:title="Anki Mode for Meanings"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="anki_mode_lesson_reading"
-                app:title="Anki mode for readings"
+                app:title="Anki Mode for Readings"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
@@ -957,9 +957,9 @@
             <com.blazing_durtles.wk.components.InfoPreference
                 app:title="" app:key="lesson_subject_selection"/>
             <com.blazing_durtles.wk.components.NumberRangePreference
-                app:title="Current-level items" app:singleLineTitle="false" app:key="lesson_subjects_current"/>
+                app:title="Current-Level Items" app:singleLineTitle="false" app:key="lesson_subjects_current"/>
             <com.blazing_durtles.wk.components.NumberRangePreference
-                app:title="Earlier-level items" app:singleLineTitle="false" app:key="lesson_subjects_earlier"/>
+                app:title="Earlier-Level Items" app:singleLineTitle="false" app:key="lesson_subjects_earlier"/>
             <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Radicals" app:singleLineTitle="false" app:key="lesson_subjects_radical"/>
             <com.blazing_durtles.wk.components.NumberRangePreference
@@ -973,7 +973,7 @@
 
         <PreferenceScreen
             app:key="advanced_review_settings"
-            app:title="Review advanced settings">
+            app:title="Advanced - Review Settings">
 
             <ListPreference
                 app:key="review_order"
@@ -986,14 +986,14 @@
 
             <SwitchPreferenceCompat
                 app:key="review_order_reversed"
-                app:title="Reverse order"
+                app:title="Reverse Order"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="review_order_overdue_first"
-                app:title="Overdue items first"
+                app:title="Overdue Items First"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
@@ -1009,59 +1009,59 @@
 
             <SwitchPreferenceCompat
                 app:key="review_shuffle_after_selection"
-                app:title="Shuffle after selecting items"
+                app:title="Shuffle After Selecting Items"
                 app:singleLineTitle="false"
                 app:defaultValue="false"
                 app:summary="Items are selected for the session according to ordering settings, but after that they are shuffled randomly."/>
 
             <SwitchPreferenceCompat
                 app:key="review_back_to_back"
-                app:title="Reading/meaning back-to-back"
+                app:title="Reading/Meaning Back-to-Back"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="review_reading_first"
-                app:title="Reading before meaning"
+                app:title="Reading Before Meaning"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="review_meaning_first"
-                app:title="Meaning before reading"
+                app:title="Meaning Before Reading"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="anki_mode_review_meaning"
-                app:title="Anki mode for meanings"
+                app:title="Anki Mode for Meanings"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="anki_mode_review_reading"
-                app:title="Anki mode for readings"
+                app:title="Anki Mode for Readings"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="review_randomize_inflections"
-                app:title="Randomise inflections in review"
+                app:title="Randomise Inflections in Review"
                 app:singleLineTitle="false"
                 app:defaultValue="false"
-                app:summary="Works best with Anki mode. Random inflections will be added to adjectives and verbs. Note that answers and audio will use only dictionary forms."/>
+                app:summary="Works best with Anki mode. Adds random inflections to adjectives and verbs. Answers and audio only use dictionary forms."/>
 
             <com.blazing_durtles.wk.components.InfoPreference
                 app:title="" app:key="review_subject_selection"/>
             <com.blazing_durtles.wk.components.NumberRangePreference
-                app:title="Current-level items" app:singleLineTitle="false" app:key="review_subjects_current"/>
+                app:title="Current-Level Items" app:singleLineTitle="false" app:key="review_subjects_current"/>
             <com.blazing_durtles.wk.components.NumberRangePreference
-                app:title="Earlier-level items" app:singleLineTitle="false" app:key="review_subjects_earlier"/>
+                app:title="Earlier-Level Items" app:singleLineTitle="false" app:key="review_subjects_earlier"/>
             <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Radicals" app:singleLineTitle="false" app:key="review_subjects_radical"/>
             <com.blazing_durtles.wk.components.NumberRangePreference
@@ -1075,7 +1075,7 @@
 
         <PreferenceScreen
             app:key="advanced_self_study_settings"
-            app:title="Self-study advanced settings">
+            app:title="Advanced - Self-Study Settings">
 
             <ListPreference
                 app:key="self_study_order"
@@ -1088,14 +1088,14 @@
 
             <SwitchPreferenceCompat
                 app:key="self_study_order_reversed"
-                app:title="Reverse order"
+                app:title="Reverse Order"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="self_study_order_overdue_first"
-                app:title="Overdue items first"
+                app:title="Overdue Items First"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
@@ -1111,59 +1111,59 @@
 
             <SwitchPreferenceCompat
                 app:key="self_study_shuffle_after_selection"
-                app:title="Shuffle after selecting items"
+                app:title="Shuffle After Selecting Items"
                 app:singleLineTitle="false"
                 app:defaultValue="false"
                 app:summary="Items are selected for the session according to ordering settings, but after that they are shuffled randomly."/>
 
             <SwitchPreferenceCompat
                 app:key="self_study_back_to_back"
-                app:title="Reading/meaning back-to-back"
+                app:title="Reading/Meaning Back-to-Back"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="self_study_reading_first"
-                app:title="Reading before meaning"
+                app:title="Reading Before Meaning"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="self_study_meaning_first"
-                app:title="Meaning before reading"
+                app:title="Meaning Before Reading"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="anki_mode_self_study_meaning"
-                app:title="Anki mode for meanings"
+                app:title="Anki Mode for Meanings"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="anki_mode_self_study_reading"
-                app:title="Anki mode for readings"
+                app:title="Anki Mode for Readings"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="self_study_randomize_inflections"
-                app:title="Randomize inflections in self-study"
+                app:title="Randomize Inflections in Self-Study"
                 app:singleLineTitle="false"
                 app:defaultValue="false"
-                app:summary="Works best with Anki mode. Random inflections will be added to adjectives and verbs. Note that answers and audio will use only dictionary forms."/>
+                app:summary="Works best with Anki mode. Adds random inflections to adjectives and verbs. Answers and audio only use dictionary forms."/>
 
             <com.blazing_durtles.wk.components.InfoPreference
                 app:title="" app:key="self_study_subject_selection"/>
             <com.blazing_durtles.wk.components.NumberRangePreference
-                app:title="Current-level items" app:singleLineTitle="false" app:key="self_study_subjects_current"/>
+                app:title="Current-Level Items" app:singleLineTitle="false" app:key="self_study_subjects_current"/>
             <com.blazing_durtles.wk.components.NumberRangePreference
-                app:title="Earlier-level items" app:singleLineTitle="false" app:key="self_study_subjects_earlier"/>
+                app:title="Earlier-Level Items" app:singleLineTitle="false" app:key="self_study_subjects_earlier"/>
             <com.blazing_durtles.wk.components.NumberRangePreference
                 app:title="Radicals" app:singleLineTitle="false" app:key="self_study_subjects_radical"/>
             <com.blazing_durtles.wk.components.NumberRangePreference
@@ -1177,25 +1177,25 @@
 
         <PreferenceScreen
             app:key="advanced_other_settings"
-            app:title="Other advanced settings">
+            app:title="Advanced - Other Settings">
 
             <EditTextPreference
                 app:key="overdue_threshold"
-                app:title="Overdue threshold percentage"
+                app:title="Overdue Threshold Percentage"
                 app:singleLineTitle="false"
                 app:defaultValue="20"
                 app:useSimpleSummaryProvider="true"/>
 
             <SwitchPreferenceCompat
                 app:key="kanji_mode_onkun"
-                app:title="Quiz on/kun'yomi separately"
+                app:title="Quiz On/Kun'yomi Separately"
                 app:singleLineTitle="false"
                 app:useSimpleSummaryProvider="true"
                 app:defaultValue="false"/>
 
             <ListPreference
                 app:key="undo_button"
-                app:title="Special button 1 behavior (top right)"
+                app:title="Special Button 1 Behavior (Top Right)"
                 app:singleLineTitle="false"
                 app:entries="@array/specialButtonBehaviors"
                 app:entryValues="@array/specialBehaviorValues"
@@ -1204,7 +1204,7 @@
 
             <ListPreference
                 app:key="ignore_button"
-                app:title="Special button 2 behavior (bottom left)"
+                app:title="Special Button 2 Behavior (Bottom Left)"
                 app:singleLineTitle="false"
                 app:entries="@array/specialButtonBehaviors"
                 app:entryValues="@array/specialBehaviorValues"
@@ -1213,7 +1213,7 @@
 
             <ListPreference
                 app:key="special_button_3"
-                app:title="Special button 3 behavior (top left)"
+                app:title="Special Button 3 Behavior (Top Left)"
                 app:singleLineTitle="false"
                 app:entries="@array/specialButtonBehaviors"
                 app:entryValues="@array/specialBehaviorValues"
@@ -1222,7 +1222,7 @@
 
             <ListPreference
                 app:key="dont_know_button"
-                app:title="Don't know button behavior"
+                app:title="Don't Know Button Behavior"
                 app:singleLineTitle="false"
                 app:entries="@array/dontKnowBehaviors"
                 app:entryValues="@array/dontKnowBehaviorValues"
@@ -1231,21 +1231,21 @@
 
             <SwitchPreferenceCompat
                 app:key="shake_on_matching_kanji"
-                app:title="Soft-reject on single-kanji vocabulary"
+                app:title="Soft-Reject on Single-Kanji Vocabulary"
                 app:singleLineTitle="false"
                 app:summary="If an incorrect reading is an alternative reading for the kanji, do a shake-and-retry instead of failing"
                 app:defaultValue="true"/>
 
             <SwitchPreferenceCompat
                 app:key="full_session_log"
-                app:title="Show full session log"
+                app:title="Show Full Session Log"
                 app:singleLineTitle="false"
-                app:summary="This may reveal inappropriate hints and answers"
+                app:summary="This may reveal hints or answers that could spoil the session."
                 app:defaultValue="false"/>
 
             <SwitchPreferenceCompat
                 app:key="indicate_kanji_reading_type"
-                app:title="Indicate type of reading for kanji quiz"
+                app:title="Indicate Type of Reading for Kanji Quiz"
                 app:singleLineTitle="false"
                 app:summary="For a kanji reading question, indicate if the question requires an on'yomi or kun'yomi answer"
                 app:defaultValue="false"/>
@@ -1254,40 +1254,40 @@
 
     </PreferenceCategory>
 
-    <PreferenceCategory app:key="about" app:title="Other actions">
+    <PreferenceCategory app:key="about" app:title="Other Actions">
 
         <Preference
-            app:title="About this app"
+            app:title="About This App"
             app:key="about_this_app"
             app:summary=""/>
 
         <Preference
-            app:title="Support and feedback"
+            app:title="Support and Feedback"
             app:key="support_and_feedback"
             app:summary=""/>
 
         <Preference
-            app:title="Data import / export"
+            app:title="Data Import / Export"
             app:key="data_import_export"/>
 
         <Preference
-            app:title="Reset UI confirmations and tutorials"
+            app:title="Reset UI Confirmations and Tutorials"
             app:key="reset_tutorials"/>
 
         <Preference
-            app:title="Reset database"
+            app:title="Reset Database"
             app:key="reset_database"
-            app:summary="Clear all data in the app"/>
+            app:summary="Deletes all app data - Settings will be retained"/>
 
         <Preference
             android:key="backup_settings"
-            android:title="Backup your settings"
-            android:summary="Backup your settings to a file" />
+            android:title="Backup Your Settings"
+            android:summary="Saves your current settings to a backup file" />
 
         <Preference
             android:key="restore_settings"
-            android:title="Restore your settings"
-            android:summary="Restore from a backup of your settings file" />
+            android:title="Restore Your Settings"
+            android:summary="Restores your previous settings from a backup file" />
 
     </PreferenceCategory>
 

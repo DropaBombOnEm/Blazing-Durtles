@@ -67,7 +67,7 @@ public final class LiveBurnedItemsSubjectTableView extends LiveSubjectTableView 
     private void init() {
         safe(() -> {
             final TextView textView = (TextView) ((ViewGroup) getChildAt(0)).getChildAt(0);
-            textView.setText("Burned items in the last 30 days");
+            textView.setText("Burned Items in the Last 30 Days");
             textView.setTextSize(GlobalSettings.Font.getFontSizeLiveSubjectTable());
         });
     }

@@ -220,7 +220,7 @@ public final class BrowseOverviewFragment extends AbstractFragment {
             if (selection instanceof String) {
                 final String name = (String) selection;
                 new AlertDialog.Builder(v.getContext())
-                        .setTitle("Delete preset?")
+                        .setTitle("Delete Preset?")
                         .setMessage(String.format(Locale.ROOT, "Are you sure you want to delete the preset named '%s'?", name))
                         .setIcon(R.drawable.ic_baseline_warning_24px)
                         .setNegativeButton("No", (dialog, which) -> {})
@@ -251,7 +251,7 @@ public final class BrowseOverviewFragment extends AbstractFragment {
 
     @Override
     public String getToolbarTitle() {
-        return "Browse / search";
+        return "Browse / Search";
     }
 
     @Override

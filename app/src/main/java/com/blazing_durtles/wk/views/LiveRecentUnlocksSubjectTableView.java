@@ -67,7 +67,7 @@ public final class LiveRecentUnlocksSubjectTableView extends LiveSubjectTableVie
     private void init() {
         safe(() -> {
             final TextView textView = (TextView) ((ViewGroup) getChildAt(0)).getChildAt(0);
-            textView.setText("Recent unlocks in the last 30 days");
+            textView.setText("Recent Unlocks in the Last 30 Days");
             textView.setTextSize(GlobalSettings.Font.getFontSizeLiveSubjectTable());
         });
     }

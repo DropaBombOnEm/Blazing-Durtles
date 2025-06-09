@@ -116,7 +116,7 @@ public final class SessionLogFragment extends AbstractFragment {
 
     @Override
     public String getToolbarTitle() {
-        return "Session log";
+        return "Session Log";
     }
 
     @Override

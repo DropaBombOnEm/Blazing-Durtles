@@ -64,7 +64,7 @@ public final class LiveCriticalConditionSubjectTableView extends LiveSubjectTabl
     private void init() {
         safe(() -> {
             final TextView textView = (TextView) ((ViewGroup) getChildAt(0)).getChildAt(0);
-            textView.setText("Critical condition items");
+            textView.setText("Critical Condition Items");
             textView.setTextSize(GlobalSettings.Font.getFontSizeLiveSubjectTable());
         });
     }

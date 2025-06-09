@@ -144,72 +144,65 @@ public final class Constants {
     /**
      * Document to show when the user has not yet provided an API key.
      */
-    public static final String NO_API_KEY_HELP_DOCUMENT = "<h3>Welcome to " + Identification.APP_NAME+ " " + BuildConfig.VERSION_NAME + "!</h3><br/> "
-            + Identification.APP_NAME + " is an app for <a href=\"https://www.wanikani.com/\">WaniKani</a>, the kanji learning"
-            + " service created by <a href=\"https://www.tofugu.com/\">Tofugu</a>.<br/><br/>"
-            + " To be able to use this app, you must have an active WaniKani account and a valid API token."
-            + " You haven't yet provided a token yet, or it's expired, so please provide one now to continue. <br/><br/> "
-            + " The only personal data this app stires is your API key, which is used solely for accessing WaniKani’s service. A full privacy policy is available <a href=\"https://jhcooke.com/sd\">here</a>.<br/><br/> "
-            + " If you've not got an account, visit <a href=\"https://www.wanikani.com/\">WaniKani</a> to make one.<br/><br/>"
-            + " To create a token, go to your <a href=\"https://www.wanikani.com/settings/personal_access_tokens\">settings page</a>."
-            + " Click 'Generate a new token' and when prompted make sure to give the token at least these permissions:<br/><br/>"
-            + " - <tt>assignments:start</tt><br/>"
-            + " - <tt>reviews:create</tt><br/>"
-            + " - <tt>study_materials:create</tt><br/>"
-            + " - <tt>study_materials:update</tt><br/><br/>"
-            + " Then, copy the token and paste it into the input field above.";
+    public static final String NO_API_KEY_HELP_DOCUMENT =
+    "<h3>Welcome to <b>" + Identification.APP_NAME + "</b> " + BuildConfig.VERSION_NAME + "!</h3><br/> "
+    + "<b>" + Identification.APP_NAME + "</b> is an app for <b><a href=\"https://www.wanikani.com/\">WaniKani</a></b>, the kanji-learning"
+    + " service created by <b><a href=\"https://www.tofugu.com/\">Tofugu</a></b>.<br/><br/>"
+    + " To use this app, you must have an active <b>WaniKani</b> account and a valid <b>API Token</b>."
+    + " You haven't provided your <b>API Token</b> yet (or it has expired). Please enter a valid <b>API Token</b> to continue.<br/><br/> "
+    + " The only personal data this app stores is your <b>API Token</b>, which is used solely for accessing <b>WaniKani</b>’s service. A full privacy policy is available <b><a href=\"https://jhcooke.com/sd\">here</a></b>.<br/><br/> "
+    + " If you don't have an account, visit <b><a href=\"https://www.wanikani.com/\">WaniKani</a></b> to create one.<br/><br/>"
+    + " To create an <b>API Token</b>, go to your <b><a href=\"https://www.wanikani.com/settings/personal_access_tokens\">settings page</a></b>."
+    + " Click '<b>Generate a new token</b>' and, when prompted, make sure to give the <b>API Token</b> at least the first four of the following permissions (the fifth/final one is optional).<br/><br/>"
+    + "<ul>"
+    + "<li>assignments:start</li>"
+    + "<li>reviews:create</li>"
+    + "<li>study_materials:create</li>"
+    + "<li>study_materials:update</li>"
+    + "<li>user:update</li>"
+    + "</ul>"
+    + " Then, copy the <b>API Token</b> and paste it into the input field above." 
+    + "<br><br> <b>Notice:</b> <b>Token</b>, <b>Personal Access Token</b>, and <b>PAT</b> all refer to <b>API Token</b>.";
 
     /**
      * Document to show on the about screen.
      */
-    public static final String ABOUT_DOCUMENT = "<h3>Welcome to " + Identification.APP_NAME + " " + BuildConfig.VERSION_NAME + "!</h3><br/> "
-            + Identification.APP_NAME + " is an app for <a href=\"https://www.wanikani.com/\">WaniKani</a>, the kanji learning"
-            + " service created by <a href=\"https://www.tofugu.com/\">Tofugu</a>.<br/><br/>"
-            + " Are you new to WaniKani? Check out their <a href=\"https://knowledge.wanikani.com/\">knowledge base</a>"
+    public static final String ABOUT_DOCUMENT = "<h3>Welcome to <b>" + Identification.APP_NAME + "</b> " + BuildConfig.VERSION_NAME + "!</h3><br/> "
+            + "<b>" + Identification.APP_NAME + "</b> is an app for <b><a href=\"https://www.wanikani.com/\"><b>WaniKani</b></a></b>, the kanji-learning"
+            + " service created by <b><a href=\"https://www.tofugu.com/\"><b>Tofugu</b></a></b>.<br/><br/>"
+            + "New to <b><a href=\"https://www.wanikani.com/\"><b>WaniKani</b></a></b>? Check out their <a href=\"https://knowledge.wanikani.com/\"><b>knowledge base</b></a>"
             + " for more information.<br/><br/> "
-            + Identification.APP_NAME + " was re-coded by " + Identification.AUTHOR_NAME + " (known as Joeni) &lt;<a href=\"mailto:" + Identification.AUTHOR_EMAIL
-            + "\">" + Identification.AUTHOR_EMAIL + "</a>&gt; based on the original work of Ernst Jan Plugge who developed the original code. <br/><br/>"
-            + "This app will always be free and open source, but if you'd like to support the development, you can do so by <a href='https://ko-fi.com/jerrycooke' target='_blank'>donating</a>. <br/><br/>"
-            + "It has been independently developed, and is not supported by, affiliated with, or endorsed by Tofugu.<br/><br/>"
-            + Identification.APP_NAME + " has been independently developed, and is not supported by, affiliated with, or endorsed by Tofugu. <br/><br/>"
-            + "Tis app uses these Open Source components:<ul>"
-            + " <li>&nbsp;<a href=\"https://github.com/FasterXML/jackson\">The Jackson Project</a>"
-            + " <li>&nbsp;<a href=\"https://airbnb.io/lottie/\">Lottie</a>"
-            + " <li>&nbsp;<a href=\"https://jsoup.org/\">JSoup</a>"
-            + " <li>&nbsp;<a href=\"https://square.github.io/okhttp/\">OkHttp</a>"
-            + " <li>&nbsp;<a href=\"https://github.com/Madrapps/Pikolo\">Pikolo color picker</a>"
-            + " <li>&nbsp;<a href=\"https://github.com/KanjiVG/kanjivg\">KanjiVG</a>"
+            + "<b>" + Identification.APP_NAME + "</b> was re-coded by <b>DropaBombOnEm</b>, based on the original works of <b>Jerry Cooke</b> (<b>Smouldering Durtles</b>) & <b>Ernst Jan Plugge</b> (<b>Flaming Durtles</b>), who developed the original code on which this app is based.<br/><br/>"
+            + "This app will always be free and open source.<br/><br/>"
+            + "It has been independently developed and is not supported by, affiliated with, or endorsed by <b><a href=\"https://www.tofugu.com/\"><b>Tofugu</b></a></b>.<br/><br/>"
+            + "This app uses the following open-source components:<ul>"
+            + " <li>&nbsp;<a href=\"https://github.com/FasterXML/jackson\"><b>The Jackson Project</b></a>"
+            + " <li>&nbsp;<a href=\"https://airbnb.io/lottie/\"><b>Lottie</b></a>"
+            + " <li>&nbsp;<a href=\"https://jsoup.org/\"><b>JSoup</b></a>"
+            + " <li>&nbsp;<a href=\"https://square.github.io/okhttp/\"><b>OkHttp</b></a>"
+            + " <li>&nbsp;<a href=\"https://github.com/Madrapps/Pikolo\"><b>Pikolo color picker</b></a>"
+            + " <li>&nbsp;<a href=\"https://github.com/KanjiVG/kanjivg\"><b>KanjiVG</b></a>"
             + "</ul><br/>"
-            + " It was also heavily influenced by:<ul>"
-            + " <li>&nbsp;<a href=\"https://community.wanikani.com/t/ios-tsurukame-native-app-with-offline-lessons-and-reviews/30635\">Tsurukame</a>"
-            + " <li>&nbsp;<a href=\"https://community.wanikani.com/c/wanikani/api-and-third-party-apps\">The WaniKani Developer Community</a>"
+            + "It was also heavily influenced by:<ul>"
+            + " <li>&nbsp;<b><a href=\"https://community.wanikani.com/t/ios-tsurukame-native-app-with-offline-lessons-and-reviews/30635\"><b>Tsurukame</b></a></b>"
+            + " <li>&nbsp;<a href=\"https://community.wanikani.com/c/wanikani/api-and-third-party-apps\"><b>The WaniKani Developer Community</b></a>"
             + "</ul><br/>"
             + "The following freely available fonts are included in unmodified form:<ul>"
-            + " <li>&nbsp;Sawarabi Mincho and Gothic, (C) mshio at the <a href=\"https://sawarabi-fonts.osdn.jp/en/\">sawarabi-fonts project on OSDN</a>,"
-            + " covered by the <a href=\"https://creativecommons.org/licenses/by/3.0/\">CC Attribution V3.0</a> license.<br/>"
-            + " <li>&nbsp;M+ P Type-1, (C) the <a href=\"https://mplus-fonts.osdn.jp/about-en.html\">M+ fonts project on OSDN</a>.<br/>"
-            + " <li>&nbsp;<a href=\"https://fonts.google.com/specimen/Kosugi\">Kosugi</a>, created by MOTOYA.<br/>"
-            + " <li>&nbsp;<a href=\"https://fonts.google.com/specimen/Kosugi+Maru\">Kosugi Maru</a>, created by MOTOYA.<br/>"
-            + " <li>&nbsp;<a href=\"http://rooms.webcrow.jp/font/index.html\">Otsutome</a>.<br/>"
-            + " <li>&nbsp;<a href=\"http://pm85122.onamae.jp/851Gkktt.html\">851 Gochikakutto</a>."
+            + " <li>&nbsp;Sawarabi Mincho and Gothic, (C) mshio at the <a href=\"https://sawarabi-fonts.osdn.jp/en/\"><b>sawarabi-fonts project on OSDN</b></a>, covered by the <a href=\"https://creativecommons.org/licenses/by/3.0/\"><b>CC Attribution V3.0</b></a> license.<br/>"
+            + " <li>&nbsp;M+ P Type-1, (C) the <a href=\"https://mplus-fonts.osdn.jp/about-en.html\"><b>M+ fonts project on OSDN</b></a>.<br/>"
+            + " <li>&nbsp;<a href=\"https://fonts.google.com/specimen/Kosugi\"><b>Kosugi</b></a>, created by MOTOYA.<br/>"
+            + " <li>&nbsp;<a href=\"https://fonts.google.com/specimen/Kosugi+Maru\"><b>Kosugi Maru</b></a>, created by MOTOYA.<br/>"
+            + " <li>&nbsp;<a href=\"http://rooms.webcrow.jp/font/index.html\"><b>Otsutome</b></a>.<br/>"
+            + " <li>&nbsp;<a href=\"http://pm85122.onamae.jp/851Gkktt.html\"><b>851 Gochikakutto</b></a>."
             + "</ul>";
 
     /**
      * Document to show on the support/feedback screen.
      */
     public static final String SUPPORT_DOCUMENT = "<h3>Welcome to " + Identification.APP_NAME + " " + BuildConfig.VERSION_NAME + "!</h3><br/> "
-            + " If you are having problems with this app, the best way to get support is to post to the"
-            + " <a href=\"" + Identification.SUPPORT_URL + "\">support thread on the forums</a>.<br/><br/>"
-            + " On the forums I can most effectively help you resolve your problems, and you can get in touch with other"
-            + " users as well.<br/><br/>"
-            + " Alternatively, you can send email to"
-            + " <a href=\"mailto:" + Identification.AUTHOR_EMAIL + "\">" + Identification.AUTHOR_EMAIL + "</a>.<br/><br/>"
+            + " If you are having problems with this app, the best way to get support is to visit <a href=\"" + Identification.SUPPORT_URL + "\">the Github</a>.<br/><br/>"
             + " If you are having problems with the WaniKani service itself, check out their"
-            + " <a href=\"https://knowledge.wanikani.com/\">knowledge base</a>, you will find answers to a lot of questions there.<br/><br/>"
-            + " If you want to leave a review, please feel free to do so"
-            + " <a href=\"" + Identification.STORE_URL + "\">on the Play Store</a>. I appreciate all honest feedback, regardless of the score"
-            + " you want to give, but keep in mind that a store review is not an effective way to get app issues resolved."
-            + " To have your issues addressed, please use the forums or email instead (or in addition to the review).";
+            + " <a href=\"https://knowledge.wanikani.com/\">knowledge base</a>, you will find answers to a lot of questions there.<br/><br/>";
 
     /**
      * The 'here be dragons' warning before allowing the user to change advanced settings.
@@ -333,7 +326,7 @@ public final class Constants {
     /**
      * Document to show on the digraph help screen, part 1.
      */
-    public static final String DIGRAPH_HELP_DOCUMENT_1 = "<h3>Digraph information</h3><br/> "
+    public static final String DIGRAPH_HELP_DOCUMENT_1 = "<h3>Digraph Information</h3><br/> "
             + "While most kana (hiragana or katakana) stand on their own, it's possible for two kana to combine"
             + " into a single unit called a 'digraph'. When this happens, one of the kana is written small."
             + " The digraph represents a single sound that is distinct from the two sounds represented by the"

@@ -49,7 +49,7 @@
                 android:id="@+id/apiKey"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:hint="Your V2 API token"
+                android:hint="Enter Your V2 API Token Here"
                 android:importantForAutofill="no"
                 android:inputType="textNoSuggestions"
                 android:selectAllOnFocus="true"

@@ -123,7 +123,7 @@ public final class KeyboardHelpActivity extends AbstractActivity {
             GlobalSettings.Keyboard.setEnableAutoCorrectReading(false);
             GlobalSettings.Keyboard.setEnableNoLearning(false);
             new AlertDialog.Builder(this)
-                    .setTitle("Keyboard settings updated")
+                    .setTitle("Keyboard Settings Updated")
                     .setMessage("Your settings have been updated.")
                     .setPositiveButton("OK", (dialog, which) -> {}).create().show();
         });
@@ -140,7 +140,7 @@ public final class KeyboardHelpActivity extends AbstractActivity {
             GlobalSettings.Keyboard.setEnableAutoCorrectReading(false);
             GlobalSettings.Keyboard.setEnableNoLearning(true);
             new AlertDialog.Builder(this)
-                    .setTitle("Keyboard settings updated")
+                    .setTitle("Keyboard Settings Updated")
                     .setMessage("Your settings have been updated.")
                     .setPositiveButton("OK", (dialog, which) -> {}).create().show();
         });
@@ -154,7 +154,7 @@ public final class KeyboardHelpActivity extends AbstractActivity {
             GlobalSettings.Keyboard.setForceVisiblePasswordMeaning(false);
             GlobalSettings.Keyboard.setForceVisiblePasswordReading(false);
             new AlertDialog.Builder(this)
-                    .setTitle("Keyboard settings updated")
+                    .setTitle("Keyboard Settings Updated")
                     .setMessage("Your settings have been updated.")
                     .setPositiveButton("OK", (dialog, which) -> {}).create().show();
         });
@@ -167,7 +167,7 @@ public final class KeyboardHelpActivity extends AbstractActivity {
         safe(() -> {
             GlobalSettings.Keyboard.setForceAsciiMeaning(false);
             new AlertDialog.Builder(this)
-                    .setTitle("Keyboard settings updated")
+                    .setTitle("Keyboard Settings Updated")
                     .setMessage("Your settings have been updated.")
                     .setPositiveButton("OK", (dialog, which) -> {}).create().show();
         });

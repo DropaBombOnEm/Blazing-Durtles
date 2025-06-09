@@ -148,7 +148,7 @@ public final class SubjectCardBinder {
             progress.setVisibility(true);
         }
         else {
-            progress.setText(stageName + " - " + subject.getShortNextReviewWaitTime());
+            progress.setText(titleCase(stageName) + " - " + titleCase(subject.getShortNextReviewWaitTime()));
             progress.setVisibility(true);
         }
     }
@@ -238,5 +238,22 @@ public final class SubjectCardBinder {
         else {
             bindCompact(view, subject);
         }
+    }
+
+    /**
+     * Title-case a string (capitalize first letter of each word).
+     */
+    private static String titleCase(String input) {
+        if (input == null || input.isEmpty()) return input;
+        String[] words = input.split(" ");
+        StringBuilder sb = new StringBuilder();
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                sb.append(Character.toUpperCase(word.charAt(0)));
+                if (word.length() > 1) sb.append(word.substring(1).toLowerCase());
+                sb.append(" ");
+            }
+        }
+        return sb.toString().trim();
     }
 }

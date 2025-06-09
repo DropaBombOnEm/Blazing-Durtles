@@ -1559,8 +1559,8 @@ public final class Subject implements PronunciationAudioOwner {
      */
     public CharSequence getInfoTitle(final String prefix, final String suffix) {
         final String charactersHtml = getCharactersHtml();
-        final String html = String.format(Locale.ROOT, "%s%s (level %d %s)%s",
-                prefix, charactersHtml, entity.level, getType().getInfoTitleLabel(), suffix);
+        final String html = String.format(Locale.ROOT, "%s%s - Level %d %s%s",
+                prefix, charactersHtml, entity.level, com.blazing_durtles.wk.util.TextUtil.toTitleCase(getType().getInfoTitleLabel()), suffix);
         return renderHtml(html);
     }
 
@@ -1647,7 +1647,7 @@ public final class Subject implements PronunciationAudioOwner {
         if (s == null) {
             s = "";
         }
-        s = "<b>Meaning mnemonic</b>: " + NL_PATTERN.matcher(s).replaceAll("<br>");
+        s = "<b>Meaning Mnemonic</b>: " + NL_PATTERN.matcher(s).replaceAll("<br>");
         return renderHtml(s);
     }
 
@@ -1743,7 +1743,7 @@ public final class Subject implements PronunciationAudioOwner {
         if (s == null) {
             s = "";
         }
-        s = "<b>Reading mnemonic</b>: " + NL_PATTERN.matcher(s).replaceAll("<br>");
+        s = "<b>Reading Mnemonic</b>: " + NL_PATTERN.matcher(s).replaceAll("<br>");
         return renderHtml(s);
     }
 
@@ -1920,5 +1920,22 @@ public final class Subject implements PronunciationAudioOwner {
         final long now = System.currentTimeMillis();
         final long next = getAvailableAt();
         return getShortWaitTimeAsInformalString(next - now);
+    }
+
+    /**
+     * Capitalize each word in a string (title case).
+     */
+    private static String capitalizeWords(String input) {
+        if (input == null || input.isEmpty()) return input;
+        String[] words = input.split(" ");
+        StringBuilder sb = new StringBuilder();
+        for (String word : words) {
+            if (!word.isEmpty()) {
+                sb.append(Character.toUpperCase(word.charAt(0)));
+                if (word.length() > 1) sb.append(word.substring(1).toLowerCase());
+                sb.append(" ");
+            }
+        }
+        return sb.toString().trim();
     }
 }

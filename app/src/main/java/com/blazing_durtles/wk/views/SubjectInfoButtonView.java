@@ -69,7 +69,14 @@ public final class SubjectInfoButtonView extends View {
     private int textColor = 0;
     private @Nullable ColorFilter textColorFilter = null;
     private @Nullable ColorFilter shadowColorFilter = null;
-    private Drawable background = getResources().getDrawable(R.drawable.small_rounded_corners);
+    private Drawable background;
+    {
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
+            background = getResources().getDrawable(R.drawable.small_rounded_corners, getContext().getTheme());
+        } else {
+            background = getResources().getDrawable(R.drawable.small_rounded_corners);
+        }
+    }
     private @Nullable Drawable image = null;
     private int sizeSp = -1;
     private int maxWidth = -1;
@@ -505,6 +512,12 @@ public final class SubjectInfoButtonView extends View {
     }
 
     private int sp2px(final int sp) {
-        return (int) (sp * getResources().getDisplayMetrics().scaledDensity);
+        float scaledDensity;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.R) {
+            scaledDensity = getResources().getDisplayMetrics().density;
+        } else {
+            scaledDensity = getResources().getDisplayMetrics().scaledDensity;
+        }
+        return (int) (sp * scaledDensity);
     }
 }

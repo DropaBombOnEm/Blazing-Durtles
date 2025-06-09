@@ -493,7 +493,13 @@ public final class ObjectSupport {
         }
         final Map<String, Object> result = new HashMap<>();
         for (final String key: bundle.keySet()) {
-            result.put(key, bundle.get(key));
+            Object value;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU) {
+                value = bundle.get(key);
+            } else {
+                value = bundle.getString(key);
+            }
+            result.put(key, value);
         }
         return result;
     }

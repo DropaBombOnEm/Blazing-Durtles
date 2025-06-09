@@ -485,7 +485,7 @@ public final class SubjectInfoView extends LinearLayout implements SubjectChange
             synonym.setTag(false);
 
             final AlertDialog alertDialog = new AlertDialog.Builder(getContext())
-                    .setTitle("Add synonym")
+                    .setTitle("Add Synonym")
                     .setView(synonym)
                     .setNegativeButton("Cancel", (dialog, which) -> {})
                     .setPositiveButton("Save", (dialog, which) -> safe(() -> {
@@ -636,14 +636,14 @@ public final class SubjectInfoView extends LinearLayout implements SubjectChange
         tablePercentageCorrect.setParentVisibility(total > 0);
 
         if (meaningTotal > 0) {
-            tableMeaningCorrect.setTextFormat("%d%%, max streak %d, current streak %s",
+            tableMeaningCorrect.setTextFormat("%d%%, Max Streak %d, Current Streak %s",
                     (100*subject.getMeaningCorrect()) / meaningTotal, subject.getMeaningMaxStreak(),
                     subject.getMeaningCurrentStreak());
         }
         tableMeaningCorrect.setParentVisibility(meaningTotal > 0);
 
         if (readingTotal > 0) {
-            tableReadingCorrect.setTextFormat("%d%%, max streak %d, current streak %s",
+            tableReadingCorrect.setTextFormat("%d%%, Max Streak %d, Current Streak %s",
                     (100*subject.getReadingCorrect()) / readingTotal, subject.getReadingMaxStreak(),
                     subject.getReadingCurrentStreak());
         }
@@ -684,7 +684,7 @@ public final class SubjectInfoView extends LinearLayout implements SubjectChange
         final boolean hasVisuallySimilars = showMeaningRelated && subject.hasVisuallySimilar();
         visuallySimilarsDivider.setVisibility(hasVisuallySimilars);
         visuallySimilarsHeader.setVisibility(hasVisuallySimilars);
-        visuallySimilarsHeader.setText("Visually similar:");
+        visuallySimilarsHeader.setText("Visually Similar:");
         visuallySimilarsTable.setVisibility(hasVisuallySimilars);
         if (!hasVisuallySimilars || !sameSubject) {
             visuallySimilarsTable.removeAllViews();

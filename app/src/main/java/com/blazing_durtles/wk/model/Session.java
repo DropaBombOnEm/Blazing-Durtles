@@ -748,9 +748,6 @@ s     *
                     if (!countedReviewItemIds.contains(itemId)) {
                         com.blazing_durtles.wk.GlobalSettings.DailyReviewCounter.increment();
                         countedReviewItemIds.add(itemId);
-                        LOGGER.info("DailyReviewCounter incremented for itemId=%d", itemId);
-                    } else {
-                        LOGGER.info("DailyReviewCounter NOT incremented (already counted) for itemId=%d", itemId);
                     }
                 }
                 currentQuestion.getItem().setState(com.blazing_durtles.wk.enums.SessionItemState.REPORTED);

@@ -24,7 +24,7 @@
         android:title="About..."
         app:showAsAction="never"/>
     <item android:id="@+id/action_support"
-        android:title="Support/feedback..."
+        android:title="Support / Feedback..."
         app:showAsAction="never"/>
     <item android:id="@+id/action_test"
         android:title="Test"

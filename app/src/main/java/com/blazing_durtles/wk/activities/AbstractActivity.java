@@ -40,6 +40,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.preference.PreferenceManager;
 
 import com.blazing_durtles.wk.Actment;
+import com.blazing_durtles.wk.BuildConfig;
 import com.blazing_durtles.wk.GlobalSettings;
 import com.blazing_durtles.wk.Identification;
 import com.blazing_durtles.wk.R;
@@ -224,6 +225,13 @@ public abstract class AbstractActivity extends AppCompatActivity implements Shar
     @Override
     protected final void onCreate(final @Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // Avoid displaying under the cutout for all activities
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.P) {
+            getWindow().setLayout(android.view.WindowManager.LayoutParams.MATCH_PARENT, android.view.WindowManager.LayoutParams.MATCH_PARENT);
+            android.view.WindowManager.LayoutParams lp = getWindow().getAttributes();
+            lp.layoutInDisplayCutoutMode = android.view.WindowManager.LayoutParams.LAYOUT_IN_DISPLAY_CUTOUT_MODE_NEVER;
+            getWindow().setAttributes(lp);
+        }
         safe(() -> {
             onCreateBase();
             onCreateLocal(savedInstanceState);
@@ -350,7 +358,8 @@ public abstract class AbstractActivity extends AppCompatActivity implements Shar
         final @Nullable MenuItem testItem = menu.findItem(R.id.action_test);
         if (testItem != null) {
             final @Nullable String username = LiveLevelDuration.getInstance().get().getUsername();
-            testItem.setVisible(!isEmpty(username) && username.equals(Identification.AUTHOR_USERNAME));
+            // Only show the Test button in debug builds and for the author
+            testItem.setVisible(BuildConfig.DEBUG && !isEmpty(username) && username.equals(Identification.AUTHOR_USERNAME));
         }
 
         final @Nullable MenuItem muteItem = menu.findItem(R.id.action_mute);
@@ -444,23 +453,23 @@ public abstract class AbstractActivity extends AppCompatActivity implements Shar
                     message += String.format(Locale.ROOT, "\n- %d unquizzed items will not be reported", numNotStarted);
                 }
                 new AlertDialog.Builder(this)
-                        .setTitle("Abandon session?")
+                        .setTitle("Abandon Session?")
                         .setMessage(message)
                         .setIcon(R.drawable.ic_baseline_warning_24px)
                         .setNegativeButton("No", (dialog, which) -> {
                         })
-                        .setNeutralButton("Yes and don't ask again", (dialog, which) -> safe(() -> {
+                        .setNeutralButton("Yes and Don't Ask Again", (dialog, which) -> safe(() -> {
                             session.finish();
-                            Toast.makeText(this, "Session abandoned", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Session Abandoned", Toast.LENGTH_SHORT).show();
                             GlobalSettings.UiConfirmations.setUiConfirmAbandonSession(false);
                         }))
                         .setPositiveButton("Yes", (dialog, which) -> safe(() -> {
                             session.finish();
-                            Toast.makeText(this, "Session abandoned", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Session Abandoned", Toast.LENGTH_SHORT).show();
                         })).create().show();
             } else {
                 session.finish();
-                Toast.makeText(this, "Session abandoned", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Session Abandoned", Toast.LENGTH_SHORT).show();
             }
             return true;
         }
@@ -478,23 +487,23 @@ public abstract class AbstractActivity extends AppCompatActivity implements Shar
                     message += String.format(Locale.ROOT, "\n- %d unquizzed items will be removed from the session", numNotStarted);
                 }
                 new AlertDialog.Builder(this)
-                        .setTitle("Wrap up session?")
+                        .setTitle("Wrap Up Session?")
                         .setMessage(message)
                         .setIcon(R.drawable.ic_baseline_warning_24px)
                         .setNegativeButton("No", (dialog, which) -> {
                         })
-                        .setNeutralButton("Yes and don't ask again", (dialog, which) -> safe(() -> {
+                        .setNeutralButton("Yes and Don't Ask Again", (dialog, which) -> safe(() -> {
                             session.wrapup();
-                            Toast.makeText(this, "Session wrapping up...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Session Wrapping Up...", Toast.LENGTH_SHORT).show();
                             GlobalSettings.UiConfirmations.setUiConfirmWrapupSession(false);
                         }))
                         .setPositiveButton("Yes", (dialog, which) -> safe(() -> {
                             session.wrapup();
-                            Toast.makeText(this, "Session wrapping up...", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(this, "Session Wrapping Up...", Toast.LENGTH_SHORT).show();
                         })).create().show();
             } else {
                 session.wrapup();
-                Toast.makeText(this, "Session wrapping up...", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Session Wrapping Up...", Toast.LENGTH_SHORT).show();
             }
             return true;
         }
@@ -521,14 +530,14 @@ public abstract class AbstractActivity extends AppCompatActivity implements Shar
         }
         if (itemId == R.id.action_flush_tasks) {
             new AlertDialog.Builder(this)
-                    .setTitle("Flush background tasks?")
+                    .setTitle("Flush Background Tasks?")
                     .setMessage(renderHtml(FLUSH_TASKS_WARNING))
                     .setIcon(R.drawable.ic_baseline_warning_24px)
                     .setNegativeButton("No", (dialog, which) -> {
                     })
                     .setPositiveButton("Yes", (dialog, which) -> safe(() -> {
                         JobRunnerService.schedule(FlushTasksJob.class, "");
-                        Toast.makeText(this, "Background tasks flushed!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(this, "Background Tasks Flushed!", Toast.LENGTH_SHORT).show();
                     })).create().show();
             return true;
         }

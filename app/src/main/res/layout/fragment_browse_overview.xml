@@ -64,7 +64,7 @@
             android:id="@+id/presetHeader"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Search presets:"
+            android:text="Search Presets:"
             android:visibility="gone"
             style="@style/WK.TextView.Large"/>
 
@@ -108,7 +108,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="Choose a level to browse:"
+            android:text="Choose a Level to Browse:"
             android:focusable="true"
             android:focusableInTouchMode="true"
             style="@style/WK.TextView.Large">
@@ -130,7 +130,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Keyword search:"
+            android:text="Keyword Search:"
             android:layout_marginTop="8dp"
             style="@style/WK.TextView.Large"/>
 
@@ -168,7 +168,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Advanced search:"
+            android:text="Advanced Search:"
             android:layout_marginTop="8dp"
             style="@style/WK.TextView.Large"/>
 

@@ -230,7 +230,7 @@ public final class SearchResultFragment extends AbstractFragment {
     @Override
     public String getToolbarTitle() {
         if (presetName == null) {
-            return "Search results";
+            return "Search Results";
         }
         return presetName;
     }
@@ -263,7 +263,7 @@ public final class SearchResultFragment extends AbstractFragment {
     @Override
     public void updateViews() {
         updateMenu();
-        numHits.setTextFormat("%s: %d subject(s) found", searchDescription, adapter.getNumSubjects());
+        numHits.setTextFormat("%s: %d Subject(s) Found", searchDescription, adapter.getNumSubjects());
     }
 
     private void savePreset(final String name) {
@@ -286,7 +286,7 @@ public final class SearchResultFragment extends AbstractFragment {
                 subjects.size(), subjects.size() == 1 ? "" : "s", newNumStars, newNumStars == 1 ? "" : "s");
 
         new AlertDialog.Builder(requireContext())
-                .setTitle("Set star ratings?")
+                .setTitle("Set Star Ratings?")
                 .setMessage(message)
                 .setNegativeButton("No", (dialog, which) -> {})
                 .setPositiveButton("Yes", (dialog, which) -> safe(() -> runAsync(getActivity(), () -> {
@@ -335,7 +335,7 @@ public final class SearchResultFragment extends AbstractFragment {
                 editText.setText(presetName);
             }
             final AlertDialog theDialog = new AlertDialog.Builder(requireContext())
-                    .setTitle("Preset name")
+                    .setTitle("Preset Name")
                     .setView(promptView)
                     .setNegativeButton("Cancel", (dialog, which) -> safe(this::hideSoftInput))
                     .setPositiveButton("Save", (dialog, which) -> safe(() -> {

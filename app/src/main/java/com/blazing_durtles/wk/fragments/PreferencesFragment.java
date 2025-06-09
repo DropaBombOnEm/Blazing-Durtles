@@ -107,7 +107,7 @@ public final class PreferencesFragment extends PreferenceFragmentCompat {
                 final boolean enabled = isTrue(newValue);
                 if (enabled && !GlobalSettings.getAdvancedEnabled()) {
                     new AlertDialog.Builder(view.getContext())
-                            .setTitle("Enable advanced settings?")
+                            .setTitle("Enable Advanced Settings?")
                             .setMessage(renderHtml(ENABLE_ADVANCED_WARNING))
                             .setIcon(R.drawable.ic_baseline_warning_24px)
                             .setNegativeButton("No", (dialog, which) -> safe(() -> {
@@ -142,7 +142,7 @@ public final class PreferencesFragment extends PreferenceFragmentCompat {
 
         setOnPreferenceClick("reset_database", preference -> safe(false, () -> {
             new AlertDialog.Builder(preference.getContext())
-                    .setTitle("Reset database?")
+                    .setTitle("Reset Database?")
                     .setMessage(renderHtml(RESET_DATABASE_WARNING))
                     .setIcon(R.drawable.ic_baseline_warning_24px)
                     .setNegativeButton("No", (dialog, which) -> {})
@@ -157,7 +157,7 @@ public final class PreferencesFragment extends PreferenceFragmentCompat {
 
         setOnPreferenceClick("reset_tutorials", preference -> safe(false, () -> {
             new AlertDialog.Builder(preference.getContext())
-                    .setTitle("Reset confirmations and tutorials?")
+                    .setTitle("Reset Confirmations and Tutorials?")
                     .setMessage(renderHtml(RESET_TUTORIALS_WARNING))
                     .setIcon(R.drawable.ic_baseline_warning_24px)
                     .setNegativeButton("No", (dialog, which) -> {})
@@ -170,7 +170,7 @@ public final class PreferencesFragment extends PreferenceFragmentCompat {
 
         setOnPreferenceClick("backup_settings", preference -> {
             new AlertDialog.Builder(preference.getContext())
-                    .setTitle("Backup settings?")
+                    .setTitle("Backup Settings?")
                     .setMessage("Are you sure you want to backup your settings?")
                     .setIcon(R.drawable.ic_baseline_warning_24px)
                     .setNegativeButton("No", (dialog, which) -> {})
@@ -186,7 +186,7 @@ public final class PreferencesFragment extends PreferenceFragmentCompat {
 
         setOnPreferenceClick("restore_settings", preference -> {
             new AlertDialog.Builder(preference.getContext())
-                    .setTitle("Restore settings?")
+                    .setTitle("Restore Settings?")
                     .setMessage("Are you sure you want to restore your settings?")
                     .setIcon(R.drawable.ic_baseline_warning_24px)
                     .setNegativeButton("No", (dialog, which) -> {})

@@ -48,7 +48,7 @@ public enum SubjectType {
 
         @Override
         public String getSimpleInfoTitle(final int level) {
-            return String.format(Locale.ROOT, "Level %d radical", level);
+            return String.format(Locale.ROOT, "Level %d Radical", level);
         }
 
         @Override
@@ -86,7 +86,7 @@ public enum SubjectType {
      */
     WANIKANI_KANJI("kanji",
             false, true, false, 20, false, true, false, false, true,
-            "Kanji", "Kanji", "Kanji", "Used radicals:", "kanji", "kanji", 1) {
+            "Kanji", "Kanji", "Kanji", "Used Radicals:", "kanji", "kanji", 1) {
         @Override
         public int getTextColor() {
             return ActiveTheme.getSubjectTypeTextColors()[1];
@@ -104,7 +104,7 @@ public enum SubjectType {
 
         @Override
         public String getSimpleInfoTitle(final int level) {
-            return String.format(Locale.ROOT, "Level %d kanji", level);
+            return String.format(Locale.ROOT, "Level %d Kanji", level);
         }
 
         @Override
@@ -145,7 +145,7 @@ public enum SubjectType {
      */
     WANIKANI_VOCAB("vocabulary",
             true, false, false,30, false, false, true, false, false,
-            "Vocabulary", "Vocabulary", "Vocab", "Used kanji:", "vocabulary", "vocabulary", 2) {
+            "Vocabulary", "Vocabulary", "Vocab", "Used Kanji:", "vocabulary", "vocabulary", 2) {
         @Override
         public int getTextColor() {
             return ActiveTheme.getSubjectTypeTextColors()[2];
@@ -163,7 +163,7 @@ public enum SubjectType {
 
         @Override
         public String getSimpleInfoTitle(final int level) {
-            return String.format(Locale.ROOT, "Level %d vocabulary", level);
+            return String.format(Locale.ROOT, "Level %d Vocabulary", level);
         }
 
         @Override
@@ -202,7 +202,7 @@ public enum SubjectType {
      */
     WANIKANI_KANA_VOCAB("kana_vocabulary",
             true, false, false,30, false, false, false, true, false,
-            "Kana-only Vocabulary", "Vocabulary", "Kana-only Vocab", "Used kanji:", "vocabulary", "vocabulary", 2) {
+            "Kana-only Vocabulary", "Vocabulary", "Kana-only Vocab", "Used Kanji:", "vocabulary", "vocabulary", 2) {
         @Override
         public int getTextColor() {
             return ActiveTheme.getSubjectTypeTextColors()[3];
@@ -223,7 +223,7 @@ public enum SubjectType {
         }
         @Override
         public String getSimpleInfoTitle(final int level) {
-            return String.format(Locale.ROOT, "Level %d kana-only vocabulary", level);
+            return String.format(Locale.ROOT, "Level %d Kana-Only Vocabulary", level);
         }
 
         @Override
