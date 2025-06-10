@@ -24,7 +24,7 @@
             android:layout_height="wrap_content"
             android:layout_span="2"
             android:gravity="center_horizontal"
-            android:text="Level progression"
+            android:text="Level Progression"
             android:padding="2dp"
             style="@style/WK.TextView.Normal.Bold"/>
     </TableRow>

@@ -96,7 +96,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:layout_weight="1"
-            android:text="WaniKani is not accepting your API token. Did you give your API token the correct permissions?"/>
+            android:text="WaniKani is not accepting your API Token. Did you give your API Token the correct permissions?"/>
 
         <Button
             android:id="@+id/retryApiErrorButton2"

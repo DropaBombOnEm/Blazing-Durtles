@@ -84,7 +84,7 @@
                 android:id="@+id/failCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Failed to resurrect: 0"
+                android:text="Failed to Resurrect: 0"
                 android:textIsSelectable="true"
                 style="@style/WK.TextView.Normal"/>
 
@@ -118,7 +118,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Subjects to resurrect:"
+                android:text="Subjects to Resurrect:"
                 android:textIsSelectable="true"
                 style="@style/WK.TextView.Large.Bold"/>
 
