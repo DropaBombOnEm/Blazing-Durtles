@@ -444,16 +444,16 @@ public abstract class AbstractActivity extends AppCompatActivity implements Shar
                 final long numNotStarted = numActive - numStarted;
                 String message = "Are you sure you want to abandon this session? If you do:";
                 if (numPending > 0) {
-                    message += String.format(Locale.ROOT, "\n- %d finished items will not be reported", numPending);
+                    message += String.format(Locale.ROOT, "\n- %d Finished Items Will Not Be Reported", numPending);
                 }
                 if (numReported > 0) {
-                    message += String.format(Locale.ROOT, "\n- %d already finished items will still be reported", numReported);
+                    message += String.format(Locale.ROOT, "\n- %d Already Finished Items Will Still Be Reported", numReported);
                 }
                 if (numStarted > 0) {
-                    message += String.format(Locale.ROOT, "\n- %d partially quizzed items will not be reported", numStarted);
+                    message += String.format(Locale.ROOT, "\n- %d Partially Quizzed Items Will Not Be Reported", numStarted);
                 }
                 if (numNotStarted > 0) {
-                    message += String.format(Locale.ROOT, "\n- %d unquizzed items will not be reported", numNotStarted);
+                    message += String.format(Locale.ROOT, "\n- %d Unquizzed Items Will Not Be Reported", numNotStarted);
                 }
                 new AlertDialog.Builder(this)
                         .setTitle("Abandon Session?")
@@ -484,10 +484,10 @@ public abstract class AbstractActivity extends AppCompatActivity implements Shar
                 final long numNotStarted = numActive - numStarted;
                 String message = "Are you sure you want to wrap up this session? If you do:";
                 if (numStarted > 0) {
-                    message += String.format(Locale.ROOT, "\n- %d partially quizzed items will remain in the session", numStarted);
+                    message += String.format(Locale.ROOT, "\n- %d Partially Quizzed Items Will Remain in the Session", numStarted);
                 }
                 if (numNotStarted > 0) {
-                    message += String.format(Locale.ROOT, "\n- %d unquizzed items will be removed from the session", numNotStarted);
+                    message += String.format(Locale.ROOT, "\n- %d Unquizzed Items Will Be Removed from the Session", numNotStarted);
                 }
                 new AlertDialog.Builder(this)
                         .setTitle("Wrap Up Session?")
