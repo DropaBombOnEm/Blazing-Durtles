@@ -226,7 +226,7 @@ public final class BrowseOverviewFragment extends AbstractFragment {
                         .setNegativeButton("No", (dialog, which) -> {})
                         .setPositiveButton("Yes", (dialog, which) -> safe(() -> {
                             runAsync(() -> WkApplication.getDatabase().searchPresetDao().deletePreset(name));
-                            Toast.makeText(v.getContext(), "Preset deleted", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(v.getContext(), "Preset Deleted", Toast.LENGTH_SHORT).show();
                         })).create().show();
             }
         }));

@@ -192,7 +192,7 @@ public final class DownloadAudioActivity extends AbstractActivity {
      */
     private void onDelete() {
         safe(() -> new AlertDialog.Builder(this)
-                .setTitle("Delete all audio?")
+                .setTitle("Delete All Audio?")
                 .setMessage(renderHtml(DELETE_AUDIO_WARNING))
                 .setIcon(R.drawable.ic_baseline_warning_24px)
                 .setNegativeButton("No", (dialog, which) -> {})

@@ -88,7 +88,7 @@ public final class FontImportActivity extends AbstractActivity {
                         }
                         if (hasFontFile(fileName)) {
                             new AlertDialog.Builder(this)
-                                    .setTitle("Overwrite file?")
+                                    .setTitle("Overwrite File?")
                                     .setMessage(String.format("A file named '%s' already exists. Do you want to overwrite it?", fileName))
                                     .setIcon(R.drawable.ic_baseline_warning_24px)
                                     .setNegativeButton("No", (dialog, which) -> {})
@@ -178,7 +178,7 @@ public final class FontImportActivity extends AbstractActivity {
         }, result -> {
             flushCache(fileName);
             updateFileList();
-            Toast.makeText(this, "File imported", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "File Imported", Toast.LENGTH_LONG).show();
         });
     }
 
@@ -236,14 +236,14 @@ public final class FontImportActivity extends AbstractActivity {
                     textView.setTypeface(typefaceConfiguration.getTypeface());
 
                     new AlertDialog.Builder(this)
-                            .setTitle("Font sample")
+                            .setTitle("Font Sample")
                             .setView(textView)
                             .setCancelable(false)
                             .setPositiveButton("OK", (dialog, which) -> {}).create().show();
                 }
                 catch (final Exception e) {
                     new AlertDialog.Builder(this)
-                            .setTitle("Unable to load font")
+                            .setTitle("Unable to Load Font")
                             .setMessage("There was an error attempting to load this font. You will not be able to use it in quizzes.")
                             .setCancelable(false)
                             .setPositiveButton("OK", (dialog, which) -> {}).create().show();
@@ -261,8 +261,8 @@ public final class FontImportActivity extends AbstractActivity {
         safe(() -> {
             if (row != null && row.getName() != null) {
                 new AlertDialog.Builder(this)
-                        .setTitle("Delete file?")
-                        .setMessage(String.format("Are you sure you want to delete '%s'", row.getName()))
+                        .setTitle("Delete File?")
+                        .setMessage(String.format("Are you sure you want to delete '%s'?", row.getName()))
                         .setIcon(R.drawable.ic_baseline_warning_24px)
                         .setNegativeButton("No", (dialog, which) -> {})
                         .setPositiveButton("Yes", (dialog, which) -> safe(() -> {

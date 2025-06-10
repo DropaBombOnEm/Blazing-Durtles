@@ -275,7 +275,7 @@ public final class SearchResultFragment extends AbstractFragment {
         runAsync(this, () -> {
             WkApplication.getDatabase().searchPresetDao().setPreset(preset.name, preset.type, preset.data);
             return null;
-        }, result -> Toast.makeText(requireContext(), "Preset '" + preset.name + "' saved", Toast.LENGTH_SHORT).show());
+        }, result -> Toast.makeText(requireContext(), "Preset '" + preset.name + "' Saved", Toast.LENGTH_SHORT).show());
     }
 
     @SuppressLint("NewApi")
@@ -293,7 +293,7 @@ public final class SearchResultFragment extends AbstractFragment {
                     final AppDatabase db = WkApplication.getDatabase();
                     subjects.forEach(subject -> db.subjectDao().updateStars(subject.getId(), newNumStars));
                     return null;
-                }, result -> Toast.makeText(requireContext(), "Star ratings updated", Toast.LENGTH_SHORT).show())))
+                }, result -> Toast.makeText(requireContext(), "Star Ratings Updated", Toast.LENGTH_SHORT).show())))
                 .create().show();
     }
 

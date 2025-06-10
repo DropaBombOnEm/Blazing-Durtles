@@ -519,7 +519,7 @@ public final class SummarySessionFragment extends AbstractSessionFragment implem
                     final AppDatabase db = WkApplication.getDatabase();
                     subjects.forEach(subject -> db.subjectDao().updateStars(subject.getId(), newNumStars));
                     return null;
-                }, result -> Toast.makeText(requireContext(), "Star ratings updated", Toast.LENGTH_SHORT).show())))
+                }, result -> Toast.makeText(requireContext(), "Star Ratings Updated", Toast.LENGTH_SHORT).show())))
                 .create().show();
     }
 
@@ -542,7 +542,7 @@ public final class SummarySessionFragment extends AbstractSessionFragment implem
                     final AppDatabase db = WkApplication.getDatabase();
                     subjects.forEach(subject -> db.subjectDao().updateStars(subject.getId(), newNumStars));
                     return null;
-                }, result -> Toast.makeText(requireContext(), "Star ratings updated", Toast.LENGTH_SHORT).show())))
+                }, result -> Toast.makeText(requireContext(), "Star Ratings Updated", Toast.LENGTH_SHORT).show())))
                 .create().show();
     }
 
