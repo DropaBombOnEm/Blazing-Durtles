@@ -1501,6 +1501,7 @@ s     *
         if (subjects.isEmpty()) {
             throw new IllegalArgumentException();
         }
+        countedReviewItemIds.clear(); // Fix: allow daily review counter to increment for new session
         type = REVIEW;
         onkun = GlobalSettings.AdvancedOther.getKanjiModeOnKun();
         delayed = GlobalSettings.Review.getDelayResultUpload();

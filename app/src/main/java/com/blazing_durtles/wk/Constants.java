@@ -150,7 +150,7 @@ public final class Constants {
     + " service created by <b><a href=\"https://www.tofugu.com/\">Tofugu</a></b>.<br/><br/>"
     + " To use this app, you must have an active <b>WaniKani</b> account and a valid <b>API Token</b>."
     + " You haven't provided your <b>API Token</b> yet (or it has expired). Please enter a valid <b>API Token</b> to continue.<br/><br/> "
-    + " The only personal data this app stores is your <b>API Token</b>, which is used solely for accessing <b>WaniKani</b>’s service. A full privacy policy is available <b><a href=\"https://jhcooke.com/sd\">here</a></b>.<br/><br/> "
+    + " The only personal data this app stores is your <b>API Token</b>, which is used solely for accessing <b>WaniKani</b>’s service. Their privacy policy is available <b><a href=\"https://community.wanikani.com/privacy\">here</a></b>.<br/><br/> "
     + " If you don't have an account, visit <b><a href=\"https://www.wanikani.com/\">WaniKani</a></b> to create one.<br/><br/>"
     + " To create an <b>API Token</b>, go to your <b><a href=\"https://www.wanikani.com/settings/personal_access_tokens\">settings page</a></b>."
     + " Click '<b>Generate a new token</b>' and, when prompted, make sure to give the <b>API Token</b> at least the first four of the following permissions (the fifth/final one is optional).<br/><br/>"
@@ -161,6 +161,7 @@ public final class Constants {
     + "<li>study_materials:update</li>"
     + "<li>user:update</li>"
     + "</ul>"
+    + "<br>"
     + " Then, copy the <b>API Token</b> and paste it into the input field above." 
     + "<br><br> <b>Notice:</b> <b>Token</b>, <b>Personal Access Token</b>, and <b>PAT</b> all refer to <b>API Token</b>.";
 
@@ -188,10 +189,10 @@ public final class Constants {
             + " <li>&nbsp;<a href=\"https://community.wanikani.com/c/wanikani/api-and-third-party-apps\"><b>The WaniKani Developer Community</b></a>"
             + "</ul><br/>"
             + "The following freely available fonts are included in unmodified form:<ul>"
-            + " <li>&nbsp;Sawarabi Mincho and Gothic, (C) mshio at the <a href=\"https://sawarabi-fonts.osdn.jp/en/\"><b>sawarabi-fonts project on OSDN</b></a>, covered by the <a href=\"https://creativecommons.org/licenses/by/3.0/\"><b>CC Attribution V3.0</b></a> license.<br/>"
-            + " <li>&nbsp;M+ P Type-1, (C) the <a href=\"https://mplus-fonts.osdn.jp/about-en.html\"><b>M+ fonts project on OSDN</b></a>.<br/>"
-            + " <li>&nbsp;<a href=\"https://fonts.google.com/specimen/Kosugi\"><b>Kosugi</b></a>, created by MOTOYA.<br/>"
-            + " <li>&nbsp;<a href=\"https://fonts.google.com/specimen/Kosugi+Maru\"><b>Kosugi Maru</b></a>, created by MOTOYA.<br/>"
+            + " <li>&nbsp;<b>Sawarabi Mincho</b> and <b>Gothic</b>, (C) <b>mshio</b> at the <a href=\"https://sawarabi-fonts.osdn.jp/en/\"><b>sawarabi-fonts project on OSDN</b></a>, covered by the <a href=\"https://creativecommons.org/licenses/by/3.0/\"><b>CC Attribution V3.0</b></a> license.<br/>"
+            + " <li>&nbsp;<b>M+ P Type-1</b>, (C) the <a href=\"https://mplus-fonts.osdn.jp/about-en.html\"><b>M+ fonts project on OSDN</b></a>.<br/>"
+            + " <li>&nbsp;<a href=\"https://fonts.google.com/specimen/Kosugi\"><b>Kosugi</b></a>, created by <b>MOTOYA</b>.<br/>"
+            + " <li>&nbsp;<a href=\"https://fonts.google.com/specimen/Kosugi+Maru\"><b>Kosugi Maru</b></a>, created by <b>MOTOYA</b>.<br/>"
             + " <li>&nbsp;<a href=\"http://rooms.webcrow.jp/font/index.html\"><b>Otsutome</b></a>.<br/>"
             + " <li>&nbsp;<a href=\"http://pm85122.onamae.jp/851Gkktt.html\"><b>851 Gochikakutto</b></a>."
             + "</ul>";

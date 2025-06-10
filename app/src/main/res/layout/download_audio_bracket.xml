@@ -43,7 +43,7 @@
             android:id="@+id/label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="0/0 available, 0 partially done"
+            android:text="0/0 Available, 0 Partially Done"
             android:layout_gravity="center_vertical"
             style="@style/WK.TextView.Normal"/>
 

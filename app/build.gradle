@@ -7,8 +7,8 @@ android {
         minSdkVersion 31
         //noinspection OldTargetApi
         targetSdkVersion 35
-        versionCode 85
-        versionName '1.2.1.4'
+        versionCode 86
+        versionName '1.2.1.5'
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
 
@@ -72,7 +72,15 @@ android {
         vectorDrawables.generatedDensities = []
     }
 
-
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def appName = "BlazingDurtles"
+            def buildType = variant.buildType.name.capitalize()
+            def versionName = variant.versionName
+            def versionCode = variant.versionCode
+            outputFileName = "${appName}-${buildType}-v${versionName}(${versionCode}).apk"
+        }
+    }
 }
 
 dependencies {

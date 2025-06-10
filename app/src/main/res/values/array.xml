@@ -21,8 +21,8 @@
         <item>Level, Type</item>
         <item>Radicals, Level, Type</item>
         <item>Type, Level</item>
-        <item>Level, then shuffle</item>
-        <item>Type, then shuffle</item>
+        <item>Level, Then Shuffle</item>
+        <item>Type, Then Shuffle</item>
     </string-array>
 
     <string-array name="lessonOrderValues">
@@ -38,19 +38,19 @@
         <item>Shuffle</item>
         <item>Level</item>
         <item>Type</item>
-        <item>SRS stage</item>
+        <item>SRS Stage</item>
         <item>Level, Type</item>
-        <item>Level, SRS stage</item>
+        <item>Level, SRS Stage</item>
         <item>Type, Level</item>
-        <item>Type, SRS stage</item>
-        <item>SRS stage, Type</item>
-        <item>SRS stage, Level</item>
-        <item>Level, Type, SRS stage</item>
-        <item>Level, SRS stage, Type</item>
-        <item>Type, Level, SRS stage</item>
-        <item>Type, SRS stage, Level</item>
-        <item>SRS stage, Type, Level</item>
-        <item>SRS stage, Level, Type</item>
+        <item>Type, SRS Stage</item>
+        <item>SRS Stage, Type</item>
+        <item>SRS Stage, Level</item>
+        <item>Level, Type, SRS Stage</item>
+        <item>Level, SRS Stage, Type</item>
+        <item>Type, Level, SRS Stage</item>
+        <item>Type, SRS Stage, Level</item>
+        <item>SRS Stage, Type, Level</item>
+        <item>SRS Stage, Level, Type</item>
     </string-array>
 
     <string-array name="reviewOrderValues">
@@ -75,8 +75,8 @@
     <string-array name="voicePreferences">
         <item>Random</item>
         <item>Masculine</item>
-        <item>Femminine</item>
-        <item>Alternate between voices</item>
+        <item>Feminine</item>
+        <item>Alternate between Voices</item>
     </string-array>
 
     <string-array name="voicePreferenceValues">
@@ -87,9 +87,9 @@
     </string-array>
 
     <string-array name="networkRules">
-        <item>Always allow sync and downloads</item>
-        <item>Always allow sync, downloads only on unmetered connections (WiFi)</item>
-        <item>Allow sync and downloads only on unmetered connections (WiFi)</item>
+        <item>Always Allow Sync and Downloads</item>
+        <item>Always Allow Sync, Only Download on Unmetered Connections (WiFi)</item>
+        <item>Only Allow Sync and Downloads on Unmetered Connections (WiFi)</item>
     </string-array>
 
     <string-array name="networkRuleValues">
@@ -99,10 +99,10 @@
     </string-array>
 
     <string-array name="subjectInfoDumps">
-        <item>Show nothing</item>
-        <item>Show only answers</item>
-        <item>Hide information not quizzed yet</item>
-        <item>Show all information</item>
+        <item>Show Nothing</item>
+        <item>Show Only Answers</item>
+        <item>Hide Information Not Quizzed Yet</item>
+        <item>Show All Information</item>
     </string-array>
 
     <string-array name="subjectInfoDumpValues">
@@ -115,7 +115,7 @@
     <string-array name="timeLineChartStyles">
         <item>SRS Stage</item>
         <item>Next SRS Stage</item>
-        <item>Item type</item>
+        <item>Item Type</item>
     </string-array>
 
     <string-array name="timeLineChartStyleValues">
@@ -126,8 +126,8 @@
 
     <string-array name="timeLineChartGridStyles">
         <item>Off</item>
-        <item>Scaled for bars</item>
-        <item>Scaled for cumulative review count</item>
+        <item>Scaled for Bars</item>
+        <item>Scaled for Cumulative Review Count</item>
     </string-array>
 
     <string-array name="timeLineChartGridStyleValues">
@@ -138,10 +138,10 @@
 
     <string-array name="specialButtonBehaviors">
         <item>Disable</item>
-        <item>Ignore (undo and mark correct instead)</item>
-        <item>Undo and retry immediately</item>
-        <item>Undo and put back into queue</item>
-        <item>Skip (put back into queue)</item>
+        <item>Ignore (Undo and Mark Correct Instead)</item>
+        <item>Undo and Retry Immediately</item>
+        <item>Undo and Put Back into Queue</item>
+        <item>Skip (Put Back into Queue)</item>
     </string-array>
 
     <string-array name="specialBehaviorValues">
@@ -155,7 +155,7 @@
     <string-array name="dontKnowBehaviors">
         <item>Disable</item>
         <item>Enable</item>
-        <item>Hide if Special button 2 is visible</item>
+        <item>Hide if Special Button 2 Is Visible</item>
     </string-array>
 
     <string-array name="dontKnowBehaviorValues">
@@ -166,10 +166,10 @@
 
     <string-array name="sessionPriorities">
         <item>None</item>
-        <item>Radicals first</item>
-        <item>Level-up items first</item>
-        <item>Current-level radicals and kanji first</item>
-        <item>Current-level items first</item>
+        <item>Radicals First</item>
+        <item>Level-Up Items First</item>
+        <item>Current-Level Radicals and Kanji First</item>
+        <item>Current-Level Items First</item>
     </string-array>
 
     <string-array name="sessionPriorityValues">
@@ -181,10 +181,10 @@
     </string-array>
 
     <string-array name="closeEnoughActions">
-        <item>Accept silently</item>
-        <item>Accept and show a toast</item>
-        <item>Accept, show a toast, disable lightning mode for this question</item>
-        <item>Shake and retry</item>
+        <item>Accept Silently</item>
+        <item>Accept and Show a Toast</item>
+        <item>Accept, Show a Toast and Disable Lightning Mode for This Question</item>
+        <item>Shake and Retry</item>
         <item>Reject</item>
     </string-array>
 
@@ -215,15 +215,15 @@
     </string-array>
 
     <string-array name="timeLineChartSizes">
-        <item>12 hours</item>
-        <item>24 hours</item>
-        <item>36 hours</item>
-        <item>48 hours</item>
-        <item>3 days</item>
-        <item>5 days</item>
-        <item>7 days</item>
-        <item>10 days</item>
-        <item>14 days</item>
+        <item>12 Hours</item>
+        <item>24 Hours</item>
+        <item>36 Hours</item>
+        <item>48 Hours</item>
+        <item>3 Days</item>
+        <item>5 Days</item>
+        <item>7 Days</item>
+        <item>10 Days</item>
+        <item>14 Days</item>
     </string-array>
 
     <string-array name="timeLineChartSizeValues">
@@ -239,8 +239,8 @@
     </string-array>
 
     <string-array name="notificationUpdateFrequencies">
-        <item>Only for new reviews</item>
-        <item>Once per hour</item>
+        <item>Only for New Reviews</item>
+        <item>Once per Hour</item>
         <item>Continuously</item>
     </string-array>
 
@@ -267,21 +267,21 @@
     </string-array>
 
     <string-array name="notificationCategories">
-        <item>Incoming call</item>
+        <item>Incoming Call</item>
         <item>Navigation</item>
-        <item>Incoming message</item>
+        <item>Incoming Message</item>
         <item>Email</item>
-        <item>Calendar event</item>
+        <item>Calendar Event</item>
         <item>Promotion / Ad</item>
         <item>Alarm</item>
         <item>Progress</item>
-        <item>Social media</item>
+        <item>Social Media</item>
         <item>Error</item>
-        <item>Media transport</item>
+        <item>Media Transport</item>
         <item>System</item>
         <item>Service</item>
         <item>Reminder</item>
-        <item>Recommendation (default)</item>
+        <item>Recommendation (Default)</item>
         <item>Status</item>
     </string-array>
 
@@ -306,8 +306,8 @@
 
     <string-array name="subjectCardLayouts">
         <item>Normal</item>
-        <item>Compact with progression info</item>
-        <item>Compact without progression info</item>
+        <item>Compact with Progression Info</item>
+        <item>Compact without Progression Info</item>
     </string-array>
 
     <string-array name="subjectCardLayoutValues">

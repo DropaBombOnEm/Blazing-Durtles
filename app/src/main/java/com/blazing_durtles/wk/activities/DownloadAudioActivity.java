@@ -41,6 +41,7 @@ import com.blazing_durtles.wk.util.AudioUtil;
 import com.blazing_durtles.wk.views.DownloadAudioBracketView;
 
 import java.util.Collection;
+import java.util.Collections;
 
 import javax.annotation.Nullable;
 
@@ -56,6 +57,7 @@ public final class DownloadAudioActivity extends AbstractActivity {
     private final ViewProxy header = new ViewProxy();
     private final ViewProxy activeDownloads = new ViewProxy();
     private final ViewProxy downloadAudioView = new ViewProxy();
+    private boolean isCheckingAudioStatus = false;
 
     /**
      * The constructor.
@@ -83,6 +85,7 @@ public final class DownloadAudioActivity extends AbstractActivity {
         deleteButton.setOnClickListener(v -> onDelete());
 
         LiveAudioDownloadStatus.getInstance().observe(this, t -> safe(() -> {
+            isCheckingAudioStatus = false;
             if (t != null) {
                 updateOverviewDisplay(t);
             }
@@ -137,10 +140,10 @@ public final class DownloadAudioActivity extends AbstractActivity {
     private void updateOverviewDisplay(final Collection<AudioDownloadStatus> overview) {
         final int audioCount = LiveTaskCounts.getInstance().get().getAudioCount();
 
-        header.setText("You can download vocabulary audio here, which will be played during lessons and reviews."
-                + " Once started, downloads will continue in the background.");
+        header.setText("Here, you can download Vocabulary Audio, which will be played during Lessons, Reviews and Self-Study.\n\n" +
+                "Notice: Once started, downloads will continue in the background. You don't need to stay on this page.");
 
-        activeDownloads.setTextFormat("Active downloads: %d", audioCount);
+        activeDownloads.setTextFormat("Active Downloads: %d", audioCount);
 
         cancelButton.setVisibility(audioCount > 0);
         deleteButton.setVisibility(audioCount == 0);
@@ -159,7 +162,7 @@ public final class DownloadAudioActivity extends AbstractActivity {
             }
             final @Nullable DownloadAudioBracketView view = (DownloadAudioBracketView) downloadAudioView.getChildAt(i);
             if (view != null) {
-                view.setBracket(overview, j, j+9);
+                view.setBracket(overview, j, j+9, isCheckingAudioStatus);
             }
             i++;
         }
@@ -193,8 +196,12 @@ public final class DownloadAudioActivity extends AbstractActivity {
                 .setMessage(renderHtml(DELETE_AUDIO_WARNING))
                 .setIcon(R.drawable.ic_baseline_warning_24px)
                 .setNegativeButton("No", (dialog, which) -> {})
-                .setPositiveButton("Yes", (dialog, which) -> safe(
-                        () -> JobRunnerService.schedule(DeleteAllAudioJob.class, ""))).create().show());
+                .setPositiveButton("Yes", (dialog, which) -> safe(() -> {
+                    isCheckingAudioStatus = true;
+                    updateOverviewDisplay(Collections.emptyList());
+                    JobRunnerService.schedule(DeleteAllAudioJob.class, "");
+                    JobRunnerService.schedule(ScanAudioDownloadStatusJob.class, "");
+                })).create().show());
     }
 
     /**

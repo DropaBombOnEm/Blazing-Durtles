@@ -146,7 +146,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:text="Please take a moment to review some hints for your keyboard settings"
+            android:text="Get step-by-step instructions for fixing common keyboard issues in the app, including:\n- Recommended settings for SwiftKey and other keyboards\n- How to prevent unwanted suggestions, auto-correct, and password autofill\n- Solutions if your keyboard gives inappropriate hints\n- How to use non-English keyboards for meanings\n- Tips for automatically switching between Kana (Japanese) and ASCII (English / Latin letter) keyboards during reviews\n\nThis guide helps you adjust both app and keyboard settings to resolve typical Android input problems."
             style="@style/WK.TextView.CustomToast"/>
 
         <Button
@@ -155,7 +155,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/keyboardHelpLabel"
-            android:text="View"
+            android:text="REVIEW KEYBOARD SETTINGS"
             style="@style/WK.Button.Borderless.CustomToast"/>
 
         <Button
@@ -164,7 +164,7 @@
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/keyboardHelpLabel"
-            android:text="Dismiss"
+            android:text="NO THANKS"
             style="@style/WK.Button.Borderless.CustomToast"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

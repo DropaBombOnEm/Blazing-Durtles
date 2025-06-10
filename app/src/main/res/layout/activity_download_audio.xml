@@ -59,7 +59,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="Active downloads: 0"
+                android:text="Active Downloads: 0"
                 style="@style/WK.TextView.Large"/>
 
             <LinearLayout
@@ -74,7 +74,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
                     android:layout_weight="1"
-                    android:text="Move audio files from other locations to the preferred location"
+                    android:text="Moves misplaced audio files to the correct directory"
                     style="@style/WK.TextView.Normal"/>
 
                 <Button
@@ -92,7 +92,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:layout_marginBottom="8dp"
-                    android:text="Abort"
+                    android:text="Cancel"
                     android:clickable="false"
                     android:enabled="false"
                     style="@style/WK.Button.Normal"/>
@@ -115,7 +115,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="Abort"
+                android:text="CANCEL DOWNLOADS"
                 android:visibility="gone"
                 style="@style/WK.Button.Normal"/>
 
@@ -125,7 +125,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-                android:text="Delete all audio"
+                android:text="DELETE DOWNLOADED AUDIO"
                 android:visibility="gone"
                 style="@style/WK.Button.Normal"/>
 

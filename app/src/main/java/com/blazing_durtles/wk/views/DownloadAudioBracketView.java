@@ -18,6 +18,7 @@ package com.blazing_durtles.wk.views;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.LinearLayout;
 
 import com.blazing_durtles.wk.R;
@@ -40,6 +41,7 @@ public final class DownloadAudioBracketView extends LinearLayout {
     private final ViewProxy label = new ViewProxy();
     private final ViewProxy rangeLabel = new ViewProxy();
     private final ViewProxy downloadButton = new ViewProxy();
+    private boolean isDownloading = false; // Track if this bracket is currently downloading
 
     /**
      * The constructor.
@@ -96,8 +98,28 @@ public final class DownloadAudioBracketView extends LinearLayout {
      * @param maxLevel the highest level in the bracket
      */
     public void setBracket(final Iterable<AudioDownloadStatus> overview, final int minLevel, final int maxLevel) {
+        setBracket(overview, minLevel, maxLevel, false);
+    }
+
+    /**
+     * Set the bracket for this view, with an option to check the database.
+     *
+     * @param overview the overall overview
+     * @param minLevel the lowest level in the bracket
+     * @param maxLevel the highest level in the bracket
+     * @param isChecking whether the database is being checked
+     */
+    public void setBracket(final Iterable<AudioDownloadStatus> overview, final int minLevel, final int maxLevel, final boolean isChecking) {
         safe(() -> {
-            final int audioCount = LiveTaskCounts.getInstance().get().getAudioCount();
+            // Show 'Scanning Database...' and 'CHECKING...' only if isChecking is true or overview is empty
+            if (isChecking || !overview.iterator().hasNext()) {
+                label.setText("Scanning Database...");
+                downloadButton.setText("CHECKING...");
+                downloadButton.disableInteraction();
+                downloadButton.setOnClickListener(null);
+                isDownloading = false;
+                return;
+            }
 
             int numTotal = 0;
             int numNoAudio = 0;
@@ -105,6 +127,7 @@ public final class DownloadAudioBracketView extends LinearLayout {
             int numPartialAudio = 0;
             int numFullAudio = 0;
 
+            // Only count audio for this bracket's level range
             for (final AudioDownloadStatus status: overview) {
                 if (status.getLevel() < minLevel || status.getLevel() > maxLevel) {
                     continue;
@@ -116,26 +139,45 @@ public final class DownloadAudioBracketView extends LinearLayout {
                 numFullAudio += status.getNumFullAudio();
             }
 
-            if (audioCount > 0 || numMissingAudio == 0 && numPartialAudio == 0) {
-                downloadButton.disableInteraction();
-            }
-            else {
-                downloadButton.enableInteraction();
-            }
-
-            downloadButton.setOnClickListener(v -> safe(() -> JobRunnerService.schedule(StartAudioDownloadJob.class,
-                    String.format(Locale.ROOT, "%d|%d", minLevel, maxLevel))));
-
             rangeLabel.setTextFormat("Levels %d-%d", minLevel, maxLevel);
 
             if (numMissingAudio == 0 && numPartialAudio == 0) {
-                label.setText("Download finished");
+                label.setText("Download Finished");
             }
             else {
-                label.setTextFormat("%d/%d available, %d partially done",
-                        numPartialAudio + numFullAudio,
+                label.setTextFormat("%d / %d Completed, %d Partially Done",
+                        numFullAudio,
                         numTotal - numNoAudio,
                         numPartialAudio);
+            }
+
+            // Only update button state/text if this bracket's data is valid
+            if (numTotal == 0) {
+                label.setText("Scanning Database...");
+                downloadButton.setText("CHECKING...");
+                downloadButton.disableInteraction();
+                downloadButton.setOnClickListener(null);
+                isDownloading = false;
+            } else if (numMissingAudio == 0 && numPartialAudio == 0) {
+                label.setText("Download Finished");
+                downloadButton.setText("Completed");
+                downloadButton.disableInteraction();
+                downloadButton.setOnClickListener(null);
+                isDownloading = false;
+            } else if (isDownloading) {
+                downloadButton.setText("Downloading...");
+                downloadButton.disableInteraction();
+                downloadButton.setOnClickListener(null);
+            } else {
+                downloadButton.setText("Download");
+                downloadButton.enableInteraction();
+                downloadButton.setOnClickListener(v -> safe(() -> {
+                    isDownloading = true;
+                    downloadButton.setText("Downloading...");
+                    downloadButton.disableInteraction();
+                    JobRunnerService.schedule(StartAudioDownloadJob.class,
+                        String.format(Locale.ROOT, "%d|%d", minLevel, maxLevel));
+                }));
             }
         });
     }

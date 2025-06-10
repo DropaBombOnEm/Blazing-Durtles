@@ -107,4 +107,13 @@ public abstract class TaskDefinitionDao {
      */
     @Delete
     public abstract void deleteTaskDefinition(TaskDefinition taskDefinition);
+
+    /**
+     * Check if a DownloadAudioTask for a given subject is already queued.
+     *
+     * @param subjectId the subject ID
+     * @return true if a DownloadAudioTask for this subject is already queued
+     */
+    @Query("SELECT COUNT(*) FROM task_definition WHERE taskClass = 'com.blazing_durtles.wk.tasks.DownloadAudioTask' AND data = :subjectId")
+    public abstract int countDownloadAudioTasksForSubject(String subjectId);
 }

@@ -79,11 +79,10 @@ public final class SyncProgressView extends AppCompatTextView {
         setVisibility(VISIBLE);
 
         if (LiveApiProgress.getShow()) {
-            setText(String.format(Locale.ROOT, "Sync: %d/%d %s", LiveApiProgress.getNumProcessedEntities(),
-                    LiveApiProgress.getNumEntities(), LiveApiProgress.getEntityName()));
+            setText(String.format(Locale.ROOT, "Sync: %s", LiveApiProgress.getEntityName()));
         }
         else if (LiveApiProgress.getInstance().getSyncReminder()) {
-            setText("You may have pending unlocks - don't forget to sync");
+            setText("You May Have Pending Unlocks - Don't Forget to Sync");
         }
         else {
             setText("");

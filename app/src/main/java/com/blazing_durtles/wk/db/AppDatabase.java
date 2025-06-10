@@ -581,11 +581,15 @@ public abstract class AppDatabase extends RoomDatabase {
      * @param subject the subject to download for
      */
     public final void assertDownloadAudioTask(final PronunciationAudioOwner subject) {
-        final TaskDefinition taskDefinition = new TaskDefinition();
-        taskDefinition.setTaskClass(DownloadAudioTask.class);
-        taskDefinition.setPriority(DownloadAudioTask.PRIORITY);
-        taskDefinition.setData(Long.toString(subject.getId()));
-        taskDefinitionDao().insertTaskDefinition(taskDefinition);
+        String subjectId = Long.toString(subject.getId());
+        // Deduplication: only queue if not already present
+        if (taskDefinitionDao().countDownloadAudioTasksForSubject(subjectId) == 0) {
+            final TaskDefinition taskDefinition = new TaskDefinition();
+            taskDefinition.setTaskClass(DownloadAudioTask.class);
+            taskDefinition.setPriority(DownloadAudioTask.PRIORITY);
+            taskDefinition.setData(subjectId);
+            taskDefinitionDao().insertTaskDefinition(taskDefinition);
+        }
     }
 
     /**
