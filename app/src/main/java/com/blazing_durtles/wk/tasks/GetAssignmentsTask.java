@@ -65,7 +65,7 @@ public final class GetAssignmentsTask extends ApiTask {
         final AppDatabase db = WkApplication.getDatabase();
         final long lastGetAssignmentsSuccess = db.propertiesDao().getLastAssignmentSyncSuccessDate(HOUR);
 
-        LiveApiProgress.reset(true, "assignments");
+        LiveApiProgress.reset(true, "Assignments");
 
         String uri = "/v2/assignments";
         if (lastGetAssignmentsSuccess != 0) {

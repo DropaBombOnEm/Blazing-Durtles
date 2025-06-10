@@ -50,7 +50,7 @@ public final class ScanAudioDownloadStatusTask extends ApiTask {
     protected void runLocal() {
         final AppDatabase db = WkApplication.getDatabase();
 
-        LiveApiProgress.reset(true, "Scanning/Updating Audio Database");
+        LiveApiProgress.reset(true, "Audio Database");
         LiveApiProgress.addEntities(0);
 
         final int maxLevel = db.subjectAggregatesDao().getMaxLevel();

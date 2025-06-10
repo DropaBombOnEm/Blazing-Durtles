@@ -58,7 +58,7 @@ public final class GetLevelProgressionTask extends ApiTask {
         final LevelProgressionDao levelProgressionDao = db.levelProgressionDao();
         final long lastGetLevelProgressionSuccess = db.propertiesDao().getLastLevelProgressionSyncSuccessDate(HOUR);
 
-        LiveApiProgress.reset(true, "Level progression");
+        LiveApiProgress.reset(true, "Level Progression");
 
         String uri = "/v2/level_progressions";
         if (lastGetLevelProgressionSuccess != 0) {

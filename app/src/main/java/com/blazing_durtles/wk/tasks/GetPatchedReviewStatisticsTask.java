@@ -62,7 +62,7 @@ public final class GetPatchedReviewStatisticsTask extends ApiTask {
     protected void runLocal() {
         final AppDatabase db = WkApplication.getDatabase();
 
-        LiveApiProgress.reset(true, "statistics");
+        LiveApiProgress.reset(true, "Statistics");
 
         final String uri = "/v2/review_statistics?subject_ids=" + idList;
         if (!collectionApiCall(uri, ApiReviewStatistic.class, t -> db.subjectSyncDao().insertOrUpdateReviewStatistic(t))) {

@@ -71,7 +71,7 @@ public final class GetPatchedAssignmentsTask extends ApiTask {
     protected void runLocal() {
         final AppDatabase db = WkApplication.getDatabase();
 
-        LiveApiProgress.reset(true, "assignments");
+        LiveApiProgress.reset(true, "Assignments");
 
         final String uri = "/v2/assignments?subject_ids=" + idList;
         if (!collectionApiCall(uri, ApiAssignment.class, t -> db.subjectSyncDao().insertOrUpdateAssignment(t))) {

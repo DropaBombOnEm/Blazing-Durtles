@@ -58,7 +58,7 @@ public final class LoadReferenceDataTask extends ApiTask {
     protected void runLocal() {
         final AppDatabase db = WkApplication.getDatabase();
 
-        LiveApiProgress.reset(true, "reference data");
+        LiveApiProgress.reset(true, "Reference Data");
 
         LiveApiProgress.addEntities(0);
         final List<SubjectReferenceData> referenceData = db.subjectViewsDao().getReferenceData();

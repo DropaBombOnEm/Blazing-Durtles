@@ -61,7 +61,7 @@ public final class GetSrsSystemsTask extends ApiTask {
         final AppDatabase db = WkApplication.getDatabase();
         final SrsSystemDao srsSystemDao = db.srsSystemDao();
 
-        LiveApiProgress.reset(true, "SRS systems");
+        LiveApiProgress.reset(true, "SRS Systems");
 
         srsSystemDao.deleteAll();
         final String uri = "/v2/spaced_repetition_systems";

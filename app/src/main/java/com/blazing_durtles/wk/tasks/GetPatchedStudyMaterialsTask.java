@@ -61,7 +61,7 @@ public final class GetPatchedStudyMaterialsTask extends ApiTask {
     protected void runLocal() {
         final AppDatabase db = WkApplication.getDatabase();
 
-        LiveApiProgress.reset(true, "study materials");
+        LiveApiProgress.reset(true, "Study Materials");
 
         final String uri = "/v2/study_materials?subject_ids=" + idList;
         if (!collectionApiCall(uri, ApiStudyMaterial.class, t -> db.subjectSyncDao().insertOrUpdateStudyMaterial(t, false))) {

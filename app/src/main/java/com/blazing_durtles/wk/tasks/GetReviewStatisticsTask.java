@@ -56,7 +56,7 @@ public final class GetReviewStatisticsTask extends ApiTask {
         final AppDatabase db = WkApplication.getDatabase();
         final long lastGetReviewStatisticsSuccess = db.propertiesDao().getLastReviewStatisticSyncSuccessDate(HOUR);
 
-        LiveApiProgress.reset(true, "statistics");
+        LiveApiProgress.reset(true, "Statistics");
 
         String uri = "/v2/review_statistics";
         if (lastGetReviewStatisticsSuccess != 0) {

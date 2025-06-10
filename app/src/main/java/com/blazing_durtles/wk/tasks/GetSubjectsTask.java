@@ -66,7 +66,7 @@ public final class GetSubjectsTask extends ApiTask {
         final AppDatabase db = WkApplication.getDatabase();
         final long lastGetSubjectsSuccess = db.propertiesDao().getLastSubjectSyncSuccessDate(HOUR);
 
-        LiveApiProgress.reset(true, "subjects");
+        LiveApiProgress.reset(true, "Subjects");
 
         String uri = "/v2/subjects";
         if (lastGetSubjectsSuccess != 0) {

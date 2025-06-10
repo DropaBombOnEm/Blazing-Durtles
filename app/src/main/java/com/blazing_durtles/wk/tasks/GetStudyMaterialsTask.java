@@ -55,7 +55,7 @@ public final class GetStudyMaterialsTask extends ApiTask {
         final AppDatabase db = WkApplication.getDatabase();
         final long lastGetStudyMaterialsSuccess = db.propertiesDao().getLastStudyMaterialSyncSuccessDate(HOUR);
 
-        LiveApiProgress.reset(true, "study materials");
+        LiveApiProgress.reset(true, "Study Materials");
 
         String uri = "/v2/study_materials";
         if (lastGetStudyMaterialsSuccess != 0) {
