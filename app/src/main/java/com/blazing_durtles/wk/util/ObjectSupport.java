@@ -226,15 +226,18 @@ public final class ObjectSupport {
      */
     public static String getWaitTimeAsInformalString(final long waitTime) {
         if (waitTime <= 0) {
-            return "now";
+            return "Now";
         }
         if (waitTime < HOUR * 2) {
-            return String.format(Locale.ROOT, "in %d min", (waitTime+ MINUTE/2) / MINUTE);
+            long mins = (waitTime + MINUTE/2) / MINUTE;
+            return String.format(Locale.ROOT, "In %d Minute%s", mins, mins == 1 ? "" : "s");
         }
         if (waitTime < DAY * 2) {
-            return String.format(Locale.ROOT, "in %d hours", (waitTime+ HOUR/2) / HOUR);
+            long hours = (waitTime + HOUR/2) / HOUR;
+            return String.format(Locale.ROOT, "In %d Hour%s", hours, hours == 1 ? "" : "s");
         }
-        return String.format(Locale.ROOT, "in %d days", (waitTime+ DAY/2) / DAY);
+        long days = (waitTime + DAY/2) / DAY;
+        return String.format(Locale.ROOT, "In %d Day%s", days, days == 1 ? "" : "s");
     }
 
     /**
@@ -245,15 +248,18 @@ public final class ObjectSupport {
      */
     public static String getShortWaitTimeAsInformalString(final long waitTime) {
         if (waitTime <= 0) {
-            return "now";
+            return "Now";
         }
         if (waitTime < HOUR) {
-            return String.format(Locale.ROOT, "%dm", (waitTime + MINUTE/2) / MINUTE);
+            long mins = (waitTime + MINUTE/2) / MINUTE;
+            return String.format(Locale.ROOT, "%d Min", mins) + (mins == 1 ? "" : "s");
         }
         if (waitTime < DAY * 2) {
-            return String.format(Locale.ROOT, "%dh", (waitTime + HOUR/2) / HOUR);
+            long hours = (waitTime + HOUR/2) / HOUR;
+            return String.format(Locale.ROOT, "%d Hour", hours) + (hours == 1 ? "" : "s");
         }
-        return String.format(Locale.ROOT, "%dd", (waitTime + DAY/2) / DAY);
+        long days = (waitTime + DAY/2) / DAY;
+        return String.format(Locale.ROOT, "%d Day", days) + (days == 1 ? "" : "s");
     }
 
     /**

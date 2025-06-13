@@ -1575,10 +1575,18 @@ public final class Subject implements PronunciationAudioOwner {
 
     /**
      * The availableAt value, formatted for display.
+     * If the availableAt time is equal to or before the current time, returns "Available Now".
      * @return the formatted value
      */
     public String getFormattedAvailableAt() {
-        return formatTimestampForDisplay(getAvailableAt());
+        long availableAt = getAvailableAt();
+        if (availableAt == 0) {
+            return "";
+        }
+        if (availableAt <= System.currentTimeMillis()) {
+            return "Available Now";
+        }
+        return formatTimestampForDisplay(availableAt);
     }
 
     /**

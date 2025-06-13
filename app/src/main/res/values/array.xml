@@ -76,7 +76,7 @@
         <item>Random</item>
         <item>Masculine</item>
         <item>Feminine</item>
-        <item>Alternate between Voices</item>
+        <item>Alternate Between Voices</item>
     </string-array>
 
     <string-array name="voicePreferenceValues">
@@ -88,8 +88,8 @@
 
     <string-array name="networkRules">
         <item>Always Allow Sync and Downloads</item>
-        <item>Always Allow Sync, Only Download on Unmetered Connections (WiFi)</item>
-        <item>Only Allow Sync and Downloads on Unmetered Connections (WiFi)</item>
+        <item>Always Allow Sync, Only Download on Unmetered Connections (Wi-Fi)</item>
+        <item>Only Allow Sync and Downloads on Unmetered Connections (Wi-Fi)</item>
     </string-array>
 
     <string-array name="networkRuleValues">
@@ -140,8 +140,8 @@
         <item>Disable</item>
         <item>Ignore (Undo and Mark Correct Instead)</item>
         <item>Undo and Retry Immediately</item>
-        <item>Undo and Put Back into Queue</item>
-        <item>Skip (Put Back into Queue)</item>
+        <item>Undo and Put Back Into Queue</item>
+        <item>Skip (Put Back Into Queue)</item>
     </string-array>
 
     <string-array name="specialBehaviorValues">
@@ -155,7 +155,7 @@
     <string-array name="dontKnowBehaviors">
         <item>Disable</item>
         <item>Enable</item>
-        <item>Hide if Special Button 2 Is Visible</item>
+        <item>Hide If Special Button 2 Is Visible</item>
     </string-array>
 
     <string-array name="dontKnowBehaviorValues">
@@ -240,7 +240,7 @@
 
     <string-array name="notificationUpdateFrequencies">
         <item>Only for New Reviews</item>
-        <item>Once per Hour</item>
+        <item>Once Per Hour</item>
         <item>Continuously</item>
     </string-array>
 
@@ -306,8 +306,8 @@
 
     <string-array name="subjectCardLayouts">
         <item>Normal</item>
-        <item>Compact with Progression Info</item>
-        <item>Compact without Progression Info</item>
+        <item>Compact With Progression Info</item>
+        <item>Compact Without Progression Info</item>
     </string-array>
 
     <string-array name="subjectCardLayoutValues">

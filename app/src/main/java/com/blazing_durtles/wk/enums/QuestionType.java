@@ -63,7 +63,7 @@ public enum QuestionType {
 
         @Override
         public String getHint(final boolean landscape) {
-            return landscape ? "[Name]" : "Your response";
+            return landscape ? "[Name]" : "Your Response";
         }
 
         @Override
@@ -129,7 +129,7 @@ public enum QuestionType {
 
         @Override
         public String getHint(final boolean landscape) {
-            return landscape ? "[Meaning]" : "Your response";
+            return landscape ? "[Meaning]" : "Your Response";
         }
 
         @Override
@@ -195,7 +195,7 @@ public enum QuestionType {
 
         @Override
         public String getHint(final boolean landscape) {
-            return landscape ? "[Meaning]" : "Your response";
+            return landscape ? "[Meaning]" : "Your Response";
         }
 
         @Override
@@ -261,7 +261,7 @@ public enum QuestionType {
 
         @Override
         public String getHint(final boolean landscape) {
-            return landscape ? "[Meaning]" : "Your response";
+            return landscape ? "[Meaning]" : "Your Response";
         }
 
         @Override

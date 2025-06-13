@@ -142,7 +142,7 @@ public final class SubjectInfoButtonView extends View {
                 }
 
                 if (image != null) {
-                    Toast.makeText(getContext(), "This radical has no text character. Can't copy or search for an image-only radical.",
+                    Toast.makeText(getContext(), "This Radical Doesn't Have a Text Character. Cannot Copy or Search for an Image-Only Radical.",
                             Toast.LENGTH_LONG).show();
                     return false;
                 }
@@ -153,7 +153,7 @@ public final class SubjectInfoButtonView extends View {
                     @Override
                     public boolean onCreateActionMode(final ActionMode mode, final Menu menu) {
                         return safe(true, () -> {
-                            menu.add(0, Menu.NONE, 1, "Copy title");
+                            menu.add(0, Menu.NONE, 1, "Copy Title");
 
                             for (int i=1; i<=5; i++) {
                                 if (GlobalSettings.Other.hasSearchEngine(i)) {

@@ -61,7 +61,8 @@ public final class SessionWidgetProvider extends AppWidgetProvider {
             return null;
         }
         else if (upcoming - System.currentTimeMillis() < DAY) {
-            return "More at " + TextUtil.formatShortTimeForDisplay(upcoming, false);
+            // Show with day of week and comma, e.g., "More on Thu, 12:00 AM"
+            return "More on " + TextUtil.formatShortTimeForDisplay(upcoming, true);
         }
         else {
             final float days = ((float) (upcoming - System.currentTimeMillis())) / DAY;

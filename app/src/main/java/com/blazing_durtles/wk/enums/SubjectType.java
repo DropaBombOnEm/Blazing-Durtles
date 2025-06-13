@@ -219,7 +219,7 @@ public enum SubjectType {
         }
         @Override
         public String getInfoTitleLabel() {
-            return "Kana-only Vocab"; // Change this to the desired label
+            return "Kana-Only Vocab";
         }
         @Override
         public String getSimpleInfoTitle(final int level) {

@@ -48,7 +48,7 @@
                 android:title="Refine Search"
                 app:showAsAction="never"/>
             <item android:id="@+id/action_search_result_save_preset"
-                android:title="Save Preset"
+                android:title="Save Search Preset"
                 app:showAsAction="never"/>
             <item android:id="@+id/action_search_result_self_study"
                 android:title="Start Self-Study Quiz"

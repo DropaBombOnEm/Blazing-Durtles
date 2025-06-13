@@ -62,7 +62,7 @@ public final class EditLimitedIntPreference extends EditTextPreference {
             if (intVal >= minValue && intVal <= maxValue) {
                 return super.persistString(value);
             } else {
-                Toast.makeText(getContext(), "Please use a number between " + minValue + " and " + maxValue, Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(), "Please Use a Number Between " + minValue + " and " + maxValue, Toast.LENGTH_LONG).show();
                 return false;
             }
         } catch (NumberFormatException e) {

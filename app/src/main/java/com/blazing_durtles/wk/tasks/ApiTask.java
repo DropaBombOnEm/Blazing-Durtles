@@ -157,7 +157,7 @@ public abstract class ApiTask {
     /**
      * Same as getApiCall, but implement a retry schedule to compensate for short-term connectivity
      * hiccups. The API error status will only be set if the last attempt fails, as long as the error
-     * condition is not that the user's API token is rejected.
+     * condition is not that the user's API Token is rejected.
      *
      * @param uri the request URI, which is either absolute or site-relative (starts with '/')
      * @param numTries the maximum number of attempts to make, counting the first attempt as well
@@ -286,7 +286,7 @@ public abstract class ApiTask {
     /**
      * Same as postApiCall, but implement a retry schedule to compensate for short-term connectivity
      * hiccups. The API error status will only be set if the last attempt fails, as long as the error
-     * condition is not that the user's API token is rejected.
+     * condition is not that the user's API Token is rejected.
      *
      * @param uri the request URI, which is either absolute or site-relative (starts with '/')
      * @param method the HTTP method, could be any valid method but should be either POST or PUT

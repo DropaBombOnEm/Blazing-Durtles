@@ -228,6 +228,43 @@ public final class SummarySessionFragment extends AbstractSessionFragment implem
         incorrectVocabulary.setText(totalVocabulary-numCorrectVocabulary);
         incorrectKanaVocabulary.setText(totalKanaVocabulary-numCorrectKanaVocabulary);
 
+        // Hide correct/incorrect fields (entire TableRow: label and value) if value is 0 or 0%
+        View correctPercentageRow = (View) view.findViewById(R.id.correctPercentage).getParent();
+        if (correctPercentageRow != null) correctPercentageRow.setVisibility(totalPercentage == 0 ? View.GONE : View.VISIBLE);
+        View correctRadicalsRow = (View) view.findViewById(R.id.correctRadicals).getParent();
+        if (correctRadicalsRow != null) correctRadicalsRow.setVisibility(numCorrectRadicals == 0 ? View.GONE : View.VISIBLE);
+        View correctKanjiRow = (View) view.findViewById(R.id.correctKanji).getParent();
+        if (correctKanjiRow != null) correctKanjiRow.setVisibility(numCorrectKanji == 0 ? View.GONE : View.VISIBLE);
+        View correctVocabularyRow = (View) view.findViewById(R.id.correctVocabulary).getParent();
+        if (correctVocabularyRow != null) correctVocabularyRow.setVisibility(numCorrectVocabulary == 0 ? View.GONE : View.VISIBLE);
+        View correctKanaVocabularyRow = (View) view.findViewById(R.id.correctKanaVocabulary).getParent();
+        if (correctKanaVocabularyRow != null) correctKanaVocabularyRow.setVisibility(numCorrectKanaVocabulary == 0 ? View.GONE : View.VISIBLE);
+        View incorrectPercentageRow = (View) view.findViewById(R.id.incorrectPercentage).getParent();
+        if (incorrectPercentageRow != null) incorrectPercentageRow.setVisibility((100-totalPercentage) == 0 ? View.GONE : View.VISIBLE);
+        View incorrectRadicalsRow = (View) view.findViewById(R.id.incorrectRadicals).getParent();
+        if (incorrectRadicalsRow != null) incorrectRadicalsRow.setVisibility((totalRadical-numCorrectRadicals) == 0 ? View.GONE : View.VISIBLE);
+        View incorrectKanjiRow = (View) view.findViewById(R.id.incorrectKanji).getParent();
+        if (incorrectKanjiRow != null) incorrectKanjiRow.setVisibility((totalKanji-numCorrectKanji) == 0 ? View.GONE : View.VISIBLE);
+        View incorrectVocabularyRow = (View) view.findViewById(R.id.incorrectVocabulary).getParent();
+        if (incorrectVocabularyRow != null) incorrectVocabularyRow.setVisibility((totalVocabulary-numCorrectVocabulary) == 0 ? View.GONE : View.VISIBLE);
+        View incorrectKanaVocabularyRow = (View) view.findViewById(R.id.incorrectKanaVocabulary).getParent();
+        if (incorrectKanaVocabularyRow != null) incorrectKanaVocabularyRow.setVisibility((totalKanaVocabulary-numCorrectKanaVocabulary) == 0 ? View.GONE : View.VISIBLE);
+
+        // Hide/show the blank spacer row below Overall Percentage Correct
+        View correctPercentageSpacerRow = view.findViewById(R.id.correctPercentageSpacerRow);
+        if (correctPercentageSpacerRow != null) correctPercentageSpacerRow.setVisibility(totalPercentage == 0 ? View.GONE : View.VISIBLE);
+
+        // Hide/show the blank spacer row below Overall Percentage Incorrect
+        View incorrectPercentageSpacerRow = view.findViewById(R.id.incorrectPercentageSpacerRow);
+        if (incorrectPercentageSpacerRow != null) incorrectPercentageSpacerRow.setVisibility((100-totalPercentage) == 0 ? View.GONE : View.VISIBLE);
+
+        // Hide entire summary sections if all values are zero
+        boolean allCorrectZero = totalPercentage == 0 && numCorrectRadicals == 0 && numCorrectKanji == 0 && numCorrectVocabulary == 0 && numCorrectKanaVocabulary == 0;
+        boolean allIncorrectZero = (100-totalPercentage) == 0 && (totalRadical-numCorrectRadicals) == 0 && (totalKanji-numCorrectKanji) == 0 && (totalVocabulary-numCorrectVocabulary) == 0 && (totalKanaVocabulary-numCorrectKanaVocabulary) == 0;
+        correctSummary.setVisibility(allCorrectZero ? View.GONE : View.VISIBLE);
+        incorrectSummary.setVisibility(allIncorrectZero ? View.GONE : View.VISIBLE);
+
+
         specialButton1.setVisibility(GlobalSettings.AdvancedOther.getSpecialButton1Behavior().canShow());
         specialButton1.setText(GlobalSettings.AdvancedOther.getSpecialButton1Behavior().getLabel());
 
@@ -322,7 +359,7 @@ public final class SummarySessionFragment extends AbstractSessionFragment implem
 
     @Override
     public String getToolbarTitle() {
-        return "Session summary";
+        return "Session Summary";
     }
 
     @Override

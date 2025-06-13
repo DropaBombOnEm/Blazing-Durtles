@@ -683,7 +683,7 @@ public final class GlobalSettings {
         }
 
         /**
-         * The API token used to access the WaniKani API.
+         * The API Token used to access the WaniKani API.
          *
          * @return the value
          */
@@ -696,7 +696,7 @@ public final class GlobalSettings {
         }
 
         /**
-         * The API token used to access the WaniKani API.
+         * The API Token used to access the WaniKani API.
          *
          * @param apiKey the value
          */
@@ -3550,11 +3550,21 @@ public final class GlobalSettings {
             SharedPreferences prefs = prefs();
             String today = getTodayString();
             String storedDate = prefs.getString(PREF_KEY_DATE, "");
+            boolean alreadyResetToday = prefs.getBoolean("daily_review_counter_reset_flag", false);
             if (!today.equals(storedDate)) {
-                // Reset for new day
-                setCount(0);
-                setDate(today);
+                if (!alreadyResetToday) {
+                    setCount(0);
+                    setDate(today);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean("daily_review_counter_reset_flag", true);
+                    editor.apply();
+                }
                 return 0;
+            } else {
+                // Clear the reset flag for the next day
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("daily_review_counter_reset_flag", false);
+                editor.apply();
             }
             return prefs.getInt(PREF_KEY_COUNT, 0);
         }

@@ -41,7 +41,7 @@
             android:id="@+id/showButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Show items"
+            android:text="Show Items"
             app:layout_constraintEnd_toStartOf="@id/finishButton"
             app:layout_constraintTop_toTopOf="parent"
             style="@style/WK.Button.Normal"/>
@@ -50,7 +50,7 @@
             android:id="@+id/specialButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Special button 1"
+            android:text="Special Button 1"
             android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@id/showButton"
             app:layout_constraintTop_toTopOf="parent"
@@ -60,7 +60,7 @@
             android:id="@+id/specialButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Special button 2"
+            android:text="Special Button 2"
             android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@id/specialButton1"
             app:layout_constraintTop_toTopOf="parent"
@@ -70,7 +70,7 @@
             android:id="@+id/specialButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Special button 3"
+            android:text="Special Button 3"
             android:visibility="gone"
             app:layout_constraintEnd_toStartOf="@id/specialButton2"
             app:layout_constraintTop_toTopOf="parent"
@@ -136,7 +136,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Overall percentage correct:"
+                    android:text="Overall Percentage Correct:"
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -151,6 +151,18 @@
                     android:text="100%"
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
+            </TableRow>
+
+            <!-- Blank line below Overall Percentage Correct, follows same visibility as percentage row -->
+            <TableRow
+                android:id="@+id/correctPercentageSpacerRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:text=""
+                />
             </TableRow>
 
             <TableRow
@@ -168,7 +180,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Radicals correct:"
+                    android:text="Radicals Correct:"
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -200,7 +212,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Kanji correct:"
+                    android:text="Kanji Correct:"
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -232,7 +244,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Vocabulary correct:"
+                    android:text="Vocabulary Correct:"
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -263,7 +275,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Kana Vocabulary correct:"
+                    android:text="Kana Vocabulary Correct:"
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -307,7 +319,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Overall percentage incorrect:"
+                    android:text="Overall Percentage Incorrect:"
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -322,6 +334,18 @@
                     android:text="100%"
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
+            </TableRow>
+
+            <!-- Blank line below Overall Percentage Incorrect, follows same visibility as percentage row -->
+            <TableRow
+                android:id="@+id/incorrectPercentageSpacerRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="8dp"
+                    android:text=""
+                />
             </TableRow>
 
             <TableRow
@@ -339,7 +363,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Radicals incorrect:"
+                    android:text="Radicals Incorrect:"
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -371,7 +395,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Kanji incorrect:"
+                    android:text="Kanji Incorrect:"
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -403,7 +427,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Vocabulary incorrect:"
+                    android:text="Vocabulary Incorrect:"
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -435,7 +459,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Kana Vocabulary incorrect:"
+                    android:text="Kana Vocabulary Incorrect:"
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -458,7 +482,7 @@
             android:id="@+id/resurrectIncorrectButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Resurrect items with incorrect answers"
+            android:text="Resurrect Items With Incorrect Answers"
             android:visibility="gone"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/incorrectSummary"
@@ -471,7 +495,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@id/resurrectIncorrectButton"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="Items with incorrect answers:"
+            android:text="Items With Incorrect Answers:"
             android:visibility="gone"
             android:textIsSelectable="true"
             android:focusable="false"
@@ -495,7 +519,7 @@
                 android:id="@+id/incorrectStarButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bulk set star rating"
+                android:text="Bulk Set Star Rating"
                 style="@style/WK.Button.Normal"/>
 
         </LinearLayout>
@@ -517,7 +541,7 @@
             android:layout_marginTop="8dp"
             app:layout_constraintTop_toBottomOf="@id/incorrectTable"
             app:layout_constraintStart_toStartOf="parent"
-            android:text="Items with only correct answers:"
+            android:text="Items With Only Correct Answers:"
             android:visibility="gone"
             android:textIsSelectable="true"
             android:focusable="false"
@@ -541,7 +565,7 @@
                 android:id="@+id/correctStarButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Bulk set star rating"
+                android:text="Bulk Set Star Rating"
                 style="@style/WK.Button.Normal"/>
 
         </LinearLayout>

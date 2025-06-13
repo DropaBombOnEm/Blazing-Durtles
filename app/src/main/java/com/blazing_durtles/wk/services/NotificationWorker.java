@@ -60,17 +60,17 @@ public final class NotificationWorker {
         final String title;
         final String text;
         if (ctx.getNumLessons() > 0) {
-            title = "New lessons and reviews available";
-            text = String.format(Locale.ROOT, "%d lessons and %d reviews available", ctx.getNumLessons(), ctx.getNumReviews());
+            title = "New Lessons and Reviews Available";
+            text = String.format(Locale.ROOT, "%d Lessons and %d Reviews Available", ctx.getNumLessons(), ctx.getNumReviews());
         }
         else {
-            title = "New reviews available";
-            text = String.format(Locale.ROOT, "%d reviews available", ctx.getNumReviews());
+            title = "New Reviews Available";
+            text = String.format(Locale.ROOT, "%d Reviews Available", ctx.getNumReviews());
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             final String name = "NewReviewsChannel";
-            final String description = "New reviews available";
+            final String description = "New Reviews Available";
             final int importance = GlobalSettings.Other.getNotificationPriority().getManagerImportance();
             @SuppressLint("WrongConstant") final NotificationChannel channel = new NotificationChannel(name, name, importance);
             channel.setDescription(description);

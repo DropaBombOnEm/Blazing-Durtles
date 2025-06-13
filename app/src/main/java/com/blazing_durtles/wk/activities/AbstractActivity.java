@@ -126,13 +126,19 @@ public abstract class AbstractActivity extends AppCompatActivity implements Shar
 
         final Collection<String> parts = new ArrayList<>();
         if (hasApi) {
-            parts.add(String.format(Locale.ROOT, "%d background tasks", t.getApiCount()));
+            int apiCount = t.getApiCount();
+            String apiLabel = apiCount == 1 ? "Background Task" : "Background Tasks";
+            parts.add(String.format(Locale.ROOT, "%d %s", apiCount, apiLabel));
         }
         if (hasAudio) {
-            parts.add(String.format(Locale.ROOT, "%d audio download tasks", t.getAudioCount()));
+            int audioCount = t.getAudioCount();
+            String audioLabel = audioCount == 1 ? "Audio Download Task" : "Audio Download Tasks";
+            parts.add(String.format(Locale.ROOT, "%d %s", audioCount, audioLabel));
         }
         if (hasPitchInfo) {
-            parts.add(String.format(Locale.ROOT, "%d pitch info download tasks", t.getPitchInfoCount()));
+            int pitchCount = t.getPitchInfoCount();
+            String pitchLabel = pitchCount == 1 ? "Pitch Info Download Task" : "Pitch Info Download Tasks";
+            parts.add(String.format(Locale.ROOT, "%d %s", pitchCount, pitchLabel));
         }
 
         if (parts.isEmpty()) {

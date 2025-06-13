@@ -234,18 +234,40 @@ public final class TextUtil {
     }
 
     /**
-     * Format a timestamp for informal display in subject info.
+     * Format a timestamp for informal display in subject info, with ordinal suffix for the day.
      *
-     * @param value the timestap to format
+     * @param value the timestamp to format
      * @return the formatted timestamp
      */
     public static String formatTimestampForDisplay(final long value) {
         if (value == 0) {
             return "";
         }
-        final java.text.DateFormat dateFormatter = DateFormat.getMediumDateFormat(WkApplication.getInstance());
-        final java.text.DateFormat timeFormatter = DateFormat.getTimeFormat(WkApplication.getInstance());
-        return String.format("%s %s", dateFormatter.format(value), timeFormatter.format(value));
+        java.util.Date date = new java.util.Date(value);
+        java.text.SimpleDateFormat dayFormat = new java.text.SimpleDateFormat("d", java.util.Locale.US);
+        java.text.SimpleDateFormat prefixFormat = new java.text.SimpleDateFormat("EEE, MMM ", java.util.Locale.US);
+        java.text.SimpleDateFormat suffixFormat = new java.text.SimpleDateFormat(", yyyy 'at' h:mm a", java.util.Locale.US);
+        int day = Integer.parseInt(dayFormat.format(date));
+        String ordinal = getOrdinalSuffix(day);
+        return prefixFormat.format(date) + day + ordinal + suffixFormat.format(date);
+    }
+
+    /**
+     * Get the ordinal suffix for a day number.
+     *
+     * @param day the day of the month
+     * @return the ordinal suffix (st, nd, rd, th)
+     */
+    private static String getOrdinalSuffix(int day) {
+        if (day >= 11 && day <= 13) {
+            return "th";
+        }
+        switch (day % 10) {
+            case 1: return "st";
+            case 2: return "nd";
+            case 3: return "rd";
+            default: return "th";
+        }
     }
 
     /**
@@ -293,19 +315,17 @@ public final class TextUtil {
         String s;
         if (DateFormat.is24HourFormat(WkApplication.getInstance())) {
             s = String.format(Locale.ROOT, "%02d:%02d", hour, minute);
-        }
-        else {
+        } else {
             final int hour12 = (hour == 0) ? 12 : (hour > 12) ? hour - 12 : hour;
-            //noinspection IfMayBeConditional
+            String ampm = (hour >= 12) ? " PM" : " AM";
             if (minute == 0) {
-                s = String.format(Locale.ROOT, "%d%s", hour12, hour >= 12 ? "pm" : "am");
-            }
-            else {
-                s = String.format(Locale.ROOT, "%d.%02d%s", hour12, minute, hour >= 12 ? "pm" : "am");
+                s = String.format(Locale.ROOT, "%d%s", hour12, ampm);
+            } else {
+                s = String.format(Locale.ROOT, "%d:%02d%s", hour12, minute, ampm);
             }
         }
         if (includeDayOfWeek) {
-            s = String.format(Locale.ROOT, "%s %s", Constants.WEEKDAY_NAMES[dt.getDayOfWeek().getValue()], s);
+            s = String.format(Locale.ROOT, "%s, %s", Constants.WEEKDAY_NAMES[dt.getDayOfWeek().getValue()], s);
         }
         return s;
     }

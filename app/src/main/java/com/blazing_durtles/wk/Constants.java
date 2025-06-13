@@ -150,7 +150,7 @@ public final class Constants {
     + " service created by <b><a href=\"https://www.tofugu.com/\">Tofugu</a></b>.<br/><br/>"
     + " To use this app, you must have an active <b>WaniKani</b> account and a valid <b>API Token</b>."
     + " You haven't provided your <b>API Token</b> yet (or it has expired). Please enter a valid <b>API Token</b> to continue.<br/><br/> "
-    + " The only personal data this app stores is your <b>API Token</b>, which is used solely for accessing <b>WaniKani</b>’s service. Their privacy policy is available <b><a href=\"https://community.wanikani.com/privacy\">here</a></b>.<br/><br/> "
+    + " The only personal data this app stores is your <b>API Token</b>, which is used solely for accessing <b>WaniKani</b>'s service. Their privacy policy is available <b><a href=\"https://community.wanikani.com/privacy\">here</a></b>.<br/><br/> "
     + " If you don't have an account, visit <b><a href=\"https://www.wanikani.com/\">WaniKani</a></b> to create one.<br/><br/>"
     + " To create an <b>API Token</b>, go to your <b><a href=\"https://www.wanikani.com/settings/personal_access_tokens\">settings page</a></b>."
     + " Click '<b>Generate a new token</b>' and, when prompted, make sure to give the <b>API Token</b> at least the first four of the following permissions (the fifth/final one is optional).<br/><br/>"
@@ -237,9 +237,9 @@ public final class Constants {
     /**
      * Help text to remind the user the API key must have certain permissions set.
      */
-    public static final String API_KEY_PERMISSION_NOTICE = "The API token you supply here <b>must</b> have some"
+    public static final String API_KEY_PERMISSION_NOTICE = "The API Token you supply here <b>must</b> have some"
             + " write-permissions enabled. Without these, some functionality will not work."
-            + " Create your API token <a href=\"https://www.wanikani.com/settings/personal_access_tokens\">here</a>.<br/>"
+            + " Create your API Token <a href=\"https://www.wanikani.com/settings/personal_access_tokens\">here</a>.<br/>"
             + " Needed permissions:<ul>"
             + " <li>&nbsp;<tt>assignments:start</tt><br/>"
             + " <li>&nbsp;<tt>reviews:create</tt><br/>"
