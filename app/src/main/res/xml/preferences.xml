@@ -158,6 +158,18 @@
         app:title="Dashboard Settings">
 
         <SwitchPreferenceCompat
+            app:key="show_daily_review_counter"
+            app:title="Show Daily Review Counter"
+            app:singleLineTitle="false"
+            app:defaultValue="true"/>
+
+        <SwitchPreferenceCompat
+            app:key="show_daily_lesson_counter"
+            app:title="Show Daily Lesson Counter"
+            app:singleLineTitle="false"
+            app:defaultValue="true"/>
+
+        <SwitchPreferenceCompat
             app:key="show_lesson_review_breakdown"
             app:title="Show Lesson/Review Breakdown"
             app:singleLineTitle="false"

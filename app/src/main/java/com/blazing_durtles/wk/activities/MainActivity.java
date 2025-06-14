@@ -116,6 +116,7 @@ public final class MainActivity extends AbstractActivity {
         final ViewProxy startReviewsButton = new ViewProxy(this, R.id.startReviewsButton);
         final ViewProxy resumeButton = new ViewProxy(this, R.id.resumeButton);
         final ViewProxy reviewCounterText = new ViewProxy(this, R.id.reviewCounterText);
+        final ViewProxy lessonCounterText = new ViewProxy(this, R.id.lessonCounterText);
 
         retryApiErrorButton1.setOnClickListener(v -> retryApiError());
         retryApiErrorButton2.setOnClickListener(v -> retryApiError());
@@ -213,7 +214,13 @@ public final class MainActivity extends AbstractActivity {
 
         int reviewCount = GlobalSettings.DailyReviewCounter.getCount();
         reviewCounterText.setText("Reviews Completed Today: " + reviewCount);
-        reviewCounterText.setVisibility(View.VISIBLE);
+        boolean showReviewCounter = GlobalSettings.Dashboard.getShowDailyReviewCounter();
+        reviewCounterText.setVisibility(showReviewCounter ? View.VISIBLE : View.GONE);
+
+        int lessonCount = GlobalSettings.DailyLessonCounter.getCount();
+        lessonCounterText.setText("Lessons Completed Today: " + lessonCount);
+        boolean showLessonCounter = GlobalSettings.Dashboard.getShowDailyLessonCounter();
+        lessonCounterText.setVisibility(showLessonCounter ? View.VISIBLE : View.GONE);
     }
 
     @Override
@@ -238,11 +245,21 @@ public final class MainActivity extends AbstractActivity {
         final ViewProxy reviewCounterText = new ViewProxy(this, R.id.reviewCounterText);
         int reviewCount = GlobalSettings.DailyReviewCounter.getCount();
         reviewCounterText.setText("Reviews Completed Today: " + reviewCount);
-        reviewCounterText.setVisibility(android.view.View.VISIBLE);
+
+        // Update the lesson counter display every time the activity resumes
+        final ViewProxy lessonCounterText = new ViewProxy(this, R.id.lessonCounterText);
+        int lessonCount = GlobalSettings.DailyLessonCounter.getCount();
+        lessonCounterText.setText("Lessons Completed Today: " + lessonCount);
 
         keyboardHelpView.setVisibility(!GlobalSettings.Tutorials.getKeyboardHelpDismissed());
 
         collapseSearchBox();
+
+        boolean showReviewCounter = GlobalSettings.Dashboard.getShowDailyReviewCounter();
+        reviewCounterText.setVisibility(showReviewCounter ? View.VISIBLE : View.GONE);
+
+        boolean showLessonCounter = GlobalSettings.Dashboard.getShowDailyLessonCounter();
+        lessonCounterText.setVisibility(showLessonCounter ? View.VISIBLE : View.GONE);
     }
 
     @Override

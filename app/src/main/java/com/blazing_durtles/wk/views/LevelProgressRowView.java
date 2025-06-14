@@ -86,7 +86,7 @@ public final class LevelProgressRowView extends TableRow {
             if (label != null && !label.isEmpty()) {
                 label = label.substring(0, 1).toUpperCase() + label.substring(1);
             }
-            this.label.setTextFormat("LVL %d %s", entry.getLevel(), label);
+            this.label.setTextFormat("LVL %d - %s", entry.getLevel(), label);
             barView.setValues(entry.getBuckets());
             barView.setShowTarget(LiveLevelDuration.getInstance().get().getLevel() == entry.getLevel() && entry.getType().hasLevelUpTarget());
             setOnClickListener(v -> safe(() -> {

@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:layout_span="5"
-            android:text="JLPT progress"
+            android:text="JLPT Progress"
             style="@style/WK.TextView.Normal.Bold"/>
 
     </TableRow>

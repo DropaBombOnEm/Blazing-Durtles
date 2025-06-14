@@ -114,6 +114,9 @@ public final class Session implements SubjectChangeListener {
     // Track which items have already been counted for the daily review counter this session
     private final Set<Long> countedReviewItemIds = new HashSet<>();
 
+    // Track which items have already been counted for the daily lesson counter this session
+    private Set<Long> countedLessonItemIds = null;
+
     /**
      * Get the singleton instance.
      *
@@ -748,6 +751,15 @@ s     *
                     if (!countedReviewItemIds.contains(itemId)) {
                         com.blazing_durtles.wk.GlobalSettings.DailyReviewCounter.increment();
                         countedReviewItemIds.add(itemId);
+                    }
+                }
+                // Increment daily lesson counter if this is a lesson session and the item just finished, but only once per item per session
+                if (type == com.blazing_durtles.wk.enums.SessionType.LESSON) {
+                    if (countedLessonItemIds == null) countedLessonItemIds = new java.util.HashSet<>();
+                    long itemId = currentQuestion.getItem().getId();
+                    if (!countedLessonItemIds.contains(itemId)) {
+                        com.blazing_durtles.wk.GlobalSettings.DailyLessonCounter.increment();
+                        countedLessonItemIds.add(itemId);
                     }
                 }
                 currentQuestion.getItem().setState(com.blazing_durtles.wk.enums.SessionItemState.REPORTED);

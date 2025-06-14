@@ -210,6 +210,18 @@
                 android:visibility="visible"
                 android:textColor="?attr/colorPrimary" />
 
+            <TextView
+                android:id="@+id/lessonCounterText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lessons Completed Today: 0"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="8dp"
+                android:visibility="visible"
+                android:textColor="?attr/colorPrimary" />
+
             <com.blazing_durtles.wk.views.AvailableSessionsView
                 android:id="@+id/availableSessionsView"
                 android:layout_width="match_parent"

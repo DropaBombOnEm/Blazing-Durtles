@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:padding="4dp"
-        android:text="Post-60 progression"
+        android:text="Post-60 Progression"
         style="@style/WK.TextView.Normal.Bold"/>
 
     <com.blazing_durtles.wk.views.Post60ProgressBarView

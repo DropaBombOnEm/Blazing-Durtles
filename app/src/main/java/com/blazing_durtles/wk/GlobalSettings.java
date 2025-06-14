@@ -1133,6 +1133,22 @@ public final class GlobalSettings {
         public static boolean getShowBurnedItems() {
             return prefs().getBoolean("show_burned_items", true);
         }
+
+        /**
+         * Show the daily review counter on the dashboard.
+         * @return the value
+         */
+        public static boolean getShowDailyReviewCounter() {
+            return prefs().getBoolean("show_daily_review_counter", true);
+        }
+
+        /**
+         * Show the daily lesson counter on the dashboard.
+         * @return the value
+         */
+        public static boolean getShowDailyLessonCounter() {
+            return prefs().getBoolean("show_daily_lesson_counter", true);
+        }
     }
 
     /**
@@ -3599,6 +3615,68 @@ public final class GlobalSettings {
         /**
          * Set the stored date (for internal use).
          */
+        private static void setDate(String date) {
+            SharedPreferences.Editor editor = prefs().edit();
+            editor.putString(PREF_KEY_DATE, date);
+            editor.apply();
+        }
+    }
+
+    /**
+     * Local daily lesson completion counter utilities.
+     */
+    public static final class DailyLessonCounter {
+        private static final String PREF_KEY_DATE = "daily_lesson_counter_date";
+        private static final String PREF_KEY_COUNT = "daily_lesson_counter_count";
+
+        private static String getTodayString() {
+            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.ROOT);
+            return sdf.format(new java.util.Date());
+        }
+
+        public static int getCount() {
+            SharedPreferences prefs = prefs();
+            String today = getTodayString();
+            String storedDate = prefs.getString(PREF_KEY_DATE, "");
+            boolean alreadyResetToday = prefs.getBoolean("daily_lesson_counter_reset_flag", false);
+            if (!today.equals(storedDate)) {
+                if (!alreadyResetToday) {
+                    setCount(0);
+                    setDate(today);
+                    SharedPreferences.Editor editor = prefs.edit();
+                    editor.putBoolean("daily_lesson_counter_reset_flag", true);
+                    editor.apply();
+                }
+                return 0;
+            } else {
+                SharedPreferences.Editor editor = prefs.edit();
+                editor.putBoolean("daily_lesson_counter_reset_flag", false);
+                editor.apply();
+            }
+            return prefs.getInt(PREF_KEY_COUNT, 0);
+        }
+
+        public static void increment() {
+            SharedPreferences prefs = prefs();
+            String today = getTodayString();
+            String storedDate = prefs.getString(PREF_KEY_DATE, "");
+            SharedPreferences.Editor editor = prefs.edit();
+            if (!today.equals(storedDate)) {
+                editor.putString(PREF_KEY_DATE, today);
+                editor.putInt(PREF_KEY_COUNT, 1);
+            } else {
+                int count = prefs.getInt(PREF_KEY_COUNT, 0) + 1;
+                editor.putInt(PREF_KEY_COUNT, count);
+            }
+            editor.apply();
+        }
+
+        private static void setCount(int count) {
+            SharedPreferences.Editor editor = prefs().edit();
+            editor.putInt(PREF_KEY_COUNT, count);
+            editor.apply();
+        }
+
         private static void setDate(String date) {
             SharedPreferences.Editor editor = prefs().edit();
             editor.putString(PREF_KEY_DATE, date);
