@@ -1298,8 +1298,9 @@
 
         <Preference
             android:key="restore_settings"
-            android:title="Restore Your Settings"
-            android:summary="Restores your previous settings from a backup file" />
+            android:title="[Disabled] Restore Your Settings"
+            android:summary="Restores your previous settings from a backup file. - Disabled (temporarily?) due to breaking the Daily Lesson/Review counter."
+            android:enabled="false" />
 
     </PreferenceCategory>
 
