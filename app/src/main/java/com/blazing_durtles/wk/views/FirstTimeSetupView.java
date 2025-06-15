@@ -65,7 +65,7 @@ public final class FirstTimeSetupView extends AppCompatTextView {
      */
     private void update() {
         if (GlobalSettings.getFirstTimeSetup() == 0) {
-            setText("Please wait while we prepare the app for your account. This may take a minute or more...");
+            setText("Please wait, syncing account data. This may take a minute or so...");
             setVisibility(VISIBLE);
         }
         else {
