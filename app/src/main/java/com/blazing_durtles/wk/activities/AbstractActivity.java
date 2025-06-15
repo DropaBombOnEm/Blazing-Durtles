@@ -380,6 +380,12 @@ public abstract class AbstractActivity extends AppCompatActivity implements Shar
             muteItem.setTitle(title);
         }
 
+        final @Nullable MenuItem checkUpdateItem = menu.findItem(R.id.action_check_update);
+        if (checkUpdateItem != null) {
+            // Hide during lessons/reviews (SessionActivity)
+            checkUpdateItem.setVisible(!(this instanceof SessionActivity));
+        }
+
         return true;
     }
 
@@ -561,6 +567,18 @@ public abstract class AbstractActivity extends AppCompatActivity implements Shar
         if (itemId == R.id.action_test) {
             Toast.makeText(this, "Test!", Toast.LENGTH_SHORT).show();
             goToActivity(TestActivity.class);
+            return true;
+        }
+        if (itemId == R.id.action_check_update) {
+            new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("Check for Updates?")
+                .setMessage("Clicking 'Yes' will bring you to the GitHub 'Releases' page")
+                .setPositiveButton("Yes", (dialog, which) -> {
+                    Intent intent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://github.com/DropaBombOnEm/Blazing-Durtles/releases"));
+                    startActivity(intent);
+                })
+                .setNegativeButton("No Thanks", null)
+                .show();
             return true;
         }
         if (itemId == android.R.id.home) {

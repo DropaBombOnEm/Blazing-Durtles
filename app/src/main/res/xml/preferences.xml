@@ -1278,6 +1278,10 @@
             app:title="Support and Feedback"
             app:key="support_and_feedback"
             app:summary=""/>
+        <Preference
+            app:title="Check for Updates"
+            app:key="check_for_update"
+            app:summary="Check for new releases on GitHub"/>
 
         <Preference
             app:title="Import | Export - Star Ratings and Search Presets"

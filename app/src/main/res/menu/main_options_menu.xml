@@ -72,4 +72,7 @@
         android:title="Test"
         app:showAsAction="never"
         android:visibility="gone"/>
+    <item android:id="@+id/action_check_update"
+        android:title="Check for Updates..."
+        app:showAsAction="never"/>
 </menu>

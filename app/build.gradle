@@ -7,8 +7,8 @@ android {
         minSdkVersion 26
         //noinspection OldTargetApi
         targetSdkVersion 35
-        versionCode 88
-        versionName '1.2.1.7'
+        versionCode 89
+        versionName '1.2.1.8'
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
 
@@ -78,7 +78,7 @@ android {
             def buildType = variant.buildType.name.capitalize()
             def versionName = variant.versionName
             def versionCode = variant.versionCode
-            outputFileName = "${appName}-${buildType}-v${versionName}(${versionCode}).apk"
+            outputFileName = "${appName}-${buildType}-v${versionName}.apk"
         }
     }
 }

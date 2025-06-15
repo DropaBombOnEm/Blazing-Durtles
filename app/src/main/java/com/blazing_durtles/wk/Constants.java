@@ -170,7 +170,8 @@ public final class Constants {
      */
     public static final String ABOUT_DOCUMENT = "<h3>Welcome to <b>" + Identification.APP_NAME + "</b> " + BuildConfig.VERSION_NAME + "!</h3><br/> "
             + "<b>" + Identification.APP_NAME + "</b> is an app for <b><a href=\"https://www.wanikani.com/\"><b>WaniKani</b></a></b>, the kanji-learning"
-            + " service created by <b><a href=\"https://www.tofugu.com/\"><b>Tofugu</b></a></b>.<br/><br/>"
+            + " service created by <b><a href=\"https://www.tofugu.com/\"><b>Tofugu</b></a></b>.<br/>"
+            + "You can find updates for this app <b><u><a href=\"https://github.com/DropaBombOnEm/Blazing-Durtles/releases\">on GitHub</a></u></b>.<br/><br/>"
             + "New to <b><a href=\"https://www.wanikani.com/\"><b>WaniKani</b></a></b>? Check out their <a href=\"https://knowledge.wanikani.com/\"><b>knowledge base</b></a>"
             + " for more information.<br/><br/> "
             + "<b>" + Identification.APP_NAME + "</b> was re-coded by <b>DropaBombOnEm</b>, based on the original works of <b>Jerry Cooke</b> (<b>Smouldering Durtles</b>) & <b>Ernst Jan Plugge</b> (<b>Flaming Durtles</b>), who developed the original code on which this app is based.<br/><br/>"

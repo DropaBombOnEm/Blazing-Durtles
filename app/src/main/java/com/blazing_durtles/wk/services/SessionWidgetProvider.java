@@ -43,6 +43,8 @@ import com.blazing_durtles.wk.model.AlertContext;
 import com.blazing_durtles.wk.util.Logger;
 import com.blazing_durtles.wk.util.TextUtil;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
 
 import javax.annotation.Nullable;
@@ -60,13 +62,20 @@ public final class SessionWidgetProvider extends AppWidgetProvider {
         if (upcoming == 0) {
             return null;
         }
-        else if (upcoming - System.currentTimeMillis() < DAY) {
-            // Show with day of week and comma, e.g., "More on Thu, 12:00 AM"
+        long now = System.currentTimeMillis();
+        Calendar calNow = Calendar.getInstance();
+        calNow.setTimeInMillis(now);
+        Calendar calUpcoming = Calendar.getInstance();
+        calUpcoming.setTimeInMillis(upcoming);
+        if (calNow.get(Calendar.YEAR) == calUpcoming.get(Calendar.YEAR) && calNow.get(Calendar.DAY_OF_YEAR) == calUpcoming.get(Calendar.DAY_OF_YEAR)) {
+            // Today
+            return "More Later - Today, " + TextUtil.formatShortTimeForDisplay(upcoming, false);
+        } else if (upcoming - now < DAY) {
+            // Within 24 hours but not today (e.g., after midnight)
+            return "More Tomorrow, " + TextUtil.formatShortTimeForDisplay(upcoming, false);
+        } else {
+            // More than a day away
             return "More on " + TextUtil.formatShortTimeForDisplay(upcoming, true);
-        }
-        else {
-            final float days = ((float) (upcoming - System.currentTimeMillis())) / DAY;
-            return String.format(Locale.ROOT, "More in %.1fd", days);
         }
     }
 
