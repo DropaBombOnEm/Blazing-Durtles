@@ -18,6 +18,7 @@ package com.blazing_durtles.wk.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.InputType;
@@ -26,6 +27,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.DialogFragment;
 import androidx.preference.EditTextPreference;
 import androidx.preference.ListPreference;
@@ -94,6 +97,31 @@ public final class PreferencesFragment extends PreferenceFragmentCompat {
 
             // Set initial state
             notAlwaysHideWKPref.setChecked(!alwaysHideWKPref.isChecked());
+        }
+
+        // Notification permission request logic
+        final @Nullable TwoStatePreference enableNotificationsPref = findPreference("enable_notifications");
+        if (enableNotificationsPref != null) {
+            enableNotificationsPref.setOnPreferenceChangeListener((preference, newValue) -> {
+                boolean enabled = (Boolean) newValue;
+                if (enabled && android.os.Build.VERSION.SDK_INT >= 33) {
+                    Activity activity = requireActivity();
+                    if (ContextCompat.checkSelfPermission(activity, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                        // Show rationale if needed
+                        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, android.Manifest.permission.POST_NOTIFICATIONS)) {
+                            new AlertDialog.Builder(activity)
+                                .setTitle("Notification Permissions Required")
+                                .setMessage("To show notifications for new reviews, please allow notification permissions.")
+                                .setPositiveButton("Allow", (dialog, which) -> ActivityCompat.requestPermissions(activity, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 1001))
+                                .setNegativeButton("Cancel", null)
+                                .show();
+                        } else {
+                            ActivityCompat.requestPermissions(activity, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 1001);
+                        }
+                    }
+                }
+                return true;
+            });
         }
     }
 

@@ -772,11 +772,12 @@
 
     <PreferenceScreen
         app:key="other_settings"
-        app:title="Other Settings">
+        app:title="Notifications and Other Settings">
 
         <SwitchPreferenceCompat
             app:key="enable_notifications"
             app:title="Enable Notifications for New Reviews"
+            app:summary="Not working? Turn off, then back on again."
             app:singleLineTitle="false"
             app:defaultValue="true"/>
 
@@ -1279,7 +1280,7 @@
             app:summary=""/>
 
         <Preference
-            app:title="Data Import / Export"
+            app:title="Import | Export - Star Ratings and Search Presets"
             app:key="data_import_export"/>
 
         <Preference

@@ -50,14 +50,14 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Here you can import or export some data that is not stored on the WK servers."
+                android:text="Here you can import and export your Search Presets and Star Ratings. (These are not stored on WaniKani's servers.)"
                 style="@style/WK.TextView.Large"/>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
-                android:text="Note that imports will add to or overwrite existing data, but won't remove existing data."
+                android:text="Notice: Imports add to and/or overwrites Search Presets and/or Star Ratings, but won't remove existing data."
                 style="@style/WK.TextView.Normal"/>
 
             <Button
