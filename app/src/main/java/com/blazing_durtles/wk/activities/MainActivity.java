@@ -19,11 +19,14 @@ package com.blazing_durtles.wk.activities;
 import static com.blazing_durtles.wk.util.ObjectSupport.runAsync;
 import static com.blazing_durtles.wk.util.ObjectSupport.safe;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import com.blazing_durtles.wk.GlobalSettings;
@@ -79,6 +82,8 @@ public final class MainActivity extends AbstractActivity {
     private final ViewProxy apiErrorView = new ViewProxy();
     private final ViewProxy apiKeyRejectedView = new ViewProxy();
     private final ViewProxy keyboardHelpView = new ViewProxy();
+
+    private static final int REQUEST_CODE_POST_NOTIFICATIONS = 1001;
 
     /**
      * The constructor.
@@ -221,6 +226,32 @@ public final class MainActivity extends AbstractActivity {
         lessonCounterText.setText("Lessons Completed Today: " + lessonCount);
         boolean showLessonCounter = GlobalSettings.Dashboard.getShowDailyLessonCounter();
         lessonCounterText.setVisibility(showLessonCounter ? View.VISIBLE : View.GONE);
+
+        // Show notification enable dialog on first app open if not dismissed
+        if (!GlobalSettings.Tutorials.getNotificationPromptDismissed()) {
+            new androidx.appcompat.app.AlertDialog.Builder(this)
+                .setTitle("Enable Notifications?")
+                .setMessage("To show notifications for new reviews, please allow notification permissions...")
+                .setCancelable(false)
+                .setNegativeButton("NO THANKS", (dialog, which) -> {
+                    GlobalSettings.Tutorials.setNotificationPromptDismissed(true);
+                    dialog.dismiss();
+                })
+                .setPositiveButton("ENABLE", (dialog, which) -> {
+                    GlobalSettings.Tutorials.setNotificationPromptDismissed(true);
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+                        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.POST_NOTIFICATIONS}, REQUEST_CODE_POST_NOTIFICATIONS);
+                        } else {
+                            GlobalSettings.Other.setEnableNotifications(true);
+                        }
+                    } else {
+                        GlobalSettings.Other.setEnableNotifications(true);
+                    }
+                    dialog.dismiss();
+                })
+                .show();
+        }
     }
 
     @Override
@@ -380,5 +411,15 @@ public final class MainActivity extends AbstractActivity {
                 goToActivity(SessionActivity.class);
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_CODE_POST_NOTIFICATIONS) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                GlobalSettings.Other.setEnableNotifications(true);
+            }
+        }
     }
 }

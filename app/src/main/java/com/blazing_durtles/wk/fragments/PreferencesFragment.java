@@ -25,6 +25,7 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -102,26 +103,63 @@ public final class PreferencesFragment extends PreferenceFragmentCompat {
         // Notification permission request logic
         final @Nullable TwoStatePreference enableNotificationsPref = findPreference("enable_notifications");
         if (enableNotificationsPref != null) {
+            // Set initial state based on both app setting and permission
+            boolean enabled = GlobalSettings.Other.getEnableNotifications();
+            boolean permissionGranted = true;
+            if (android.os.Build.VERSION.SDK_INT >= 33) {
+                permissionGranted = ContextCompat.checkSelfPermission(requireContext(), android.Manifest.permission.POST_NOTIFICATIONS) == PackageManager.PERMISSION_GRANTED;
+            }
+            enableNotificationsPref.setChecked(enabled && permissionGranted);
+
             enableNotificationsPref.setOnPreferenceChangeListener((preference, newValue) -> {
-                boolean enabled = (Boolean) newValue;
-                if (enabled && android.os.Build.VERSION.SDK_INT >= 33) {
-                    Activity activity = requireActivity();
-                    if (ContextCompat.checkSelfPermission(activity, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
-                        // Show rationale if needed
-                        if (ActivityCompat.shouldShowRequestPermissionRationale(activity, android.Manifest.permission.POST_NOTIFICATIONS)) {
-                            new AlertDialog.Builder(activity)
-                                .setTitle("Notification Permissions Required")
-                                .setMessage("To show notifications for new reviews, please allow notification permissions.")
-                                .setPositiveButton("Allow", (dialog, which) -> ActivityCompat.requestPermissions(activity, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 1001))
-                                .setNegativeButton("Cancel", null)
-                                .show();
-                        } else {
-                            ActivityCompat.requestPermissions(activity, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 1001);
+                boolean wantEnable = (Boolean) newValue;
+                if (wantEnable) {
+                    if (android.os.Build.VERSION.SDK_INT >= 33) {
+                        Activity activity = requireActivity();
+                        if (ContextCompat.checkSelfPermission(activity, android.Manifest.permission.POST_NOTIFICATIONS) != PackageManager.PERMISSION_GRANTED) {
+                            // Show rationale if needed
+                            if (ActivityCompat.shouldShowRequestPermissionRationale(activity, android.Manifest.permission.POST_NOTIFICATIONS)) {
+                                new AlertDialog.Builder(activity)
+                                    .setTitle("Notification Permissions Required")
+                                    .setMessage("To show notifications for new reviews, please allow notification permissions...")
+                                    .setPositiveButton("Allow", (dialog, which) -> ActivityCompat.requestPermissions(activity, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 1001))
+                                    .setNegativeButton("Cancel", (dialog, which) -> {
+                                        enableNotificationsPref.setChecked(false);
+                                        GlobalSettings.Other.setEnableNotifications(false);
+                                    })
+                                    .show();
+                            } else {
+                                ActivityCompat.requestPermissions(activity, new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 1001);
+                            }
+                            // Don't enable yet, wait for permission result
+                            return false;
                         }
                     }
+                    GlobalSettings.Other.setEnableNotifications(true);
+                    enableNotificationsPref.setChecked(true);
+                } else {
+                    GlobalSettings.Other.setEnableNotifications(false);
+                    enableNotificationsPref.setChecked(false);
                 }
-                return true;
+                return false; // We handle the toggle manually
             });
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        final @Nullable TwoStatePreference enableNotificationsPref = findPreference("enable_notifications");
+        if (requestCode == 1001 && enableNotificationsPref != null) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                GlobalSettings.Other.setEnableNotifications(true);
+                enableNotificationsPref.setChecked(true);
+                enableNotificationsPref.callChangeListener(true); // Force UI update
+            } else {
+                GlobalSettings.Other.setEnableNotifications(false);
+                enableNotificationsPref.setChecked(false);
+                enableNotificationsPref.callChangeListener(false);
+            }
         }
     }
 

@@ -2014,7 +2014,18 @@ public final class GlobalSettings {
          * @return the value
          */
         public static boolean getEnableNotifications() {
-            return prefs().getBoolean("enable_notifications", true);
+            return prefs().getBoolean("enable_notifications", false);
+        }
+
+        /**
+         * Enable notifications for new lessons and reviews.
+         *
+         * @param value the value
+         */
+        public static void setEnableNotifications(final boolean value) {
+            final SharedPreferences.Editor editor = prefs().edit();
+            editor.putBoolean("enable_notifications", value);
+            editor.apply();
         }
 
         /**
@@ -3540,6 +3551,26 @@ public final class GlobalSettings {
         public static void setSessionLogDismissed(final boolean value) {
             final SharedPreferences.Editor editor = prefs().edit();
             editor.putBoolean("session_log_dismissed", value);
+            editor.apply();
+        }
+
+        /**
+         * Dismiss the tutorial for the notification enable dialog.
+         *
+         * @return the value
+         */
+        public static boolean getNotificationPromptDismissed() {
+            return prefs().getBoolean("notification_prompt_dismissed", false);
+        }
+
+        /**
+         * Dismiss the tutorial for the notification enable dialog.
+         *
+         * @param value the value
+         */
+        public static void setNotificationPromptDismissed(final boolean value) {
+            final SharedPreferences.Editor editor = prefs().edit();
+            editor.putBoolean("notification_prompt_dismissed", value);
             editor.apply();
         }
     }
