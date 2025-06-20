@@ -20,14 +20,18 @@ import static com.blazing_durtles.wk.util.ObjectSupport.runAsync;
 import static com.blazing_durtles.wk.util.ObjectSupport.safe;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 
 import com.blazing_durtles.wk.GlobalSettings;
 import com.blazing_durtles.wk.R;
@@ -67,6 +71,13 @@ import com.blazing_durtles.wk.views.SyncProgressView;
 import com.blazing_durtles.wk.views.TimeLineBarChart;
 import com.blazing_durtles.wk.views.UpcomingReviewsView;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.Locale;
+import java.util.Set;
+
 import javax.annotation.Nullable;
 
 /**
@@ -84,6 +95,12 @@ public final class MainActivity extends AbstractActivity {
     private final ViewProxy keyboardHelpView = new ViewProxy();
 
     private static final int REQUEST_CODE_POST_NOTIFICATIONS = 1001;
+    private static final String PREFS_STREAK = "streak_prefs";
+    private static final String KEY_LAST_SESSION_DATE = "last_session_date";
+    private static final String KEY_STREAK_COUNT = "streak_count";
+    private static final String KEY_LONGEST_STREAK = "longest_streak";
+    private static final String KEY_STREAK_RESET_DATE = "streak_reset_date";
+    private static final String KEY_STREAK_LOGS = "streak_logs";
 
     /**
      * The constructor.
@@ -215,14 +232,12 @@ public final class MainActivity extends AbstractActivity {
         final @Nullable TimeLineBarChart timeLineBarChart = findViewById(R.id.timeLineBarChart);
         if (timeLineBarChart != null) {
             timeLineBarChart.setLifecycleOwner(this);
-        }
-
-        int reviewCount = GlobalSettings.DailyReviewCounter.getCount();
+        }        int reviewCount = GlobalSettings.getDailyReviewCount();
         reviewCounterText.setText("Reviews Completed Today: " + reviewCount);
         boolean showReviewCounter = GlobalSettings.Dashboard.getShowDailyReviewCounter();
         reviewCounterText.setVisibility(showReviewCounter ? View.VISIBLE : View.GONE);
 
-        int lessonCount = GlobalSettings.DailyLessonCounter.getCount();
+        int lessonCount = GlobalSettings.getDailyLessonCount();
         lessonCounterText.setText("Lessons Completed Today: " + lessonCount);
         boolean showLessonCounter = GlobalSettings.Dashboard.getShowDailyLessonCounter();
         lessonCounterText.setVisibility(showLessonCounter ? View.VISIBLE : View.GONE);
@@ -249,15 +264,28 @@ public final class MainActivity extends AbstractActivity {
                         GlobalSettings.Other.setEnableNotifications(true);
                     }
                     dialog.dismiss();
-                })
-                .show();
+                })                .show();
         }
+        
+        checkAndUpdateStreakOnAppOpen();
+        updateStreakView();
     }
 
-    @Override
-    protected void onResumeLocal() {
+    @Override    protected void onResumeLocal() {
         BackgroundAlarmReceiver.scheduleOrCancelAlarm();
         BackgroundSyncWorker.scheduleOrCancelWork();
+        
+        // Check for streak reset in case the app was suspended across multiple days
+        boolean streakWasReset = checkAndUpdateStreakOnAppOpen();
+        
+        // Update streak view in case progress was made since last view
+        updateStreakView();
+        
+        // If streak was reset, force another UI update to ensure the reset value is displayed
+        if (streakWasReset) {
+            // Post to UI thread to ensure the reset is reflected immediately
+            runOnUiThread(this::updateStreakView);
+        }
 
         runAsync(() -> {
             LiveBurnedItems.getInstance().forceUpdate();
@@ -270,16 +298,14 @@ public final class MainActivity extends AbstractActivity {
             LiveJoyoProgress.getInstance().forceUpdate();
             LiveJlptProgress.getInstance().forceUpdate();
             LiveAlertContext.getInstance().forceUpdate();
-        });
-
-        // Update the review counter display every time the activity resumes
+        });        // Update the review counter display every time the activity resumes
         final ViewProxy reviewCounterText = new ViewProxy(this, R.id.reviewCounterText);
-        int reviewCount = GlobalSettings.DailyReviewCounter.getCount();
+        int reviewCount = GlobalSettings.getDailyReviewCount();
         reviewCounterText.setText("Reviews Completed Today: " + reviewCount);
 
         // Update the lesson counter display every time the activity resumes
         final ViewProxy lessonCounterText = new ViewProxy(this, R.id.lessonCounterText);
-        int lessonCount = GlobalSettings.DailyLessonCounter.getCount();
+        int lessonCount = GlobalSettings.getDailyLessonCount();
         lessonCounterText.setText("Lessons Completed Today: " + lessonCount);
 
         keyboardHelpView.setVisibility(!GlobalSettings.Tutorials.getKeyboardHelpDismissed());
@@ -421,5 +447,145 @@ public final class MainActivity extends AbstractActivity {
                 GlobalSettings.Other.setEnableNotifications(true);
             }
         }
+    }    private void updateStreakView() {
+        View streakView = findViewById(R.id.streakView);
+        if (streakView == null) return;
+        SharedPreferences prefs = getSharedPreferences(PREFS_STREAK, Context.MODE_PRIVATE);
+        int streak = prefs.getInt(KEY_STREAK_COUNT, 0);
+        int longest = prefs.getInt(KEY_LONGEST_STREAK, 0);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String today = sdf.format(new Date());
+        
+        // Check if progress was made today by looking at session logs
+        Set<String> logs = prefs.getStringSet(KEY_STREAK_LOGS, new HashSet<>());
+        boolean progressToday = false;
+        if (logs != null) {
+            for (String log : logs) {
+                if (log.startsWith(today + " - Session Completed")) {
+                    progressToday = true;
+                    break;
+                }
+            }
+        }
+        
+        // Also check current daily counters in case session hasn't been logged yet
+        int dailyReviews = GlobalSettings.getDailyReviewCount();
+        int dailyLessons = GlobalSettings.getDailyLessonCount();
+        boolean hasProgress = progressToday || dailyReviews > 0 || dailyLessons > 0;
+        
+        ImageView flame = streakView.findViewById(R.id.streakFlameIcon);
+        TextView value = streakView.findViewById(R.id.streakValue);
+        value.setText(String.valueOf(streak));
+        if (hasProgress) {
+            flame.setImageResource(R.drawable.ic_flame);
+            value.setTextColor(Color.parseColor("#4CAF50")); // green
+        } else {
+            flame.setImageResource(R.drawable.ic_flame_dim);
+            value.setTextColor(Color.parseColor("#FF0000")); // red
+        }
+        // Show/hide based on setting
+        boolean show = GlobalSettings.Dashboard.getShowDailyStreak();
+        streakView.setVisibility(show ? View.VISIBLE : View.GONE);    }    private boolean checkAndUpdateStreakOnAppOpen() {
+        SharedPreferences prefs = getSharedPreferences(PREFS_STREAK, Context.MODE_PRIVATE);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String today = sdf.format(new Date());
+        String lastSessionDate = prefs.getString(KEY_LAST_SESSION_DATE, "");
+        int streak = prefs.getInt(KEY_STREAK_COUNT, 0);
+        int longest = prefs.getInt(KEY_LONGEST_STREAK, 0);
+        String lastResetDate = prefs.getString(KEY_STREAK_RESET_DATE, "");
+        
+        // Only check for reset once per day
+        if (!today.equals(lastResetDate)) {
+            Calendar cal = Calendar.getInstance();
+            cal.add(Calendar.DATE, -1);
+            String yesterday = sdf.format(cal.getTime());
+            
+            // Reset streak if there's a gap: lastSessionDate is not yesterday and not today
+            if (!lastSessionDate.equals("") && !lastSessionDate.equals(yesterday) && !lastSessionDate.equals(today)) {
+                // Missed one or more days, reset streak
+                streak = 0;
+                prefs.edit().putInt(KEY_STREAK_COUNT, streak)
+                    .putInt(KEY_LONGEST_STREAK, longest)
+                    .putString(KEY_STREAK_RESET_DATE, today)
+                    .apply();
+                return true; // Indicate that a reset occurred
+            } else {
+                // No reset needed, just update reset date to prevent multiple checks per day
+                prefs.edit().putString(KEY_STREAK_RESET_DATE, today).apply();
+            }
+        }
+        return false; // No reset occurred
     }
+
+    // Helper to prune logs to last 7 days
+    private static void pruneStreakLogs(SharedPreferences prefs) {
+        Set<String> logs = prefs.getStringSet(KEY_STREAK_LOGS, new HashSet<>());
+        if (logs == null || logs.isEmpty()) return;
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        Calendar cal = Calendar.getInstance();
+        cal.add(Calendar.DATE, -7);
+        String sevenDaysAgo = sdf.format(cal.getTime());
+        Set<String> pruned = new HashSet<>();
+        for (String log : logs) {
+            // Assume log format: "yyyy-MM-dd - ..."
+            if (log.length() >= 10 && log.substring(0, 10).compareTo(sevenDaysAgo) >= 0) {
+                pruned.add(log);
+            }
+        }        prefs.edit().putStringSet(KEY_STREAK_LOGS, pruned).apply();
+    }    /**
+     * Log session completion and update streak based purely on consecutive progress days.
+     * 
+     * This method ensures that streaks only count days where actual progress was made,
+     * completely ignoring sessions without progress.
+     * 
+     * Streak Logic:
+     * - Only processes streak if current day has progress (dailyReviews > 0 OR dailyLessons > 0)
+     * - Only increments streak if this is the first session with progress today
+     * - Streak resets are handled separately in checkAndUpdateStreakOnAppOpen()
+     * - Simple increment: completed session with progress today = streak++
+     * 
+     * BUG FIX: 
+     * - No longer gives "free" streak increments for sessions without progress
+     * - Only increments when actual progress is made on a new day
+     * - Reset logic is separate from increment logic for clarity
+     * 
+     * @param context The context for accessing SharedPreferences
+     */
+    public static void logSessionCompleted(Context context) {
+        SharedPreferences prefs = context.getSharedPreferences(PREFS_STREAK, Context.MODE_PRIVATE);
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+        String today = sdf.format(new Date());
+        String lastSessionDate = prefs.getString(KEY_LAST_SESSION_DATE, "");
+        int streak = prefs.getInt(KEY_STREAK_COUNT, 0);
+        int longest = prefs.getInt(KEY_LONGEST_STREAK, 0);
+        
+        // Check if user made actual progress today
+        int dailyReviews = GlobalSettings.getDailyReviewCount();
+        int dailyLessons = GlobalSettings.getDailyLessonCount();
+        boolean hasProgress = dailyReviews > 0 || dailyLessons > 0;
+        
+        // Log the session, only one per date
+        Set<String> logs = prefs.getStringSet(KEY_STREAK_LOGS, new HashSet<>());
+        if (logs == null) logs = new HashSet<>();
+        boolean alreadyLoggedToday = false;
+        for (String log : logs) {
+            if (log.startsWith(today + " - ")) {
+                alreadyLoggedToday = true;
+                break;
+            }
+        }
+        
+        if (!alreadyLoggedToday && hasProgress) {
+            // Only log if user made actual progress (completed items)
+            logs.add(today + " - Session Completed (R:" + dailyReviews + " L:" + dailyLessons + ")");
+            prefs.edit().putStringSet(KEY_STREAK_LOGS, logs).apply();
+            pruneStreakLogs(prefs);
+        }        if (!today.equals(lastSessionDate) && hasProgress) {
+            // Simple increment: if this is the first session with progress today, increment streak
+            streak++;
+            if (streak > longest) longest = streak;
+            
+            // Update last session date only if progress was made
+            prefs.edit().putString(KEY_LAST_SESSION_DATE, today).putInt(KEY_STREAK_COUNT, streak).putInt(KEY_LONGEST_STREAK, longest).apply();
+        }    }
 }

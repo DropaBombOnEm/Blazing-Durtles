@@ -216,19 +216,26 @@ public final class SummarySessionFragment extends AbstractSessionFragment implem
         final float correctFraction = (total == 0) ? 0 : ((float) correctTotal) / total;
         final int totalPercentage = Math.round(correctFraction * 100);
 
-        correctPercentage.setTextFormat("%d%%", totalPercentage);
+        if (total == 0) {
+            correctPercentage.setTextFormat("%d%%", 0);
+            incorrectPercentage.setTextFormat("%d%%", 0);
+        } else {
+            correctPercentage.setTextFormat("%d%%", totalPercentage);
+            incorrectPercentage.setTextFormat("%d%%", 100-totalPercentage);
+        }
         correctRadicals.setText(numCorrectRadicals);
         correctKanji.setText(numCorrectKanji);
         correctVocabulary.setText(numCorrectVocabulary);
         correctKanaVocabulary.setText(numCorrectKanaVocabulary);
 
-        incorrectPercentage.setTextFormat("%d%%", 100-totalPercentage);
         incorrectRadicals.setText(totalRadical-numCorrectRadicals);
         incorrectKanji.setText(totalKanji-numCorrectKanji);
         incorrectVocabulary.setText(totalVocabulary-numCorrectVocabulary);
         incorrectKanaVocabulary.setText(totalKanaVocabulary-numCorrectKanaVocabulary);
 
         // Hide correct/incorrect fields (entire TableRow: label and value) if value is 0 or 0%
+        View incorrectPercentageRow = (View) view.findViewById(R.id.incorrectPercentage).getParent();
+        if (incorrectPercentageRow != null) incorrectPercentageRow.setVisibility((100-totalPercentage) == 0 ? View.GONE : View.VISIBLE);
         View correctPercentageRow = (View) view.findViewById(R.id.correctPercentage).getParent();
         if (correctPercentageRow != null) correctPercentageRow.setVisibility(totalPercentage == 0 ? View.GONE : View.VISIBLE);
         View correctRadicalsRow = (View) view.findViewById(R.id.correctRadicals).getParent();
@@ -239,8 +246,6 @@ public final class SummarySessionFragment extends AbstractSessionFragment implem
         if (correctVocabularyRow != null) correctVocabularyRow.setVisibility(numCorrectVocabulary == 0 ? View.GONE : View.VISIBLE);
         View correctKanaVocabularyRow = (View) view.findViewById(R.id.correctKanaVocabulary).getParent();
         if (correctKanaVocabularyRow != null) correctKanaVocabularyRow.setVisibility(numCorrectKanaVocabulary == 0 ? View.GONE : View.VISIBLE);
-        View incorrectPercentageRow = (View) view.findViewById(R.id.incorrectPercentage).getParent();
-        if (incorrectPercentageRow != null) incorrectPercentageRow.setVisibility((100-totalPercentage) == 0 ? View.GONE : View.VISIBLE);
         View incorrectRadicalsRow = (View) view.findViewById(R.id.incorrectRadicals).getParent();
         if (incorrectRadicalsRow != null) incorrectRadicalsRow.setVisibility((totalRadical-numCorrectRadicals) == 0 ? View.GONE : View.VISIBLE);
         View incorrectKanjiRow = (View) view.findViewById(R.id.incorrectKanji).getParent();
@@ -256,11 +261,9 @@ public final class SummarySessionFragment extends AbstractSessionFragment implem
 
         // Hide/show the blank spacer row below Overall Percentage Incorrect
         View incorrectPercentageSpacerRow = view.findViewById(R.id.incorrectPercentageSpacerRow);
-        if (incorrectPercentageSpacerRow != null) incorrectPercentageSpacerRow.setVisibility((100-totalPercentage) == 0 ? View.GONE : View.VISIBLE);
-
-        // Hide entire summary sections if all values are zero
+        if (incorrectPercentageSpacerRow != null) incorrectPercentageSpacerRow.setVisibility((100-totalPercentage) == 0 ? View.GONE : View.VISIBLE);        // Hide entire summary sections if all values are zero
         boolean allCorrectZero = totalPercentage == 0 && numCorrectRadicals == 0 && numCorrectKanji == 0 && numCorrectVocabulary == 0 && numCorrectKanaVocabulary == 0;
-        boolean allIncorrectZero = (100-totalPercentage) == 0 && (totalRadical-numCorrectRadicals) == 0 && (totalKanji-numCorrectKanji) == 0 && (totalVocabulary-numCorrectVocabulary) == 0 && (totalKanaVocabulary-numCorrectKanaVocabulary) == 0;
+        boolean allIncorrectZero = total == 0 || ((100-totalPercentage) == 0 && (totalRadical-numCorrectRadicals) == 0 && (totalKanji-numCorrectKanji) == 0 && (totalVocabulary-numCorrectVocabulary) == 0 && (totalKanaVocabulary-numCorrectKanaVocabulary) == 0);
         correctSummary.setVisibility(allCorrectZero ? View.GONE : View.VISIBLE);
         incorrectSummary.setVisibility(allIncorrectZero ? View.GONE : View.VISIBLE);
 
@@ -355,6 +358,25 @@ public final class SummarySessionFragment extends AbstractSessionFragment implem
 
         scrollView.setDelegate(view, R.id.scrollView);
         scrollView.setSwipeListener(this);
+
+        // Hide both correct and incorrect tables if no items were completed
+        total = 0; // Reset the existing variable instead of redeclaring it
+for (final SessionItem item : session.getItems()) {
+    if (!item.isAbandoned()) {
+        total++;
+    }
+}
+        // Hide both correct and incorrect tables if no items were completed
+        if (total == 0) {
+            correctTable.setVisibility(View.GONE);
+            incorrectTable.setVisibility(View.GONE);
+        } else {
+            correctTable.setVisibility(View.VISIBLE);
+            incorrectTable.setVisibility(View.VISIBLE);
+        }        // Ensure incorrectTable is hidden when total is 0
+        if (total == 0) {
+            incorrectTable.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -532,6 +554,26 @@ public final class SummarySessionFragment extends AbstractSessionFragment implem
 
         correctTable.setVisibility(View.VISIBLE);
         correctTable.setSubjects(this, correctSubjects, true, true);
+
+        // Hide both correct and incorrect tables if no items were completed
+        int total = 0;
+        for (final SessionItem item : session.getItems()) {
+            if (!item.isAbandoned()) {
+                total++;
+            }
+        }
+        // Hide both correct and incorrect tables if no items were completed
+        if (total == 0) {
+            correctTable.setVisibility(View.GONE);
+            incorrectTable.setVisibility(View.GONE);
+        } else {
+            correctTable.setVisibility(View.VISIBLE);
+            incorrectTable.setVisibility(View.VISIBLE);
+        }
+
+        // Ensure incorrectTable is hidden when total is 0
+        if (total == 0) {
+            incorrectTable.setVisibility(View.GONE);        }
 
         incorrectStarSpinner.setParentVisibility(GlobalSettings.Other.getEnableStarRatings());
         correctStarSpinner.setParentVisibility(GlobalSettings.Other.getEnableStarRatings());

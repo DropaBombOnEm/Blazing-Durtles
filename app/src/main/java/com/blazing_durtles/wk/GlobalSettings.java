@@ -17,6 +17,7 @@
 package com.blazing_durtles.wk;
 
 
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.util.Log;
@@ -1148,6 +1149,25 @@ public final class GlobalSettings {
          */
         public static boolean getShowDailyLessonCounter() {
             return prefs().getBoolean("show_daily_lesson_counter", true);
+        }
+
+        /**
+         * Show the daily streak counter on the dashboard.
+         * @return the value
+         */
+        public static boolean getShowDailyStreak() {
+            return prefs().getBoolean("show_daily_streak", true);
+        }
+
+        /**
+         * Set the visibility of the daily streak.
+         *
+         * @param value true to make the daily streak visible
+         */
+        public static void setShowDailyStreak(final boolean value) {
+            final SharedPreferences.Editor editor = prefs().edit();
+            editor.putBoolean("show_daily_streak", value);
+            editor.apply();
         }
     }
 
@@ -3567,151 +3587,138 @@ public final class GlobalSettings {
          * Dismiss the tutorial for the notification enable dialog.
          *
          * @param value the value
-         */
-        public static void setNotificationPromptDismissed(final boolean value) {
+         */        public static void setNotificationPromptDismissed(final boolean value) {
             final SharedPreferences.Editor editor = prefs().edit();
             editor.putBoolean("notification_prompt_dismissed", value);
             editor.apply();
         }
+    }    /**
+     * Get separate SharedPreferences for daily review counter persistence.
+     * 
+     * Using separate SharedPreferences files ensures that daily counters survive
+     * app updates, unlike the default SharedPreferences which can be cleared.
+     * Each counter maintains its own date tracking for automatic midnight reset.
+     */
+    private static SharedPreferences getDailyReviewPrefs() {
+        return requireNonNull(application).getSharedPreferences("daily_review_prefs", Context.MODE_PRIVATE);
     }
 
     /**
-     * Local daily review completion counter utilities.
+     * Get separate SharedPreferences for daily lesson counter persistence.
      */
-    public static final class DailyReviewCounter {
-        private static final String PREF_KEY_DATE = "daily_review_counter_date";
-        private static final String PREF_KEY_COUNT = "daily_review_counter_count";
-
-        /**
-         * Get today's date as a string (yyyy-MM-dd).
-         */
-        private static String getTodayString() {
-            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.ROOT);
-            return sdf.format(new java.util.Date());
-        }
-
-        /**
-         * Get the current daily review count. Resets if the date has changed.
-         */
-        public static int getCount() {
-            SharedPreferences prefs = prefs();
-            String today = getTodayString();
-            String storedDate = prefs.getString(PREF_KEY_DATE, "");
-            boolean alreadyResetToday = prefs.getBoolean("daily_review_counter_reset_flag", false);
-            if (!today.equals(storedDate)) {
-                if (!alreadyResetToday) {
-                    setCount(0);
-                    setDate(today);
-                    SharedPreferences.Editor editor = prefs.edit();
-                    editor.putBoolean("daily_review_counter_reset_flag", true);
-                    editor.apply();
-                }
-                return 0;
-            } else {
-                // Clear the reset flag for the next day
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putBoolean("daily_review_counter_reset_flag", false);
-                editor.apply();
-            }
-            return prefs.getInt(PREF_KEY_COUNT, 0);
-        }
-
-        /**
-         * Increment the daily review count by 1. Resets if the date has changed.
-         */
-        public static void increment() {
-            SharedPreferences prefs = prefs();
-            String today = getTodayString();
-            String storedDate = prefs.getString(PREF_KEY_DATE, "");
-            SharedPreferences.Editor editor = prefs.edit();
-            if (!today.equals(storedDate)) {
-                editor.putString(PREF_KEY_DATE, today);
-                editor.putInt(PREF_KEY_COUNT, 1);
-            } else {
-                int count = prefs.getInt(PREF_KEY_COUNT, 0) + 1;
-                editor.putInt(PREF_KEY_COUNT, count);
-            }
-            editor.apply();
-        }
-
-        /**
-         * Set the daily review count (for internal use).
-         */
-        private static void setCount(int count) {
-            SharedPreferences.Editor editor = prefs().edit();
-            editor.putInt(PREF_KEY_COUNT, count);
-            editor.apply();
-        }
-
-        /**
-         * Set the stored date (for internal use).
-         */
-        private static void setDate(String date) {
-            SharedPreferences.Editor editor = prefs().edit();
-            editor.putString(PREF_KEY_DATE, date);
-            editor.apply();
-        }
+    private static SharedPreferences getDailyLessonPrefs() {
+        return requireNonNull(application).getSharedPreferences("daily_lesson_prefs", Context.MODE_PRIVATE);
     }
 
     /**
-     * Local daily lesson completion counter utilities.
+     * Get the current daily review count.
      */
-    public static final class DailyLessonCounter {
-        private static final String PREF_KEY_DATE = "daily_lesson_counter_date";
-        private static final String PREF_KEY_COUNT = "daily_lesson_counter_count";
-
-        private static String getTodayString() {
-            java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.ROOT);
-            return sdf.format(new java.util.Date());
-        }
-
-        public static int getCount() {
-            SharedPreferences prefs = prefs();
-            String today = getTodayString();
-            String storedDate = prefs.getString(PREF_KEY_DATE, "");
-            boolean alreadyResetToday = prefs.getBoolean("daily_lesson_counter_reset_flag", false);
-            if (!today.equals(storedDate)) {
-                if (!alreadyResetToday) {
-                    setCount(0);
-                    setDate(today);
-                    SharedPreferences.Editor editor = prefs.edit();
-                    editor.putBoolean("daily_lesson_counter_reset_flag", true);
-                    editor.apply();
-                }
-                return 0;
-            } else {
-                SharedPreferences.Editor editor = prefs.edit();
-                editor.putBoolean("daily_lesson_counter_reset_flag", false);
-                editor.apply();
-            }
-            return prefs.getInt(PREF_KEY_COUNT, 0);
-        }
-
-        public static void increment() {
-            SharedPreferences prefs = prefs();
-            String today = getTodayString();
-            String storedDate = prefs.getString(PREF_KEY_DATE, "");
+    public static int getDailyReviewCount() {
+        SharedPreferences prefs = getDailyReviewPrefs();
+        String today = getCurrentDateString();
+        String lastDate = prefs.getString("last_date", "");
+        
+        if (!today.equals(lastDate)) {
+            // New day, reset counter
             SharedPreferences.Editor editor = prefs.edit();
-            if (!today.equals(storedDate)) {
-                editor.putString(PREF_KEY_DATE, today);
-                editor.putInt(PREF_KEY_COUNT, 1);
-            } else {
-                int count = prefs.getInt(PREF_KEY_COUNT, 0) + 1;
-                editor.putInt(PREF_KEY_COUNT, count);
-            }
+            editor.putInt("count", 0);
+            editor.putString("last_date", today);
             editor.apply();
+            return 0;
         }
-
-        private static void setCount(int count) {
-            SharedPreferences.Editor editor = prefs().edit();
-            editor.putInt(PREF_KEY_COUNT, count);
-            editor.apply();
-        }
-
-        private static void setDate(String date) {
-            SharedPreferences.Editor editor = prefs().edit();
-            editor.putString(PREF_KEY_DATE, date);
-            editor.apply();
-        }
+        
+        return prefs.getInt("count", 0);
     }
+
+    /**
+     * Set the daily review count.
+     */
+    public static void setDailyReviewCount(final int count) {
+        SharedPreferences prefs = getDailyReviewPrefs();
+        String today = getCurrentDateString();
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("count", count);
+        editor.putString("last_date", today);
+        editor.apply();
+    }
+
+    /**
+     * Increment the daily review count by 1.
+     */
+    public static void incrementDailyReviewCount() {
+        setDailyReviewCount(getDailyReviewCount() + 1);
+    }
+
+    /**
+     * Get the current daily lesson count.
+     */
+    public static int getDailyLessonCount() {
+        SharedPreferences prefs = getDailyLessonPrefs();
+        String today = getCurrentDateString();
+        String lastDate = prefs.getString("last_date", "");
+        
+        if (!today.equals(lastDate)) {
+            // New day, reset counter
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putInt("count", 0);
+            editor.putString("last_date", today);
+            editor.apply();
+            return 0;
+        }
+        
+        return prefs.getInt("count", 0);
+    }
+
+    /**
+     * Set the daily lesson count.
+     */
+    public static void setDailyLessonCount(final int count) {
+        SharedPreferences prefs = getDailyLessonPrefs();
+        String today = getCurrentDateString();
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt("count", count);
+        editor.putString("last_date", today);
+        editor.apply();
+    }
+
+    /**
+     * Increment the daily lesson count by 1.
+     */
+    public static void incrementDailyLessonCount() {
+        setDailyLessonCount(getDailyLessonCount() + 1);
+    }
+
+    /**
+     * Get current date as string for date comparison.
+     */
+    private static String getCurrentDateString() {
+        return java.time.LocalDate.now().toString();
+    }
+
+    /*
+     * TESTING SCENARIOS FOR DAILY COUNTERS AND STREAKS:
+     * 
+     * Daily Counter Reset Test:
+     * 1. Set count to 5 on day 1
+     * 2. Call getDailyReviewCount() on day 2 
+     * 3. Should return 0 (automatic reset)
+     * 
+     * Daily Counter Increment Test:
+     * 1. Start with count = 0
+     * 2. Complete review session with 3 items
+     * 3. Should increment to 3 (once per finished item)
+     * 4. Complete another session with 2 items
+     * 5. Should increment to 5 (doesn't double-count same items)
+     * 
+     * Streak Increment Test:
+     * 1. Complete session with progress on day 1 → streak = 1
+     * 2. Complete session with progress on day 2 → streak = 2  
+     * 3. Complete session without progress on day 3 → streak stays 2
+     * 
+     * Streak Reset Test:
+     * 1. Have streak = 5 on day 5
+     * 2. Skip day 6 (no session)
+     * 3. Open app on day 7 → streak resets to 0 (checkAndUpdateStreakOnAppOpen)
+     * 4. Complete session with progress on day 7 → streak = 1
+     */
 }

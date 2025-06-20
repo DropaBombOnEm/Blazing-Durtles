@@ -18,6 +18,7 @@ package com.blazing_durtles.wk.fragments;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,7 +26,10 @@ import android.text.InputType;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.activity.result.ActivityResultLauncher;
+import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
@@ -64,8 +68,6 @@ import com.blazing_durtles.wk.util.ThemeUtil;
 import java.util.List;
 import java.util.Objects;
 
-import javax.annotation.Nullable;
-
 import static com.blazing_durtles.wk.Constants.API_KEY_PERMISSION_NOTICE;
 import static com.blazing_durtles.wk.Constants.ENABLE_ADVANCED_WARNING;
 import static com.blazing_durtles.wk.Constants.EXPERIMENTAL_PREFERENCE_STATUS_NOTICE;
@@ -81,6 +83,18 @@ import static com.blazing_durtles.wk.util.TextUtil.renderHtml;
  * Fragment for preferences.
  */
 public final class PreferencesFragment extends PreferenceFragmentCompat {
+    private final ActivityResultLauncher<String[]> requestPermissionLauncher =
+        registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
+            // Handle permission results
+            final @Nullable TwoStatePreference enableNotificationsPref = findPreference("enable_notifications");
+            if (result.containsKey(android.Manifest.permission.POST_NOTIFICATIONS)) {
+                boolean granted = result.get(android.Manifest.permission.POST_NOTIFICATIONS);
+                GlobalSettings.Other.setEnableNotifications(granted);
+                enableNotificationsPref.setChecked(granted);
+                enableNotificationsPref.callChangeListener(granted);
+            }
+        });
+
     @Override
     public void onCreatePreferences(final @Nullable Bundle savedInstanceState, final @Nullable String rootKey) {
         setPreferencesFromResource(R.xml.preferences, rootKey);
@@ -309,6 +323,20 @@ public final class PreferencesFragment extends PreferenceFragmentCompat {
             });
         }
 
+        // Daily Streak toggle
+        final @Nullable TwoStatePreference showDailyStreakPref = findPreference("show_daily_streak");
+        if (showDailyStreakPref != null) {
+            showDailyStreakPref.setChecked(GlobalSettings.Dashboard.getShowDailyStreak());
+            // Set summary to show longest streak
+            updateLongestStreakSummary(showDailyStreakPref);
+            showDailyStreakPref.setOnPreferenceChangeListener((preference, newValue) -> {
+                boolean show = (Boolean) newValue;
+                GlobalSettings.Dashboard.setShowDailyStreak(show);
+                updateLongestStreakSummary(showDailyStreakPref);
+                return true;
+            });
+        }
+
         setVisibility("api_key_help", LiveApiState.getInstance().get() != ApiState.OK);
         setVisibility("advanced_lesson_settings", GlobalSettings.getAdvancedEnabled());
         setVisibility("advanced_review_settings", GlobalSettings.getAdvancedEnabled());
@@ -504,6 +532,12 @@ public final class PreferencesFragment extends PreferenceFragmentCompat {
     public void updateTheme() {
         View view = requireView();
         view.setBackgroundColor(ThemeUtil.getColor(R.attr.colorBackground));
+    }
+
+    private void updateLongestStreakSummary(TwoStatePreference pref) {
+        SharedPreferences prefs = requireContext().getSharedPreferences("streak_prefs", android.content.Context.MODE_PRIVATE);
+        int longest = prefs.getInt("longest_streak", 0);
+        pref.setSummary("(Longest Streak: " + longest + " Days)");
     }
 
 

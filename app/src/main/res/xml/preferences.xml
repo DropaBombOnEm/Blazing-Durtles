@@ -158,6 +158,12 @@
         app:title="Dashboard Settings">
 
         <SwitchPreferenceCompat
+            app:key="show_daily_streak"
+            app:title="Show Daily Streak"
+            app:singleLineTitle="false"
+            app:defaultValue="true"/>
+
+        <SwitchPreferenceCompat
             app:key="show_daily_review_counter"
             app:title="Show Daily Review Counter"
             app:singleLineTitle="false"

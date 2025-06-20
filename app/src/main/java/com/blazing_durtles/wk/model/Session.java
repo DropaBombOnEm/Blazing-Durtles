@@ -744,12 +744,11 @@ s     *
             if (itemJustFinished) {
                 FloatingUiState.toastOldSrsStage = currentQuestion.getItem().getSrsStage();
                 FloatingUiState.toastNewSrsStage = currentQuestion.getItem().getNewSrsStage();
-                FloatingUiState.showSrsStageChangedToast = true;
-                // Increment daily review counter if this is a review session and the item just finished, but only once per item per session
+                FloatingUiState.showSrsStageChangedToast = true;                // Increment daily review counter if this is a review session and the item just finished, but only once per item per session
                 if (type == com.blazing_durtles.wk.enums.SessionType.REVIEW) {
                     long itemId = currentQuestion.getItem().getId();
                     if (!countedReviewItemIds.contains(itemId)) {
-                        com.blazing_durtles.wk.GlobalSettings.DailyReviewCounter.increment();
+                        com.blazing_durtles.wk.GlobalSettings.incrementDailyReviewCount();
                         countedReviewItemIds.add(itemId);
                     }
                 }
@@ -758,7 +757,7 @@ s     *
                     if (countedLessonItemIds == null) countedLessonItemIds = new java.util.HashSet<>();
                     long itemId = currentQuestion.getItem().getId();
                     if (!countedLessonItemIds.contains(itemId)) {
-                        com.blazing_durtles.wk.GlobalSettings.DailyLessonCounter.increment();
+                        com.blazing_durtles.wk.GlobalSettings.incrementDailyLessonCount();
                         countedLessonItemIds.add(itemId);
                     }
                 }

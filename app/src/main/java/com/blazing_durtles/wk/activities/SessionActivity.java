@@ -168,6 +168,7 @@ public final class SessionActivity extends AbstractActivity {
         if (session.isInactive()) {
             if (!finished) {
                 finished = true;
+                MainActivity.logSessionCompleted(this);
                 goToMainActivity();
             }
             return;

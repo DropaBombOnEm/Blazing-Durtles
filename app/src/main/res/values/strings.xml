@@ -5,4 +5,6 @@
     <string name="uri_scheme">blazing-durtles</string>
     <string name="subject_info_uri">blazing-durtles://subject-info</string>
     <string name="applabel">Blazing Durtles</string>
+    <string name="streak_icon">Streak Icon</string>
+    <string name="show_daily_streak">Show Daily Streak</string>
 </resources>

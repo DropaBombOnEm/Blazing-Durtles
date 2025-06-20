@@ -136,7 +136,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Overall Percentage Correct:"
+                    android:text="Overall Percentage Correct: "
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -180,7 +180,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Radicals Correct:"
+                    android:text="Radicals Correct: "
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -212,7 +212,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Kanji Correct:"
+                    android:text="Kanji Correct: "
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -244,7 +244,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Vocabulary Correct:"
+                    android:text="Vocabulary Correct: "
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -275,7 +275,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Kana Vocabulary Correct:"
+                    android:text="Kana Vocabulary Correct: "
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -319,7 +319,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Overall Percentage Incorrect:"
+                    android:text="Overall Percentage Incorrect: "
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -363,7 +363,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Radicals Incorrect:"
+                    android:text="Radicals Incorrect: "
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -395,7 +395,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Kanji Incorrect:"
+                    android:text="Kanji Incorrect: "
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -427,7 +427,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Vocabulary Incorrect:"
+                    android:text="Vocabulary Incorrect: "
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
@@ -459,7 +459,7 @@
                     android:layout_marginLeft="2dp"
                     android:layout_marginTop="2dp"
                     android:gravity="right"
-                    android:text="Kana Vocabulary Incorrect:"
+                    android:text="Kana Vocabulary Incorrect: "
                     style="@style/WK.TextView.Normal"
                     tools:ignore="RtlHardcoded"/>
 
