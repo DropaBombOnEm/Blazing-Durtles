@@ -1676,6 +1676,40 @@ public final class GlobalSettings {
             }
             return CloseEnoughAction.SILENTLY_ACCEPT;
         }
+
+        /**
+         * Show random context sentences during vocabulary reviews.
+         *
+         * @return the value
+         */
+        public static boolean getShowReviewContextSentences() {
+            return prefs().getBoolean("show_review_context_sentences", false);
+        }
+
+        /**
+         * Maximum number of context sentences to show during reviews.
+         *
+         * @return the value
+         */
+        public static int getMaxReviewContextSentences() {
+            try {
+                final @Nullable String value = prefs().getString("max_review_context_sentences", null);
+                if (isEmpty(value)) {
+                    return 1;
+                }
+                final int n = Integer.parseInt(value);
+                if (n < 1) {
+                    return 1;
+                }
+                if (n > 3) {
+                    return 3;
+                }
+                return n;
+            }
+            catch (final Exception e) {
+                return 1;
+            }
+        }
     }
 
     /**
@@ -2632,7 +2666,7 @@ public final class GlobalSettings {
         private static boolean getShuffleAfterSelection() {
             if (!getAdvancedEnabled()) {
                 return false;
-            }
+                       }
             return prefs().getBoolean("review_shuffle_after_selection", false);
         }
 

@@ -45,16 +45,22 @@ import com.blazing_durtles.wk.WkApplication;
 import com.blazing_durtles.wk.db.model.SessionItem;
 import com.blazing_durtles.wk.db.model.Subject;
 import com.blazing_durtles.wk.enums.FragmentTransitionAnimation;
+import com.blazing_durtles.wk.enums.KanjiAcceptedReadingType;
 import com.blazing_durtles.wk.enums.QuestionType;
 import com.blazing_durtles.wk.model.AnswerVerdict;
+import com.blazing_durtles.wk.api.model.ContextSentence;
 import com.blazing_durtles.wk.model.FloatingUiState;
 import com.blazing_durtles.wk.model.Question;
 import com.blazing_durtles.wk.proxy.ViewProxy;
 import com.blazing_durtles.wk.util.Logger;
 import com.blazing_durtles.wk.util.PseudoIme;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Locale;
 import java.util.Objects;
+import java.util.Random;
 
 import javax.annotation.Nullable;
 
@@ -83,6 +89,7 @@ public final class UnansweredSessionFragment extends AbstractSessionFragment {
     private final ViewProxy questionEdit = new ViewProxy();
     private final ViewProxy questionView = new ViewProxy();
     private final ViewProxy questionEditFrame = new ViewProxy();
+    private final ViewProxy contextSentencesContainer = new ViewProxy();
 
     /**
      * The constructor.
@@ -143,6 +150,10 @@ public final class UnansweredSessionFragment extends AbstractSessionFragment {
         questionEdit.setDelegate(view, R.id.questionEdit);
         questionView.setDelegate(view, R.id.questionView);
         questionEditFrame.setDelegate(view, R.id.questionEditFrame);
+        contextSentencesContainer.setDelegate(view, R.id.contextSentencesContainer);
+
+        // Set up context sentences if enabled and applicable
+        setupContextSentences();
 
         questionEdit.setTag(true);
         addTextWatcherToEditText();
@@ -364,6 +375,82 @@ public final class UnansweredSessionFragment extends AbstractSessionFragment {
         return FragmentTransitionAnimation.RTL;
     }
 
+    /**
+     * Set up context sentences display for vocabulary items during reviews.
+     */
+    private void setupContextSentences() {
+        safe(() -> {
+            // Only show context sentences if the setting is enabled and this is a vocabulary item
+            if (!GlobalSettings.Review.getShowReviewContextSentences() || 
+                subject == null || 
+                !subject.getType().isVocabulary() || 
+                !subject.hasContextSentences()) {
+                contextSentencesContainer.setVisibility(View.GONE);
+                return;
+            }
+
+            // Get the list of context sentences and select random ones
+            final List<ContextSentence> allSentences = subject.getContextSentences();
+            final int maxSentences = GlobalSettings.Review.getMaxReviewContextSentences();
+            final List<ContextSentence> selectedSentences = selectRandomContextSentences(allSentences, maxSentences);
+
+            if (selectedSentences.isEmpty()) {
+                contextSentencesContainer.setVisibility(View.GONE);
+                return;
+            }            // Clear any existing content
+            final LinearLayout container = (LinearLayout) contextSentencesContainer.getDelegate();
+            if (container != null) {
+                container.removeAllViews();
+
+                // Add selected context sentences
+                for (final ContextSentence sentence : selectedSentences) {
+                    addContextSentenceView(container, sentence);
+                }
+
+                contextSentencesContainer.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    /**
+     * Select random context sentences from the available ones.
+     */
+    private List<ContextSentence> selectRandomContextSentences(final List<ContextSentence> allSentences, final int maxCount) {
+        if (allSentences.isEmpty() || maxCount <= 0) {
+            return Collections.emptyList();
+        }
+
+        final List<ContextSentence> shuffled = new ArrayList<>(allSentences);
+        Collections.shuffle(shuffled, new Random());
+
+        final int count = Math.min(maxCount, shuffled.size());
+        return shuffled.subList(0, count);
+    }    /**
+     * Add a context sentence view to the container.
+     */
+    private void addContextSentenceView(final LinearLayout container, final ContextSentence sentence) {
+        safe(() -> {
+            // Create label view for "Context Sentence:"
+            final TextView labelView = new TextView(getContext());
+            labelView.setText("Context Sentence:");
+            labelView.setGravity(Gravity.CENTER_HORIZONTAL);
+            labelView.setTextSize(12);
+            labelView.setPadding(0, 0, 0, dp2px(2));
+            
+            // Create Japanese sentence view
+            final TextView japaneseView = new TextView(getContext());
+            final String japaneseText = orElse(sentence.getJapanese(), "");
+            japaneseView.setText(japaneseText);
+            japaneseView.setGravity(Gravity.CENTER_HORIZONTAL);
+            japaneseView.setTextSize(16);
+            japaneseView.setPadding(0, 0, 0, dp2px(16)); // More padding between context sentences
+
+            container.addView(labelView);
+            container.addView(japaneseView);
+            // Note: English translations are not displayed to avoid giving away answers
+        });
+    }
+
     private void addTextWatcherToEditText() {
         if (question == null || subject == null) {
             return;
@@ -371,10 +458,9 @@ public final class UnansweredSessionFragment extends AbstractSessionFragment {
 
         if (questionEdit.getTag(R.id.textWatcherAdded) != null) {
             return;
-        }
-
-        final TextWatcher textWatcher = new TextWatcher() {
+        }        final TextWatcher textWatcher = new TextWatcher() {
             private SpannableString spannable = new SpannableString("");
+            private boolean isProcessing = false;
 
             @Override
             public void beforeTextChanged(final CharSequence s, final int start, final int count, final int after) {
@@ -394,20 +480,29 @@ public final class UnansweredSessionFragment extends AbstractSessionFragment {
                         spannable.setSpan(this, start, start + count, Spanned.SPAN_COMPOSING);
                     }
                 });
-            }
-
-            @Override
+            }            @Override
             public void afterTextChanged(final Editable s) {
                 safe(() -> {
                     final boolean active = isTrue(questionEdit.getTag());
-                    if (!active) {
+                    if (!active || isProcessing) {
                         return;
                     }
-                    if (question.getType().isKana()) {
-                        final int beginIndex = spannable.getSpanStart(this);
-                        final int endIndex = spannable.getSpanEnd(this);
-                        spannable.removeSpan(this);
-                        PseudoIme.fixup(s, beginIndex, endIndex);
+                    
+                    isProcessing = true;
+                    try {
+                        // Convert lowercase to uppercase for on'yomi readings BEFORE PseudoIme processing
+                        if (shouldConvertToUppercase()) {
+                            convertToUppercase(s);
+                        }
+                        
+                        if (question.getType().isKana()) {
+                            final int beginIndex = spannable.getSpanStart(this);
+                            final int endIndex = spannable.getSpanEnd(this);
+                            spannable.removeSpan(this);
+                            PseudoIme.fixup(s, beginIndex, endIndex);
+                        }
+                    } finally {
+                        isProcessing = false;
                     }
                 });
             }
@@ -481,5 +576,43 @@ public final class UnansweredSessionFragment extends AbstractSessionFragment {
         VibratorManager vibratorManager = (VibratorManager) requireContext().getSystemService(Context.VIBRATOR_MANAGER_SERVICE);
         Vibrator vibrator = vibratorManager.getDefaultVibrator();
         vibrator.vibrate(VibrationEffect.createOneShot(milliseconds, VibrationEffect.DEFAULT_AMPLITUDE));
+    }
+
+    /**
+     * Check if we should convert lowercase to uppercase for the current input.
+     * This applies when:
+     * 1. It's a kanji reading question
+     * 2. The question specifically requires on'yomi
+     * 3. The "Require On'yomi Answers in Katakana" setting is enabled
+     */
+    private boolean shouldConvertToUppercase() {
+        if (question == null || subject == null) {
+            return false;
+        }
+        
+        // Only for kanji reading questions
+        if (question.getType() != QuestionType.WANIKANI_KANJI_READING) {
+            return false;
+        }
+        
+        // Only if the setting is enabled
+        if (!GlobalSettings.Other.getRequireOnInKatakana()) {
+            return false;
+        }
+        
+        // Only for on'yomi readings specifically
+        final SessionItem item = question.getItem();
+        return item != null && item.getKanjiAcceptedReadingType() == KanjiAcceptedReadingType.ONYOMI;
+    }    /**
+     * Convert any lowercase ASCII letters to uppercase in the given Editable.
+     * This is used to help users type katakana for on'yomi readings.
+     */
+    private void convertToUppercase(final Editable s) {
+        for (int i = 0; i < s.length(); i++) {
+            final char c = s.charAt(i);
+            if (Character.isLowerCase(c) && c >= 'a' && c <= 'z') {
+                s.replace(i, i + 1, String.valueOf(Character.toUpperCase(c)));
+            }
+        }
     }
 }

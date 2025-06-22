@@ -21,7 +21,7 @@
 
     <PreferenceScreen
         app:key="api_settings"
-        app:title="API and Audio Download Settings">
+        app:title="API, Sync and Audio Download Settings">
 
         <com.blazing_durtles.wk.components.InfoPreference
             app:title="Caution"
@@ -69,7 +69,7 @@
             app:title="Sync When App Is Reopened"
             android:summary="Triggers a sync when the app is reopened after being closed for 3+ minutes."
             app:singleLineTitle="false"
-            app:defaultValue="false"/>
+            app:defaultValue="true"/>
 
         <com.blazing_durtles.wk.components.EncryptedEditTextPreference
             app:key="web_password"
@@ -515,14 +515,42 @@
             app:title="Max. # of Reviews per Session"
             app:singleLineTitle="false"
             app:defaultValue="100"
-            app:useSimpleSummaryProvider="true"/>
-
-        <EditTextPreference
+            app:useSimpleSummaryProvider="true"/>        <EditTextPreference
             app:key="max_self_study_session_size"
             app:title="Max. # of Self-Study Items per Session"
             app:singleLineTitle="false"
             app:defaultValue="100"
             app:useSimpleSummaryProvider="true"/>
+
+        <SwitchPreferenceCompat
+            app:key="show_review_context_sentences"
+            app:title="Show Context Sentences for Vocab Reviews"
+            app:summary="Displays random context sentences above vocabulary during reviews"
+            app:singleLineTitle="false"
+            app:defaultValue="false"/>        <com.blazing_durtles.wk.components.EditLimitedIntPreference
+            app:key="max_review_context_sentences"
+            app:title="Max. # Review Context Sentences"
+            app:summary="Number of context sentences to show (1-3)"
+            app:singleLineTitle="false"
+            app:defaultValue="1"
+            app:dependency="show_review_context_sentences"
+            app:minValue="1"
+            app:maxValue="3"
+            app:useSimpleSummaryProvider="true"/>
+
+        <SwitchPreferenceCompat
+            app:key="show_onyomi_in_katakana"
+            app:title="Show On'yomi Kanji Info in Katakana"
+            app:summary="Shows On'yomi kanji reading info in Katakana, similar to the userscript 'Katakana Madness'"
+            app:singleLineTitle="false"
+            app:defaultValue="false"/>
+
+        <SwitchPreferenceCompat
+            app:key="require_onyomi_in_katakana"
+            app:title="Katakana Input for On'yomi Kanji Reviews and Lessons"
+            app:summary="Automatically converts input to Katakana for On'yomi questions, similar to the userscript 'Katakana Madness'"
+            app:singleLineTitle="false"
+            app:defaultValue="false"/>
 
         <SwitchPreferenceCompat
             app:key="delay_result_upload"
@@ -576,8 +604,7 @@
             app:key="enable_haptic_feedback_failure"
             app:title="Enable Haptic Feedback on Incorrect Answer"
             app:summary="The device will give a long buzz for an incorrect answer"
-            app:singleLineTitle="false"
-            app:defaultValue="false"/>
+            app:singleLineTitle="false"            app:defaultValue="false"/>
 
         <ListPreference
             app:key="close_enough_action"
@@ -849,18 +876,6 @@
             app:singleLineTitle="false"
             app:defaultValue="false"
             app:summary="Lets you rate subjects with stars and filter searches by rating."/>
-
-        <SwitchPreferenceCompat
-            app:key="show_onyomi_in_katakana"
-            app:title="Show On'yomi Readings in Katakana"
-            app:singleLineTitle="false"
-            app:defaultValue="false"/>
-
-        <SwitchPreferenceCompat
-            app:key="require_onyomi_in_katakana"
-            app:title="Require On'yomi Answers in Katakana"
-            app:singleLineTitle="false"
-            app:defaultValue="false"/>
 
     </PreferenceScreen>
 
