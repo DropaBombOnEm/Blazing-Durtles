@@ -17,6 +17,10 @@ Default = On. Disable in "**Dashboard Settings**"
 Example: "**Lessons Completed Today: ___**"
 Default = On. Disable in "**Dashboard Settings**"
 
+### • Added option "**Show Context Sentences for Vocab Reviews**"
+Displays random context sentences above vocabulary during review. (Configurable for 1-3).
+Default = Off. Enable in "**Lessons and Reviews Settings**".
+
 ### • Added option "**Katakana Input for On'yomi Kanji**"
 Example: Typing in lowercase will automatically outout uppercase & katakana for On'yomi kanji reading questions.
 Default = off. Enable in "**Lessons and Reviews Settings**". (This automation replaces the manual setting "**Require on'yomi readings in Katakana**")
