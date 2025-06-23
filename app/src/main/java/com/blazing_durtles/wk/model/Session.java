@@ -851,6 +851,21 @@ s     *
             FloatingUiState.toastOldSrsStage = currentQuestion.getItem().getSrsStage();
             FloatingUiState.toastNewSrsStage = currentQuestion.getItem().getNewSrsStage();
             FloatingUiState.showSrsStageChangedToast = true;
+            // Increment daily reviews/lessons done counters if this is the first time this item is finished in this session
+            long itemId = currentQuestion.getItem().getId();
+            if (type == com.blazing_durtles.wk.enums.SessionType.REVIEW) {
+                if (!countedReviewItemIds.contains(itemId)) {
+                    com.blazing_durtles.wk.GlobalSettings.incrementDailyReviewCount();
+                    countedReviewItemIds.add(itemId);
+                }
+            }
+            if (type == com.blazing_durtles.wk.enums.SessionType.LESSON) {
+                if (countedLessonItemIds == null) countedLessonItemIds = new java.util.HashSet<>();
+                if (!countedLessonItemIds.contains(itemId)) {
+                    com.blazing_durtles.wk.GlobalSettings.incrementDailyLessonCount();
+                    countedLessonItemIds.add(itemId);
+                }
+            }
         }
         answered = true;
         correct = true;
