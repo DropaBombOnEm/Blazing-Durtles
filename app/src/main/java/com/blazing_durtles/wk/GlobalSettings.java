@@ -2666,7 +2666,7 @@ public final class GlobalSettings {
         private static boolean getShuffleAfterSelection() {
             if (!getAdvancedEnabled()) {
                 return false;
-                       }
+            }
             return prefs().getBoolean("review_shuffle_after_selection", false);
         }
 
@@ -3727,6 +3727,48 @@ public final class GlobalSettings {
      */
     private static String getCurrentDateString() {
         return java.time.LocalDate.now().toString();
+    }
+
+    /**
+     * Get the highest daily review count.
+     */
+    public static int getDailyReviewHighest() {
+        SharedPreferences prefs = getDailyReviewPrefs();
+        return prefs.getInt("highest", 0);
+    }
+
+    /**
+     * Update the highest daily review count if the new count is higher.
+     */
+    public static void updateDailyReviewHighest(int count) {
+        SharedPreferences prefs = getDailyReviewPrefs();
+        int highest = prefs.getInt("highest", 0);
+        if (count > highest) {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putInt("highest", count);
+            editor.apply();
+        }
+    }
+
+    /**
+     * Get the highest daily lesson count.
+     */
+    public static int getDailyLessonHighest() {
+        SharedPreferences prefs = getDailyLessonPrefs();
+        return prefs.getInt("highest", 0);
+    }
+
+    /**
+     * Update the highest daily lesson count if the new count is higher.
+     */
+    public static void updateDailyLessonHighest(int count) {
+        SharedPreferences prefs = getDailyLessonPrefs();
+        int highest = prefs.getInt("highest", 0);
+        if (count > highest) {
+            SharedPreferences.Editor editor = prefs.edit();
+            editor.putInt("highest", count);
+            editor.apply();
+        }
     }
 
     /*

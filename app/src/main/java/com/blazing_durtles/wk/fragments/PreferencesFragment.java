@@ -337,6 +337,23 @@ public final class PreferencesFragment extends PreferenceFragmentCompat {
             });
         }
 
+        final @Nullable TwoStatePreference showDailyReviewPref = findPreference("show_daily_review_counter");
+        if (showDailyReviewPref != null) {
+            updateDailyReviewCounterSummary(showDailyReviewPref);
+            showDailyReviewPref.setOnPreferenceChangeListener((preference, newValue) -> {
+                updateDailyReviewCounterSummary(showDailyReviewPref);
+                return true;
+            });
+        }
+        final @Nullable TwoStatePreference showDailyLessonPref = findPreference("show_daily_lesson_counter");
+        if (showDailyLessonPref != null) {
+            updateDailyLessonCounterSummary(showDailyLessonPref);
+            showDailyLessonPref.setOnPreferenceChangeListener((preference, newValue) -> {
+                updateDailyLessonCounterSummary(showDailyLessonPref);
+                return true;
+            });
+        }
+
         setVisibility("api_key_help", LiveApiState.getInstance().get() != ApiState.OK);
         setVisibility("advanced_lesson_settings", GlobalSettings.getAdvancedEnabled());
         setVisibility("advanced_review_settings", GlobalSettings.getAdvancedEnabled());
@@ -537,7 +554,18 @@ public final class PreferencesFragment extends PreferenceFragmentCompat {
     private void updateLongestStreakSummary(TwoStatePreference pref) {
         SharedPreferences prefs = requireContext().getSharedPreferences("streak_prefs", android.content.Context.MODE_PRIVATE);
         int longest = prefs.getInt("longest_streak", 0);
-        pref.setSummary("(Longest Streak: " + longest + " Days)");
+        String dayLabel = (longest == 1) ? "Day" : "Days";
+        pref.setSummary("(Longest Streak: " + longest + " " + dayLabel + ")");
+    }
+
+    private void updateDailyReviewCounterSummary(TwoStatePreference pref) {
+        int highest = GlobalSettings.getDailyReviewHighest();
+        pref.setSummary("(Highest: " + highest + ")");
+    }
+
+    private void updateDailyLessonCounterSummary(TwoStatePreference pref) {
+        int highest = GlobalSettings.getDailyLessonHighest();
+        pref.setSummary("(Highest: " + highest + ")");
     }
 
 

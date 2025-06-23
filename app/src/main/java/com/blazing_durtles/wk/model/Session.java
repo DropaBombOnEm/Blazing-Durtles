@@ -749,6 +749,7 @@ s     *
                     long itemId = currentQuestion.getItem().getId();
                     if (!countedReviewItemIds.contains(itemId)) {
                         com.blazing_durtles.wk.GlobalSettings.incrementDailyReviewCount();
+                        com.blazing_durtles.wk.GlobalSettings.updateDailyReviewHighest(com.blazing_durtles.wk.GlobalSettings.getDailyReviewCount());
                         countedReviewItemIds.add(itemId);
                     }
                 }
@@ -758,6 +759,7 @@ s     *
                     long itemId = currentQuestion.getItem().getId();
                     if (!countedLessonItemIds.contains(itemId)) {
                         com.blazing_durtles.wk.GlobalSettings.incrementDailyLessonCount();
+                        com.blazing_durtles.wk.GlobalSettings.updateDailyLessonHighest(com.blazing_durtles.wk.GlobalSettings.getDailyLessonCount());
                         countedLessonItemIds.add(itemId);
                     }
                 }
@@ -856,6 +858,7 @@ s     *
             if (type == com.blazing_durtles.wk.enums.SessionType.REVIEW) {
                 if (!countedReviewItemIds.contains(itemId)) {
                     com.blazing_durtles.wk.GlobalSettings.incrementDailyReviewCount();
+                    com.blazing_durtles.wk.GlobalSettings.updateDailyReviewHighest(com.blazing_durtles.wk.GlobalSettings.getDailyReviewCount());
                     countedReviewItemIds.add(itemId);
                 }
             }
@@ -863,6 +866,7 @@ s     *
                 if (countedLessonItemIds == null) countedLessonItemIds = new java.util.HashSet<>();
                 if (!countedLessonItemIds.contains(itemId)) {
                     com.blazing_durtles.wk.GlobalSettings.incrementDailyLessonCount();
+                    com.blazing_durtles.wk.GlobalSettings.updateDailyLessonHighest(com.blazing_durtles.wk.GlobalSettings.getDailyLessonCount());
                     countedLessonItemIds.add(itemId);
                 }
             }
