@@ -430,12 +430,12 @@ public final class UnansweredSessionFragment extends AbstractSessionFragment {
      */
     private void addContextSentenceView(final LinearLayout container, final ContextSentence sentence) {
         safe(() -> {
-            // Create label view for "Context Sentence:"
+            // Create label view for "Context:"
             final TextView labelView = new TextView(getContext());
-            labelView.setText("Context Sentence:");
+            labelView.setText("Context:");
             labelView.setGravity(Gravity.CENTER_HORIZONTAL);
             labelView.setTextSize(12);
-            labelView.setPadding(0, 0, 0, dp2px(2));
+            labelView.setPadding(dp2px(16), 0, dp2px(16), dp2px(2)); // Add horizontal padding
             
             // Create Japanese sentence view
             final TextView japaneseView = new TextView(getContext());
@@ -443,7 +443,10 @@ public final class UnansweredSessionFragment extends AbstractSessionFragment {
             japaneseView.setText(japaneseText);
             japaneseView.setGravity(Gravity.CENTER_HORIZONTAL);
             japaneseView.setTextSize(16);
-            japaneseView.setPadding(0, 0, 0, dp2px(16)); // More padding between context sentences
+            japaneseView.setPadding(dp2px(16), 0, dp2px(16), dp2px(16)); // Add horizontal padding
+            if (android.os.Build.VERSION.SDK_INT >= 23) {
+                japaneseView.setBreakStrategy(android.text.Layout.BREAK_STRATEGY_SIMPLE); // yōon-friendly line break
+            }
 
             container.addView(labelView);
             container.addView(japaneseView);

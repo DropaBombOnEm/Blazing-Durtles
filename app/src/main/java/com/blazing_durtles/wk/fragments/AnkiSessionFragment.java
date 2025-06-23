@@ -22,11 +22,13 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import com.blazing_durtles.wk.GlobalSettings;
 import com.blazing_durtles.wk.R;
+import com.blazing_durtles.wk.api.model.ContextSentence;
 import com.blazing_durtles.wk.db.model.SessionItem;
 import com.blazing_durtles.wk.db.model.Subject;
 import com.blazing_durtles.wk.enums.ActiveTheme;
@@ -37,6 +39,11 @@ import com.blazing_durtles.wk.model.Question;
 import com.blazing_durtles.wk.proxy.ViewProxy;
 import com.blazing_durtles.wk.util.AudioUtil;
 import com.blazing_durtles.wk.views.SubjectInfoView;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 
 import javax.annotation.Nullable;
 
@@ -61,6 +68,7 @@ public final class AnkiSessionFragment extends AbstractSessionFragment {
     private final ViewProxy specialButton3 = new ViewProxy();
     private final ViewProxy questionView = new ViewProxy();
     private final ViewProxy buttonsView = new ViewProxy();
+    private final ViewProxy contextSentencesContainer = new ViewProxy();
 
     /**
      * The constructor.
@@ -135,6 +143,7 @@ public final class AnkiSessionFragment extends AbstractSessionFragment {
         specialButton3.setDelegate(view, R.id.specialButton3);
         questionView.setDelegate(view, R.id.questionView);
         buttonsView.setDelegate(view, R.id.buttonsView);
+        contextSentencesContainer.setDelegate(view, R.id.contextSentencesContainer);
 
         // Swap the correct/incorrect buttons if the settings ask for it.
         if (GlobalSettings.Display.getSwapAnkiButtons()) {
@@ -334,6 +343,68 @@ public final class AnkiSessionFragment extends AbstractSessionFragment {
         // Show the special button 3 if allowed and relevant
         specialButton3.setVisibility(GlobalSettings.AdvancedOther.getSpecialButton3Behavior().canShow());
         specialButton3.setText(GlobalSettings.AdvancedOther.getSpecialButton3Behavior().getLabel());
+
+        setupContextSentences();
+    }
+
+    /**
+     * Set up context sentences display for vocabulary items during Anki mode.
+     * Logic is the same as UnansweredSessionFragment.
+     */
+    private void setupContextSentences() {
+        safe(() -> {
+            if (!GlobalSettings.Review.getShowReviewContextSentences() ||
+                subject == null ||
+                !subject.getType().isVocabulary() ||
+                !subject.hasContextSentences()) {
+                contextSentencesContainer.setVisibility(View.GONE);
+                return;
+            }
+            final List<ContextSentence> allSentences = subject.getContextSentences();
+            final int maxSentences = GlobalSettings.Review.getMaxReviewContextSentences();
+            final List<ContextSentence> selectedSentences = selectRandomContextSentences(allSentences, maxSentences);
+            if (selectedSentences.isEmpty()) {
+                contextSentencesContainer.setVisibility(View.GONE);
+                return;
+            }
+            final LinearLayout container = (LinearLayout) contextSentencesContainer.getDelegate();
+            if (container != null) {
+                container.removeAllViews();
+                for (final ContextSentence sentence : selectedSentences) {
+                    addContextSentenceView(container, sentence);
+                }
+                contextSentencesContainer.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+    private List<ContextSentence> selectRandomContextSentences(final List<ContextSentence> allSentences, final int maxCount) {
+        if (allSentences.isEmpty() || maxCount <= 0) {
+            return Collections.emptyList();
+        }
+        final List<ContextSentence> shuffled = new ArrayList<>(allSentences);
+        Collections.shuffle(shuffled, new Random());
+        final int count = Math.min(maxCount, shuffled.size());
+        return shuffled.subList(0, count);
+    }
+
+    private void addContextSentenceView(final LinearLayout container, final ContextSentence sentence) {
+        safe(() -> {
+            final TextView labelView = new TextView(getContext());
+            labelView.setText("Context:");
+            labelView.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
+            labelView.setTextSize(12);
+            labelView.setPadding(dp2px(16), 0, dp2px(16), dp2px(2)); // Add horizontal padding
+            final TextView japaneseView = new TextView(getContext());
+            final String japaneseText = sentence.getJapanese() != null ? sentence.getJapanese() : "";
+            japaneseView.setText(japaneseText);
+            japaneseView.setGravity(android.view.Gravity.CENTER_HORIZONTAL);
+            japaneseView.setTextSize(16);
+            japaneseView.setPadding(dp2px(16), 0, dp2px(16), dp2px(16)); // Add horizontal padding
+            japaneseView.setBreakStrategy(android.os.Build.VERSION.SDK_INT >= 23 ? android.text.Layout.BREAK_STRATEGY_SIMPLE : 0); // yōon-friendly line break
+            container.addView(labelView);
+            container.addView(japaneseView);
+        });
     }
 
     @Override
