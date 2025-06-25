@@ -65,7 +65,7 @@
             android:paddingRight="4dp"
             android:paddingEnd="4dp"
             android:gravity="center_horizontal"
-            android:text="In progress"
+            android:text="In Progress"
             style="@style/WK.TextView.Normal.Bold"/>
 
         <TextView
