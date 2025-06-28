@@ -508,6 +508,8 @@ public final class MainActivity extends AbstractActivity {
                     .putInt(KEY_LONGEST_STREAK, longest)
                     .putString(KEY_STREAK_RESET_DATE, today)
                     .apply();
+                // Update widget
+                com.blazing_durtles.wk.GlobalSettings.updateDailyProgressWidget(com.blazing_durtles.wk.WkApplication.getInstance());
                 return true; // Indicate that a reset occurred
             } else {
                 // No reset needed, just update reset date to prevent multiple checks per day
@@ -587,5 +589,12 @@ public final class MainActivity extends AbstractActivity {
             
             // Update last session date only if progress was made
             prefs.edit().putString(KEY_LAST_SESSION_DATE, today).putInt(KEY_STREAK_COUNT, streak).putInt(KEY_LONGEST_STREAK, longest).apply();
+            // Update widget
+            com.blazing_durtles.wk.GlobalSettings.updateDailyProgressWidget(com.blazing_durtles.wk.WkApplication.getInstance());
         }    }
+
+    public static int getCurrentStreakValue() {
+        android.content.SharedPreferences prefs = com.blazing_durtles.wk.WkApplication.getInstance().getSharedPreferences(PREFS_STREAK, Context.MODE_PRIVATE);
+        return prefs.getInt(KEY_STREAK_COUNT, 0);
+    }
 }

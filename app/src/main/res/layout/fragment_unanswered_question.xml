@@ -185,7 +185,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:layout_marginLeft="4dp"
-            android:layout_marginTop="75dp"
+            android:layout_marginTop="8dp"
             android:paddingStart="16dp"
             android:paddingLeft="16dp"
             android:paddingTop="2dp"
@@ -195,9 +195,9 @@
             android:text=""
             android:textSize="14sp"
             android:visibility="gone"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/closeToastText" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/questionText" />
 
         <com.blazing_durtles.wk.views.StarRatingView
             android:id="@+id/starRating"

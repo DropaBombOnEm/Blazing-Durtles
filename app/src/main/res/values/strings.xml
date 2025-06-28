@@ -7,4 +7,8 @@
     <string name="applabel">Blazing Durtles</string>
     <string name="streak_icon">Streak Icon</string>
     <string name="show_daily_streak">Show Daily Streak</string>
+    <string name="widget_daily_progress_name">Daily Progress</string>
+    <string name="widget_available_upcoming_name">Available and Upcoming</string>
+    <string name="widget_daily_progress_description">Shows your daily lessons/reviews completed and current streak. (Customizable)</string>
+    <string name="widget_available_upcoming_description">Shows available and upcoming reviews/lessons. (Customizable)</string>
 </resources>

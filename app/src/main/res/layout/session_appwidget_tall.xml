@@ -87,4 +87,31 @@
         android:text=""
         tools:ignore="SmallSp"/>
 
+    <LinearLayout
+        android:id="@+id/reviewOnlyContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/reviewOnlyLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/wkDarkColorPrimary"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:text="Reviews:"/>
+        <TextView
+            android:id="@+id/reviewOnlyCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/wkDarkColorPrimary"
+            android:textSize="18sp"
+            android:gravity="center"
+            android:text="0"/>
+    </LinearLayout>
+
 </LinearLayout>

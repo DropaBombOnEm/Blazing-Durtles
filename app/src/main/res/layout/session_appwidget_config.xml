@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/widget_background"
+    android:gravity="center">
+
+    <CheckBox
+        android:id="@+id/showLessons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Available Lessons"
+        android:checked="false"
+        android:textColor="#E5E9F0"
+        android:background="@android:color/transparent" />
+
+    <CheckBox
+        android:id="@+id/showReviews"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Available Reviews"
+        android:checked="false"
+        android:textColor="#E5E9F0"
+        android:background="@android:color/transparent" />
+
+    <TextView
+        android:id="@+id/invalidSelectionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please select at least one."
+        android:textColor="#FF9800"
+        android:visibility="gone"
+        android:layout_marginTop="8dp" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Place Widget"
+        android:background="@android:color/transparent"
+        android:textColor="#E5E9F0" />
+
+</LinearLayout>

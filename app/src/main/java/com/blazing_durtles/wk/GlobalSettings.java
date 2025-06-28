@@ -18,9 +18,11 @@ package com.blazing_durtles.wk;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.util.Log;
+import android.appwidget.AppWidgetManager;
 
 
 import androidx.preference.PreferenceManager;
@@ -2664,6 +2666,7 @@ public final class GlobalSettings {
          * @return the value
          */
         private static boolean getShuffleAfterSelection() {
+
             if (!getAdvancedEnabled()) {
                 return false;
             }
@@ -3667,6 +3670,19 @@ public final class GlobalSettings {
     /**
      * Set the daily review count.
      */
+    public static void updateDailyProgressWidget(Context context) {
+        try {
+            Intent intent = new Intent(context, com.blazing_durtles.wk.widgets.DailyProgressWidget.class);
+            intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+            int[] ids = AppWidgetManager.getInstance(context)
+                .getAppWidgetIds(new android.content.ComponentName(context, com.blazing_durtles.wk.widgets.DailyProgressWidget.class));
+            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, ids);
+            context.sendBroadcast(intent);
+        } catch (Exception e) {
+            // Ignore errors (e.g., if widget not present)
+        }
+    }
+
     public static void setDailyReviewCount(final int count) {
         SharedPreferences prefs = getDailyReviewPrefs();
         String today = getCurrentDateString();
@@ -3674,6 +3690,9 @@ public final class GlobalSettings {
         editor.putInt("count", count);
         editor.putString("last_date", today);
         editor.apply();
+        // Update widget
+        Context context = com.blazing_durtles.wk.WkApplication.getInstance();
+        updateDailyProgressWidget(context);
     }
 
     /**
@@ -3713,6 +3732,9 @@ public final class GlobalSettings {
         editor.putInt("count", count);
         editor.putString("last_date", today);
         editor.apply();
+        // Update widget
+        Context context = com.blazing_durtles.wk.WkApplication.getInstance();
+        updateDailyProgressWidget(context);
     }
 
     /**

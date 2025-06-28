@@ -24,5 +24,8 @@
     android:resizeMode="horizontal|vertical"
     android:updatePeriodMillis="3600000"
     android:widgetCategory="home_screen"
+    android:label="@string/widget_available_upcoming_name"
+    android:description="@string/widget_available_upcoming_description"
+    android:configure="com.blazing_durtles.wk.widgets.SessionWidgetConfigActivity"
     tools:ignore="UnusedAttribute">
 </appwidget-provider>

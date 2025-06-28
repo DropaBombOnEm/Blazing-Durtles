@@ -387,7 +387,7 @@ public final class SessionActivity extends AbstractActivity {
 
         final Animation fadeOut = new AlphaAnimation(1, 0);
         fadeOut.setInterpolator(new AccelerateInterpolator());
-        fadeOut.setStartOffset(750);
+        fadeOut.setStartOffset(3000); // was 1500, now 3000 for longer fully visible
         fadeOut.setDuration(1500);
 
         final AnimationSet animationSet = new AnimationSet(false);

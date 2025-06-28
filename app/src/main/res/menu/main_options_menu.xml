@@ -32,6 +32,9 @@
     <item android:id="@+id/action_download_audio"
         android:title="Download Audio"
         app:showAsAction="never"/>
+    <item android:id="@+id/action_wrapup_session"
+        android:title="Wrap Up Session"
+        app:showAsAction="never"/>
     <item android:id="@+id/action_browse"
         android:title="Browse / Search..."
         app:showAsAction="never"/>
@@ -46,9 +49,6 @@
         app:showAsAction="never"/>
     <item android:id="@+id/action_abandon_session"
         android:title="Abandon Session"
-        app:showAsAction="never"/>
-    <item android:id="@+id/action_wrapup_session"
-        android:title="Wrap Up Session"
         app:showAsAction="never"/>
     <item android:id="@+id/action_study_materials"
         android:title="My Notes..."

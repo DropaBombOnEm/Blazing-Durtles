@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/widget_bg_fill">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@drawable/widget_background"
+        android:padding="12dp"
+        android:gravity="center">
+
+        <ImageView
+            android:id="@+id/widgetStreakFlameIcon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_flame_dim"
+            android:contentDescription="@string/streak_icon" />
+
+        <TextView
+            android:id="@+id/widgetStreakValue"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:layout_marginStart="8dp"
+            android:textColor="#FF9800" />
+
+        <TextView
+            android:layout_width="16dp"
+            android:layout_height="0dp"
+            android:visibility="invisible" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/widgetLessonsDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lessons: 0"
+                android:textSize="16sp"
+                android:textColor="#E5E9F0"
+                android:singleLine="false"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" "
+                android:textSize="16sp"
+                android:textColor="#E5E9F0" />
+
+            <TextView
+                android:id="@+id/widgetReviewsDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Reviews: 0"
+                android:textSize="16sp"
+                android:textColor="#E5E9F0"
+                android:singleLine="false"
+                android:maxLines="2"
+                android:ellipsize="end" />
+        </LinearLayout>
+    </LinearLayout>
+</FrameLayout>
