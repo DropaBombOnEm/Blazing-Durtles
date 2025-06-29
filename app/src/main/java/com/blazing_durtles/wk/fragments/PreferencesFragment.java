@@ -64,6 +64,7 @@ import com.blazing_durtles.wk.services.JobRunnerService;
 import com.blazing_durtles.wk.util.AudioUtil;
 import com.blazing_durtles.wk.util.DbLogger;
 import com.blazing_durtles.wk.util.ThemeUtil;
+import com.blazing_durtles.wk.util.UpdateChecker;
 
 import java.util.List;
 import java.util.Objects;
@@ -378,15 +379,8 @@ public final class PreferencesFragment extends PreferenceFragmentCompat {
         setOnClickGoToActivity("about_this_app", AboutActivity.class);
         setOnClickGoToActivity("support_and_feedback", SupportActivity.class);
         setOnPreferenceClick("check_for_update", preference -> {
-            new androidx.appcompat.app.AlertDialog.Builder(requireContext())
-                .setTitle("Check for Updates?")
-                .setMessage("Clicking 'Yes' will bring you to the GitHub 'Releases' page")
-                .setPositiveButton("Yes", (dialog, which) -> {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://github.com/DropaBombOnEm/Blazing-Durtles/releases"));
-                    startActivity(intent);
-                })
-                .setNegativeButton("No Thanks", null)
-                .show();
+            String currentVersion = "1.2.1.11"; // Keep in sync with build.gradle
+            UpdateChecker.checkForUpdate(requireActivity(), currentVersion);
             return true;
         });
         setOnClickGoToActivity("theme_customization", ThemeCustomizationActivity.class);

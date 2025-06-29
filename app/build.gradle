@@ -7,8 +7,8 @@ android {
         minSdkVersion 26
         //noinspection OldTargetApi
         targetSdkVersion 35
-        versionCode 95
-        versionName '1.2.1.10'
+        versionCode 96
+        versionName '1.2.1.11'
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
 
@@ -114,6 +114,7 @@ dependencies {
     implementation 'jp.wasabeef:glide-transformations:4.3.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'io.noties.markwon:core:4.6.2'
 
     testImplementation 'junit:junit:4.13.2'
 

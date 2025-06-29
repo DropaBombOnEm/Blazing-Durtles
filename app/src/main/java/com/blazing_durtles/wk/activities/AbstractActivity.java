@@ -67,6 +67,7 @@ import com.blazing_durtles.wk.livedata.LiveTaskCounts;
 import com.blazing_durtles.wk.model.Session;
 import com.blazing_durtles.wk.model.TaskCounts;
 import com.blazing_durtles.wk.services.JobRunnerService;
+import com.blazing_durtles.wk.util.UpdateChecker;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -572,15 +573,8 @@ public abstract class AbstractActivity extends AppCompatActivity implements Shar
             return true;
         }
         if (itemId == R.id.action_check_update) {
-            new androidx.appcompat.app.AlertDialog.Builder(this)
-                .setTitle("Check for Updates?")
-                .setMessage("Clicking 'Yes' will bring you to the GitHub 'Releases' page")
-                .setPositiveButton("Yes", (dialog, which) -> {
-                    Intent intent = new Intent(Intent.ACTION_VIEW, android.net.Uri.parse("https://github.com/DropaBombOnEm/Blazing-Durtles/releases"));
-                    startActivity(intent);
-                })
-                .setNegativeButton("No Thanks", null)
-                .show();
+            String currentVersion = "1.2.1.11"; // Keep in sync with build.gradle
+            UpdateChecker.checkForUpdate(this, currentVersion);
             return true;
         }
         if (itemId == android.R.id.home) {

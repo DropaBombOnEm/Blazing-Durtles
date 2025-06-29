@@ -28,6 +28,7 @@
     <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" android:maxSdkVersion="18"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="18"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
     <uses-sdk tools:overrideLibrary="androidx.security" android:minSdkVersion="26" android:targetSdkVersion="35" />
 
     <application
@@ -219,6 +220,7 @@
                 <action android:name="android.intent.action.TIMEZONE_CHANGED" />
             </intent-filter>
         </receiver>
+        <receiver android:name="com.blazing_durtles.wk.receivers.ApkDownloadReceiver" android:exported="false" />
     </application>
 
     <queries>
