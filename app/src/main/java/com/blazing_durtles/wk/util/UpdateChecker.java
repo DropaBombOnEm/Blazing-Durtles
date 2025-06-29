@@ -27,6 +27,7 @@ import android.app.PendingIntent;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import androidx.core.app.NotificationCompat;
+import java.io.IOException;
 
 public class UpdateChecker {
     private static final String RELEASES_URL = "https://api.github.com/repos/DropaBombOnEm/Blazing-Durtles/releases";
@@ -49,6 +50,9 @@ public class UpdateChecker {
                     if (releases.length() > 0) {
                         return releases.getJSONObject(0); // latest release
                     }
+                } catch (IOException e) {
+                    // Network error (offline)
+                    return new JSONObject(); // Special marker for offline
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -57,7 +61,12 @@ public class UpdateChecker {
             @Override
             protected void onPostExecute(JSONObject release) {
                 if (release == null) {
-                    Toast.makeText(activity, "No Update Found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "No Updates Needed", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                // Special marker for offline
+                if (release.length() == 0) {
+                    Toast.makeText(activity, "You're Currently Offline", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 try {
@@ -76,10 +85,10 @@ public class UpdateChecker {
                         }
                         showUpdateDialog(activity, latestVersion, changelog, apkUrl);
                     } else {
-                        Toast.makeText(activity, "No Update Found", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(activity, "No Updates Needed", Toast.LENGTH_SHORT).show();
                     }
                 } catch (Exception e) {
-                    Toast.makeText(activity, "No Update Found", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, "No Updates Needed", Toast.LENGTH_SHORT).show();
                 }
             }
         }.execute();
