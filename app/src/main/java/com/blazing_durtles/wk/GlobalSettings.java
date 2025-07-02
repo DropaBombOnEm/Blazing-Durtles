@@ -2667,8 +2667,6 @@ public final class GlobalSettings {
          */
         private static boolean getShuffleAfterSelection() {
 
-
-
             if (!getAdvancedEnabled()) {
                 return false;
             }
@@ -3828,6 +3826,7 @@ public final class GlobalSettings {
     public static boolean getEnableDailyUpdateCheck() {
         return prefs().getBoolean("enable_daily_update_check", true);
     }
+
     /**
      * Set whether daily update check is enabled.
      */

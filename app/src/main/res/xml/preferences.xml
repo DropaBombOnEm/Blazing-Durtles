@@ -1333,7 +1333,8 @@
     <SwitchPreferenceCompat
         app:key="enable_daily_update_check"
         app:title="Enable Daily Update Check"
-        app:summary="You can still manually check for updates either way"
+        app:summary="Automatically check for app updates once per day when opening the dashboard."
+        app:singleLineTitle="false"
         app:defaultValue="true"/>
 
 </PreferenceScreen>
