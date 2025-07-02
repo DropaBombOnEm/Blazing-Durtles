@@ -379,7 +379,7 @@ public final class PreferencesFragment extends PreferenceFragmentCompat {
         setOnClickGoToActivity("about_this_app", AboutActivity.class);
         setOnClickGoToActivity("support_and_feedback", SupportActivity.class);
         setOnPreferenceClick("check_for_update", preference -> {
-            String currentVersion = "1.2.1.11"; // Keep in sync with build.gradle
+            String currentVersion = com.blazing_durtles.wk.BuildConfig.VERSION_NAME; // Always matches build.gradle versionName
             UpdateChecker.checkForUpdate(requireActivity(), currentVersion);
             return true;
         });

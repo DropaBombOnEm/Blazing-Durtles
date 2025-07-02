@@ -573,7 +573,7 @@ public abstract class AbstractActivity extends AppCompatActivity implements Shar
             return true;
         }
         if (itemId == R.id.action_check_update) {
-            String currentVersion = "1.2.1.11"; // Keep in sync with build.gradle
+            String currentVersion = BuildConfig.VERSION_NAME; // Always matches build.gradle versionName
             UpdateChecker.checkForUpdate(this, currentVersion);
             return true;
         }

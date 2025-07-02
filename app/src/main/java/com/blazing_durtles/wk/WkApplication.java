@@ -61,6 +61,7 @@ import com.blazing_durtles.wk.services.BackgroundAlarmReceiver;
 import com.blazing_durtles.wk.services.JobRunnerService;
 import com.blazing_durtles.wk.util.AsyncTask;
 import com.blazing_durtles.wk.util.DbLogger;
+import com.blazing_durtles.wk.util.MidnightAlarmHelper;
 
 import javax.annotation.Nullable;
 
@@ -193,6 +194,7 @@ public final class WkApplication extends MultiDexApplication {
     private void onCreateLocal() {
         initialize(this);
         new Task().execute();
+        MidnightAlarmHelper.scheduleMidnightAlarm(this);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             registerNetworkStateChangeListenerPost24();

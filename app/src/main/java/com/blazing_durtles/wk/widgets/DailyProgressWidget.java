@@ -55,8 +55,9 @@ public class DailyProgressWidget extends AppWidgetProvider {
         views.setTextViewText(R.id.widgetStreakValue, String.valueOf(streak));
         int flameRes = (streak > 0 && (lessonsDone > 0 || reviewsDone > 0)) ? R.drawable.ic_flame : R.drawable.ic_flame_dim;
         views.setImageViewResource(R.id.widgetStreakFlameIcon, flameRes);
+        // Always set streak value to red at midnight (when daily counts are zero), only turn green after progress
         boolean didSomethingToday = (lessonsDone > 0 || reviewsDone > 0);
-        int color = didSomethingToday ? 0xFF4CAF50 : 0xFFF44336;
+        int color = didSomethingToday ? 0xFF4CAF50 : 0xFFF44336; // green if progress, red if not
         views.setTextColor(R.id.widgetStreakValue, color);
 
         // Show/hide elements based on config (for normal layout)
