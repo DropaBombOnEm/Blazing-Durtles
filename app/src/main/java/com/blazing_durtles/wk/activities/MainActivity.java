@@ -317,6 +317,30 @@ public final class MainActivity extends AbstractActivity {
 
         boolean showLessonCounter = GlobalSettings.Dashboard.getShowDailyLessonCounter();
         lessonCounterText.setVisibility(showLessonCounter ? View.VISIBLE : View.GONE);
+
+        // Daily update check: only once per day if enabled + 1 hour cooldown to check again (if offline)
+        if (com.blazing_durtles.wk.GlobalSettings.getEnableDailyUpdateCheck()) {
+            java.util.Calendar calendar = java.util.Calendar.getInstance();
+            com.blazing_durtles.wk.enums.OnlineStatus onlineStatus = com.blazing_durtles.wk.WkApplication.getInstance().getOnlineStatus();
+            android.content.SharedPreferences prefs = getSharedPreferences("update_check_prefs", Context.MODE_PRIVATE);
+            String lastCheck = prefs.getString("last_update_check", "");
+            long lastOfflineAttempt = prefs.getLong("last_offline_attempt", 0L);
+            String today = new java.text.SimpleDateFormat("yyyy-MM-dd", java.util.Locale.ROOT).format(calendar.getTime());
+            long now = System.currentTimeMillis();
+            if (onlineStatus != com.blazing_durtles.wk.enums.OnlineStatus.NO_CONNECTION) {
+                if (!today.equals(lastCheck)) {
+                    prefs.edit().putString("last_update_check", today).apply();
+                    String currentVersion = com.blazing_durtles.wk.BuildConfig.VERSION_NAME;
+                    com.blazing_durtles.wk.util.UpdateChecker.checkForUpdate(this, currentVersion);
+                }
+            } else {
+                // If offline, only try again if at least 1 hour has passed since last attempt
+                if (now - lastOfflineAttempt > 60 * 60 * 1000) {
+                    prefs.edit().putLong("last_offline_attempt", now).apply();
+                    // (No update check, just record the attempt)
+                }
+            }
+        }
     }
 
     @Override

@@ -2667,6 +2667,8 @@ public final class GlobalSettings {
          */
         private static boolean getShuffleAfterSelection() {
 
+
+
             if (!getAdvancedEnabled()) {
                 return false;
             }
@@ -3819,4 +3821,17 @@ public final class GlobalSettings {
      * 3. Open app on day 7 → streak resets to 0 (checkAndUpdateStreakOnAppOpen)
      * 4. Complete session with progress on day 7 → streak = 1
      */
+    
+    /**
+     * Get whether daily update check is enabled.
+     */
+    public static boolean getEnableDailyUpdateCheck() {
+        return prefs().getBoolean("enable_daily_update_check", true);
+    }
+    /**
+     * Set whether daily update check is enabled.
+     */
+    public static void setEnableDailyUpdateCheck(boolean enabled) {
+        prefs().edit().putBoolean("enable_daily_update_check", enabled).apply();
+    }
 }

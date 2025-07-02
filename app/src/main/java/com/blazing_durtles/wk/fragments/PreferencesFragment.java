@@ -355,6 +355,18 @@ public final class PreferencesFragment extends PreferenceFragmentCompat {
             });
         }
 
+        // Enable Daily Update Check toggle
+        final @Nullable TwoStatePreference enableDailyUpdateCheckPref = findPreference("enable_daily_update_check");
+        if (enableDailyUpdateCheckPref != null) {
+            enableDailyUpdateCheckPref.setChecked(GlobalSettings.getEnableDailyUpdateCheck());
+            enableDailyUpdateCheckPref.setOnPreferenceChangeListener((preference, newValue) -> {
+                boolean enabled = (Boolean) newValue;
+                GlobalSettings.setEnableDailyUpdateCheck(enabled);
+                enableDailyUpdateCheckPref.setChecked(enabled);
+                return false; // We handle the toggle manually
+            });
+        }
+
         setVisibility("api_key_help", LiveApiState.getInstance().get() != ApiState.OK);
         setVisibility("advanced_lesson_settings", GlobalSettings.getAdvancedEnabled());
         setVisibility("advanced_review_settings", GlobalSettings.getAdvancedEnabled());
