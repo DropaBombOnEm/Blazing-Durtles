@@ -194,7 +194,7 @@ public final class WkApplication extends MultiDexApplication {
     private void onCreateLocal() {
         initialize(this);
         new Task().execute();
-        MidnightAlarmHelper.scheduleMidnightAlarm(this);
+        MidnightAlarmHelper.scheduleAllMidnightAlarms(this);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             registerNetworkStateChangeListenerPost24();

@@ -2667,6 +2667,7 @@ public final class GlobalSettings {
          */
         private static boolean getShuffleAfterSelection() {
 
+
             if (!getAdvancedEnabled()) {
                 return false;
             }
@@ -3832,5 +3833,12 @@ public final class GlobalSettings {
      */
     public static void setEnableDailyUpdateCheck(boolean enabled) {
         prefs().edit().putBoolean("enable_daily_update_check", enabled).apply();
+    }
+
+    public static boolean getHadProgressYesterday() {
+        return prefs().getBoolean("had_progress_yesterday", false);
+    }
+    public static void setHadProgressYesterday(boolean value) {
+        prefs().edit().putBoolean("had_progress_yesterday", value).apply();
     }
 }

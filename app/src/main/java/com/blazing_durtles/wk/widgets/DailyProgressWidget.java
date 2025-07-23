@@ -47,6 +47,13 @@ public class DailyProgressWidget extends AppWidgetProvider {
         int reviewsDone = GlobalSettings.getDailyReviewCount();
         int streak = com.blazing_durtles.wk.activities.MainActivity.getCurrentStreakValue();
 
+        // Use the hadProgressYesterday flag after midnight to determine streak display
+        boolean hadProgressYesterday = GlobalSettings.getHadProgressYesterday();
+        // If it's a new day (counters are zero), use the flag to determine streak display
+        if (lessonsDone == 0 && reviewsDone == 0) {
+            streak = hadProgressYesterday ? com.blazing_durtles.wk.activities.MainActivity.getCurrentStreakValue() : 0;
+        }
+
         // Set text for both layouts
         if (layoutId == R.layout.widget_daily_progress_normal) {
             views.setTextViewText(R.id.widgetLessonsDone, "Lessons Done: " + lessonsDone);
